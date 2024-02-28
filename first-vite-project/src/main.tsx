@@ -9,7 +9,7 @@ const second = 66;
 
 const color = () => {
   const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
-  return colors[Math.floor(Math.random() * 5)]
+  return colors[Math.floor(Math.random() * (colors.length -1))]
 }
 
 const myFunc = (name: string) => {
@@ -42,7 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <p>task 2:</p>
       <div className="myDiv" style={
         {
-          backgroundColor: `${color()}`,
+          backgroundColor: color()
         }
       }></div>
       
