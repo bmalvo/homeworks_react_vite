@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import { GrandparentClass } from './GrandparentClass/grandparentClass';
+import { Grandparent } from './Grandparent/granparent';
+import { Hello } from './HelloFunc/hello';
 
 const first = 33;
 const second = 66;
@@ -30,8 +33,8 @@ const promptColor = () => {
 
 // const yourName = prompt('What is your name?');
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+const MyDiv = () => {
+  return (
     <div>
 
       <p>First task:</p>
@@ -53,5 +56,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       }}>{(backDivColor === 'black')? <p>Wrong color!</p> : '' }</div>
 
   </div>
+  )
+}
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    {/* <MyDiv /> */}
+    
+    < GrandparentClass />
+    <Grandparent />
+    <Hello />
   </React.StrictMode>,
 )
