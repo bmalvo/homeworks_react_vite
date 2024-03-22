@@ -11,4 +11,8 @@ type ResultProps = {
     sum: number
 }
 
-export type { HelloProps, SumProps, ResultProps }
+type GrandparentProps = {
+    value: number
+}
+
+export type { HelloProps, SumProps, ResultProps, GrandparentProps }
