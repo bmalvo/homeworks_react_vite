@@ -1,7 +1,7 @@
-import { User } from "./types";
+import { HelloProps } from "./types";
 
 
-const Hello = ({who}:User) => {
+const Hello = ({who}:HelloProps) => {
     
     return (
         <h1>Hello { who }!</h1>
