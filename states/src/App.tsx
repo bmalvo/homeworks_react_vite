@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StateWithArray } from "./StateWithAray";
 
 const App = () => {
   const [counter, setCounter] = useState(0);
@@ -15,6 +16,7 @@ const App = () => {
     <h1>{ counter}</h1>
     <button onClick={increment}>+1</button>
     <button onClick={reset}>Reset</button>
+    <StateWithArray />
   </>)
 }
 
