@@ -1,0 +1,14 @@
+1. Stwórz komponent. który w elemencie div będzie wyświetlać informację o pozycji
+kursora myszki względem tego elementu. Pry każdym ruchu kursora nad tym 
+elementem dane mają się aktualizować. Podpowiedź: należy znaleźć odpowiednią
+właściwośc w obiekcie zdarzenia.
+
+2. Stwórz komponent RandomNumbersgenerator, który w stanie przetrzymuje tablicę
+liczb, która początkowo jest pusta. Po każdym kliknięciu na przycisk wylosuj 
+numer i dodaj go do tablicy. Następnie wszystkie liczby powinny być wyświetlone
+w postaci elementów li wewnątrz ul.
+
+3. Stwórz komponent Adress, który przechowuje w stanie obiekt reprezentujący 
+adres z nazwą miasta, ulicy oraz kraju. Stwórz przycisk, po naciśnięciu na 
+który nazwa miasta zmieni się na inną. Dane adresowe wyświetl w elemencie h1
+w postaci {Kraj}, {Miasto}, {Ulica}.
