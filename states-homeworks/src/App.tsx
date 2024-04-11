@@ -1,5 +1,7 @@
+import { CursorPosition } from "./CursorPosition"
+
 const App = () => {
-  return null
+  return <CursorPosition />
 }
 
 export { App }
