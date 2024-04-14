@@ -4,20 +4,20 @@ const CursorPosition = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event: React.MouseEvent) => {
-    const { clientX, clientY } = event;
 
-    const x = clientX 
-    const y = clientY 
-
-    setCursorPosition({ x, y });
+    setCursorPosition({
+      x: event.nativeEvent.offsetX,
+      y: event.nativeEvent.offsetY
+    });
   };
 
   return (
       <div
           onMouseMove={handleMouseMove}
           style={{
-              width: '100vw',
-              height: '100vh'
+              width: '20vw',
+              height: '20vh',
+              border: '1px solid green'
           }}>
       <p>
         Cursor position: (x: {cursorPosition.x}, y: {cursorPosition.y})

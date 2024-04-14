@@ -6,7 +6,7 @@ import { RandomNumbersGenerator } from "./RandomNumbersGenerator"
 const App = () => {
   return (
     <>
-      {/* <CursorPosition /> */}
+      <CursorPosition />
       <RandomNumbersGenerator />
       <Address />
     </>
