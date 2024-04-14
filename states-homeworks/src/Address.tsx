@@ -9,14 +9,14 @@ import { useState } from "react"
 const Address = () => {
     const [address, setAdress] = useState<AdressObj>({
         country: 'Poland',
-        city: 'Żory',
-        street: 'Wierzbowa'
+        city: 'Śwignajno Małe',
+        street: 'Cudne Manowce'
     });
 
     const handleClick = () => {
         setAdress({
             ...address,
-            city: 'Gdańsk'
+            city: address.city === 'Śwignajno Małe'? 'Męcikał' : 'Śwignajno Małe',
         })
     }
     
