@@ -4,7 +4,7 @@ type State = {
     counter: number;
 }
 
-type Props = {}
+type Props = object;
 
 class ClassLifecycle extends Component<Props, State> {
     state = {
