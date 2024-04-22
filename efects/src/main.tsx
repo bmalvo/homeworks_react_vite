@@ -8,11 +8,11 @@ import { Complicated } from './Compicated.tsx'
 import { ClassLifecycle } from './ClassLifecycle.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
-  // <App />
-  // <IncorrectEffect />
-  // <Correct />
-  // <Complicated />
+  <React.StrictMode>
+  <App />
+  <IncorrectEffect />
+  <Correct />
+  <Complicated />
   <ClassLifecycle />
-  // </React.StrictMode>,
+  </React.StrictMode>,
 )
