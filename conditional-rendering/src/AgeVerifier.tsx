@@ -39,9 +39,18 @@ type AgeVerifierProps = {
 
 // #4 use tenary operator- OK
 
-export const AgeVerifier = ({age}: AgeVerifierProps) => {
+// export const AgeVerifier = ({age}: AgeVerifierProps) => {
     
-    return <div>
-        {(age >= 18) ? <h1>Welcome adult!</h1> : '(X) access denied!!!'}
-    </div>
+//     return <div>
+//         {(age >= 18) ? <h1>Welcome adult!</h1> : '(X) access denied!!!'}
+//     </div>
+// }
+
+// #5 with if using stored in variable - OK
+
+export const AgeVerifier = ({ age }: AgeVerifierProps) => {
+    
+    const content = age >= 18 ? <h1>Welcome adult!</h1> : <p>(X) access denied!!!</p>;
+    
+    return <div>{ content }</div>
 }
