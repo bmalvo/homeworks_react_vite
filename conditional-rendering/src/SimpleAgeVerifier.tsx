@@ -13,12 +13,24 @@ type SimpleAgeVerifierProps = {
 
 // conditional rendering whole component > fail first
 
+// export const SimpleAgeVerifier = ({ age }: SimpleAgeVerifierProps) => {
+    
+//     if (age < 18) return;
+
+//     return <div>
+//         <h1>Hi!</h1>
+//         <p>You are adult!</p>
+//   </div>
+// }
+
 export const SimpleAgeVerifier = ({ age }: SimpleAgeVerifierProps) => {
     
-    if (age < 18) return;
-
+    if (age >= 18) {
+    
     return <div>
         <h1>Hi!</h1>
         <p>You are adult!</p>
-  </div>
+        </div>
+        
+    }
 }
