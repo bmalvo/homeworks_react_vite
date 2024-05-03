@@ -1,0 +1,13 @@
+.light {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(190, 190, 190);
+    border: 1px solid red;
+}
+
+.dark {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(33, 33, 33);
+    border: 1px solid red;
+}
