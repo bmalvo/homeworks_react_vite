@@ -1,0 +1,18 @@
+1. Stwórz komponent HighestValue, do ktorego przekażesz 3 propsy - a, b, c,
+wszystkie typu number. Rolą komponentu jest wyświetlenie w elemencie h1 
+najwiekszej wartości z przekazanych przez props.
+
+2. Stwórz komponent Light oraz Dark, gdzie rolą tych komponentów jest 
+wyświetlenie elementu div o rozmiarze 100X100 px i jasnym/ciemnym tle , w 
+zależności od komponentu. Stworzone komponenty mają być warunkowo renderowane 
+w nadrzędnym komponencie - Switcher, który posiada przycisk powodujący 
+przełączenie wyświetlanego komponentu. Przycisk w zależności od aktualnie 
+wyświetlnanego komponentu ma pokazywać napis "Turn on", albo "Turn off".
+
+3. Stwórz komponent ValueVerifier, który utworzy wewnętrzny licznik 
+inkrementujący  swoją wartośc co sekundę o 1. Dla obecnej wartości licznika 
+wyświetl następujące informacje:
+
+a - Czy liczba jest parzysta czy nieparzysta?
+b- Jaki jest największy całkowity dzielnik liczby?
+c - Czy liczba jest podzielna przez 2, 3 lub 5?
