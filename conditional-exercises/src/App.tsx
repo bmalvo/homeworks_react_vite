@@ -1,4 +1,4 @@
-// import { Switcher } from './Switcher'
+import { Switcher } from './Switcher'
 import { ValueVerifier } from './ValueVerifier'
 import './styles/styles.css'
 
@@ -11,7 +11,7 @@ export const App = () => {
     {/* <CounterOne />
     <AccessValidator user={{name: 'Patryk', age:23, lastname:'Bobek'}}/> */}
     {/* <HighestValue a={12} b={3} c={9}/> */}
-    {/* <Switcher /> */}
+    <Switcher />
     <ValueVerifier />
   </>
 
