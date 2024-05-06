@@ -12,26 +12,5 @@ export const Switcher = () => {
     return <div>
         <button onClick={toggleLight}>{isTurnedOn ? 'Turn off' : 'Turn on'}</button>
         {isTurnedOn? <Light /> : <Dark />}
-    </div>
-
-    // const [btnText, setBtnText] = useState('Turn on');
-    
-    // const switchText = () => {
-    //     return btnText === 'Turn off' ? setBtnText('Turn on') : setBtnText('Turn off');
-    // }
-    
-    // const switchBtn = <button id="switchButton" onClick={switchText}>{btnText}</button>
-    
-    // if (btnText === 'Turn on') {
-    //     return <>
-    //         {switchBtn}
-    //         <Dark />
-    //     </>
-    // } 
-    
-    // return <>
-    //         {switchBtn}
-    //         <Light />
-    //     </>
-   
+    </div> 
 }
