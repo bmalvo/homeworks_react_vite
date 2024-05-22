@@ -11,7 +11,7 @@ export const useCounter = (initialValue: number, delay: number) => {
         return () => {
             clearInterval(interval);
         }
-    }, [])
+    }, [delay])
     
     return counter
 };
