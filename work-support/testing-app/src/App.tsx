@@ -1,8 +1,9 @@
-const App = () => {
-  // eslint-disable-next-line no-var
-  var a = 10; 
-
-  return<div>{ a } </div>
+type Props = {
+  name: string;
 }
 
-export default App
+export const App = ({ name }: Props) => {
+  const a = 10
+
+  return <div>{name} </div>
+};
