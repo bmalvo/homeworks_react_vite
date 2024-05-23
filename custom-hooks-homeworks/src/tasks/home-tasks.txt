@@ -1,0 +1,12 @@
+1. Stwórz aplikację Numbers, której celem jest generowanie losowych liczb po 
+naciśnięciu na przycisk. Aplikacja umożliwia usunięcie elementu z listy po 
+naciśnięciu przycisku "Usuń" dla danego elementu listy. Cała logika 
+odpowiadająca za generowanie numerów. przechowywanie stanu, usuwanie liczb 
+powinna zostać zapisana wewnątrz hooka useNumbers.
+
+2. Stwórz hook useRandomColor, którego celem jest wylosowanie koloru. Hook ma 
+przzyjmować jeden parametr type o wartości dark lub light- co oznacza czy 
+wylosowany kolor ma być ciemny czy jasny- tutaj można posłużyć się przestrzenią 
+barw HSL (ale równie dobrze można wykorzystać RGB). Hook ma wylosować kolor w 
+momencie jego uruchomienia- bez możliwości zmiany koloru w późniejszym czasie, 
+losuje kolor, zwraca i na tym jego zadanie się kończy.
