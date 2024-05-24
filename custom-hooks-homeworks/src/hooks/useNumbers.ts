@@ -9,7 +9,7 @@ export const useNumbers = () => {
     }
 
     const deleteNumber = (indexToDelete: number) => {
-        setNumbers(prevNumbers => prevNumbers.filter((el, index) => index !== indexToDelete))
+        setNumbers(prevNumbers => prevNumbers.filter((_el, index) => index !== indexToDelete))
     }
 
     return {
