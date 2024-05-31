@@ -1,7 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { FormEvent} from "react"
+import { useForm } from "./hooks/useForm";
+
+type FormValues = {
+  login: string;
+  password: string,
+  age: string;
+  bio: string;
+  gender: string;
+  agreement: boolean;
+  contact: string;
+}
 
 export const Form2 = () => {
-    const [formState, setFormState] = useState({
+    const [formState, handleChange] = useForm<FormValues>({
         login: '',
         password: '',
         age: '',
@@ -25,12 +36,7 @@ export const Form2 = () => {
   }
 
     
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormState(prevState => ({
-            ...prevState,
-            [e.target.name]: e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value
-        }))
-    }
+    
 
   return <form onSubmit={handleSubmit}>
     <div>  
