@@ -1,0 +1,12 @@
+1. Stworzyć listę rozwijalną oraz pole tekstowe. Wybrana wartośc z listy ma 
+zostać przepisana po wyborze do pola tekstowego.
+
+2. Stworzyć komponent pozwalający na konfigurację pojazdu:
+a. pole numeryczne - ilośc kół
+b. checkbox - otwierany dach
+c. checkbox - podwójny wydech
+d. checkbox - elektryczne szyby
+e. lista rozwijalna - rodzaj lakieru - perła/metalik/mat.
+
+Każda z opcji posiada konkretną ustaloną cenę, po wyborze opcji użytkownik 
+powinien na bieżąco widzieć sumaryczny koszt jego zamówienia. 
