@@ -5,7 +5,7 @@ type FormChangeEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTML
 type UseFormReturn<T> = [T, (e: FormChangeEvent) => void];
 
 const isCheckboxElement = (target: FormChangeEvent['target']): target is HTMLInputElement => {
-    return target.type === 'checkobox' &&  target instanceof HTMLInputElement;
+    return target.type === 'checkbox' &&  target instanceof HTMLInputElement;
 }
 
 export const useForm = <T>(initialValues: T): UseFormReturn<T> => {
