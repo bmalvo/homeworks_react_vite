@@ -23,12 +23,10 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
-  min-height: 100vh;
-}
+  min-height: 100vh;}
 
 h1 {
   font-size: 3.2em;
@@ -65,4 +63,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.Ex2 {
+  margin: 10vh 15vw;
 }
