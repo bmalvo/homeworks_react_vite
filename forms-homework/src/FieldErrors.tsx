@@ -1,5 +1,5 @@
 type fieldErrorsProps = {
-    errors: [];
+    errors: string[];
 }
 
 export const FieldErrors = ({errors}: fieldErrorsProps) => {
