@@ -1,0 +1,21 @@
+1. Stwórz formularz zawierający następujące pola:
+- login- pole tekstowe zawierające login użytkownika, powinno posiadać 
+    minimum 3 znaki, dowolny znak specjalny, malą i dużą literę
+- password- pole typu 'password' zawierające hasło użytkownika, powinno 
+    posiadać minimum 3 znaki, dowolny znak specjalny, małą i dużą literę
+- rulesAccepted- checkbox, którego zaznaczenie jest wymagane do wysłania 
+    formularza
+
+Dodatkowo formularz ma zawierać przycisk służący do jego wysłania, ma być cały
+czas aktywny. Po jego naciśnięciu w razie błędnie wypełnionego formularza 
+należy pod każdym polem wyświetlić onformację o błędzie, np: "Wymagane 3 znaki".
+
+W przypadku kiedy formularz jest wypełniony poprawnie i nastąpi jego wysłanie- 
+wszystkie informacje o błędzie powinny zniknąć i powinna pojawić się informacja:
+"Dziękujemy, zostałeś dodany poprawnie".
+
+2. Stworzyć pole 'textarea', dodatkowo dwa radiobuttony- pokaż statystyki/ukryj
+ statystyki. Po wybraniu 'pokaż statystyki' należy wyświetlić komponent 
+ pokazujący informacje o długości tekstu w textarea oraz ilości poszczególnych 
+ liter( po zmianie na małe litery).
+ 
