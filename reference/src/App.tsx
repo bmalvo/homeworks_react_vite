@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Input } from "./Input";
 import { ForwardedRefInput } from "./ForwardedRefInput";
 import { LimitedForwardedRefInput, PartialHTMLInputElement } from "./LimitedForwardedRefInput";
+import { CounterRef } from "./CounterRef";
+import { CounterLet } from "./CounterLet";
 
 export const App = () => {
 
@@ -17,6 +19,8 @@ export const App = () => {
   }
 
   return <>
+    <CounterLet value={10}/>
+    <CounterRef value={10}/>
     <button onClick={handleClick}>Focus</button>
     <input type="text" ref={inputRef} />
     <Input passedRef={inputSecondRef} value="Lorem Ipsum" />
