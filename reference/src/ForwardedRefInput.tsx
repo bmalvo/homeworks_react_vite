@@ -4,7 +4,7 @@ type Props = {
     value: string;
 }
 
-export const ForwarderRefInput = forwardRef(({value}: Props, ref: ForwardedRef<HTMLInputElement>) => {
+export const ForwardedRefInput = forwardRef(({value}: Props, ref: ForwardedRef<HTMLInputElement>) => {
 
     return <input type="text" value={value} ref={ ref} />
 })
