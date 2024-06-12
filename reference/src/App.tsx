@@ -4,6 +4,7 @@ import { ForwardedRefInput } from "./ForwardedRefInput";
 import { LimitedForwardedRefInput, PartialHTMLInputElement } from "./LimitedForwardedRefInput";
 import { CounterRef } from "./CounterRef";
 import { CounterLet } from "./CounterLet";
+import { OneTimeRef } from "./OneTimeRef";
 
 export const App = () => {
 
@@ -19,6 +20,7 @@ export const App = () => {
   }
 
   return <>
+    <OneTimeRef />
     <CounterLet value={10}/>
     <CounterRef value={10}/>
     <button onClick={handleClick}>Focus</button>
