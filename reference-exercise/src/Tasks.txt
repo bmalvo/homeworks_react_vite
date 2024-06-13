@@ -1,0 +1,8 @@
+1. Stworzyć komponent Input, który pozwoli komponentowi nadrzędemu na 
+podłączenie referencji i ustawienie focusa spoza komponentu Input.
+
+2. Stworzyć komponent WeirdCounter, który stworzy wewnątrz interwał, który 
+będzie zwiększać wartośc licznika co sekundę bez wywoływania ponownego renderu
+komponentu. Komponent ma również stworzyć drugi licznik, którego wartość 
+zostanie zapisana do state- ten licznik ma się zwiększać o 1 co 5 sekund. 
+Należy w elemencie h1 wyświetlić wartości obydwóch liczników.
