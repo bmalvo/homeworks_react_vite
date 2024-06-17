@@ -1,0 +1,9 @@
+1. Stworzyć prosty licznik - jeden przycisk ma rozpoczynać (oraz kontynuować)
+odliczanie, drugi wstrzymywać a trzeci resetować bez zatrzymywania odliczania.
+
+2. Stworzyć komponent 'Form' zawierający formularz logowania, ten komponent ma
+umożliwić przekazanie referencji tak, aby zdalnie wywołać metodę 'submit' z 
+natywnego elementu 'form'. Wykonaj zadanie na dwa sposoby: 
+    a. z wykorzystaniem forwardRef oraz useImperativeHandle do ograniczenia 
+    interfejsu tylko i wyłącznie do metody 'submit'.
+    b. z wykorzystaniem zwykłego propsa.
