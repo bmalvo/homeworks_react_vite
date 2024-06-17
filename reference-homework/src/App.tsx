@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Homework1 } from "./Homework1"
-import { Homework2, PartialHTMLFormElement } from "./Homework2"
+// import { Homework2, PartialHTMLFormElement } from "./Homework2"
 import { Homework2v2 } from "./Homework2v2";
 
 export const App = () => {
