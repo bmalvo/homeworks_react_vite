@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Child } from "./Child";
 
 export const App = () => {
 
   const [counter, setCounter] = useState(0);
+  const arr = useRef([5]);
 
   const inc = () => {
 
@@ -12,6 +13,6 @@ export const App = () => {
 
   return <div>
     <button onClick={inc}>+1</button>
-    <Child value={[5]} />
+    <Child value={arr.current} />
   </div>
 }
