@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useState } from "react"
-import { ChildWithFunction } from "./ChildFithFunction"
+// import { ChildWithFunction } from "./ChildFithFunction"
+import { Parent } from "./Parent"
 
 export const App = () => {
 
-  const [counter, setCounter] = useState(0);
+  const [id, setId] = useState(1000)
 
- 
+  const randomizeId = () => {
 
-  const foo = useCallback((value: number) => {
-    console.log('adding', value)
-    setCounter(prevCounter => prevCounter + value)
-  },[])
+    setId(Math.round(Math.random() * 10000));
+  }
 
   return <div>
-    <p>{counter}</p>
-    <ChildWithFunction callback={foo} />
+    <button onClick={randomizeId}>Randomize id</button>
+    <Parent id={id} />
     </div>
 }
 
