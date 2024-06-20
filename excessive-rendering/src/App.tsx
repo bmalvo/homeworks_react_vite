@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { Child } from "./Child";
 
 export const App = () => {
 
   const [counter, setCounter] = useState(0);
-  const [are, setArr] = useState([5]);
+  const [arr, setArr] = useState([5]);
 
   const inc = () => {
 
@@ -14,7 +14,7 @@ export const App = () => {
   // const arr = useMemo(() => [5], []);
 
   const addToArray = () => {
-    setArr(prevArr => [...prevArr, Math.random() * 10])
+    setArr(prevArr => [...prevArr, Math.round(Math.random() * 10)])
   }
 
   return <div>

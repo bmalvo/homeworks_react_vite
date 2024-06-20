@@ -20,5 +20,5 @@ export const Child = memo(({value, counter}: ChildProps) => {
 
     const calculatedValue = useMemo(() => heavyCalculation(value), [value]);
 
-    return <h1>Hello, World! {value.join() }{ calculatedValue }</h1>
+    return <h1>Hello, World! {value.join()}{ counter }{ calculatedValue }</h1>
 })
