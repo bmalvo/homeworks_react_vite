@@ -1,4 +1,6 @@
+import { Parent } from "./Parent"
+
 export const App = () => {
 
-  return null
+  return <Parent />
 }
