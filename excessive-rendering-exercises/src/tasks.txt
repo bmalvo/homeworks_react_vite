@@ -1,0 +1,13 @@
+1. Przygotowa trzy komponenty- Parent, Child i GrandChild. Komponent Parent ma
+posiadać licznik odliczający wartośc co sekundę i wyświetlać tą wartośc w 
+elemencie h2 oraz renderować Child. Child oraz GrandChild mają renderować 
+odpowiednio h1 i h3 z dowolną treścią i nie przyjmują żadnych propsów, Child 
+ma również renderować GrandChild. Do wnętrza każdego komponentu należy dodać 
+console.log z informacją o tym, że dany komponent się renderuje. Czy da się to 
+jakoś zoptymalizować?
+
+2. Do komponentu Parent należy dołożyć drugi state z drugim licznikiem, tym 
+razem w swoim wnętrzu tworzy tablicę zawierający tyle elementów na ile wskazuje
+wartość drugiego licznika. Ta tablica ma następnie zostać przekazana do 
+komponentu GrandChild. Dla danej wartości licznika tablica ma zostać 
+wygenerowana tylko raz. Należy unikać każdego dodatkowego renderu komponentu.
