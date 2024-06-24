@@ -1,12 +1,28 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { GrandChild } from "./GrandChild";
 
-export const Child = memo(() => {
+type ChildProps = {
+    second: number;
+}
+
+export const Child = memo(({second}: ChildProps) => {
 
     console.log('rendering Child');
 
+    const generateArray = (howMany: number) => {
+        const array: number[] = [];
+
+        for (let i = 0; i < howMany; i++) {
+            array.push(Math.round(Math.random() * 100))
+        }
+
+        return array;
+    }
+
+    const elements = useMemo(() => generateArray(second), [second]);
+
     return <>
         <h2>I am a Child</h2>
-        <GrandChild />
+        <GrandChild elements={ elements} />
     </>
 })

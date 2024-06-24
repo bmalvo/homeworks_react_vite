@@ -1,10 +1,14 @@
 import { memo } from "react";
 
-export const GrandChild = memo(() => {
+type GrandChildProps = {
+    elements: number[];
+}
+
+export const GrandChild = memo(({elements}: GrandChildProps) => {
 
     console.log('rendering GrandChild');
 
     return <>
-        <h3>i am a GrandChild</h3>
+        <h3>i am a GrandChild { elements.join(', ')}</h3>
     </>
 })
