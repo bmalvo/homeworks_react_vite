@@ -1,0 +1,18 @@
+Przygotować komponent RandomArraySorter, który przyjmuje propsa direction o 
+dwóch możliwych wartościach- "DESC" oraz "ASC", komponent dodatkowo ma 
+definiować stan randomLength, który co sekundę przyjmuje losową wartość z 
+zakresu 5 - 20. Rolą komponentu jest utworzenie tablicy posortowanej zgodnie z 
+propsem direction o długości określonej przez randomLength. Tablica ma być 
+utworzona tylko i wyłącznie w sytuacji kiedy direction zmieni wartości lub 
+ustali ją po raz pierwszy!
+
+2. Stwórz komponent TextInput, którego celem jest stworzenie pola tekstowego, 
+który przyjmuje następujące propsy:
+a. value- wartośc pola tekstowego
+b. onChange- metoda pozwalająca zmienić wartośc stanu reprezentującego wartość
+tego inputa- stan przechowywany w komponencie nadrzędnym.
+
+Następnie należy stworzyć komponent Form, który będzie posiadał dwa 
+zagnieżdżone komponenty TextInput. Komponent Form dodatkowo ma wyświetlać 
+aktualny czas z dokładnością co do sekundy. Komponenty TextInput powinny unikać
+nadmiernego renderowania.
