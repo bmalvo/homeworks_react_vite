@@ -31,6 +31,7 @@ export const RandomArraySorter = ({direction}: RandomArraySorterProps) => {
         return () => clearInterval(interval);
     }, [])
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const elements = useMemo(() => getArray(direction, randomLength), [direction]);
 
     return <ul>
