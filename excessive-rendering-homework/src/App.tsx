@@ -1,4 +1,6 @@
+import { RandomArraySorter } from "./RandomArraySorter"
+
 export const App = () => {
 
-  return null;
+  return <RandomArraySorter direction="ASC"/>
 }
