@@ -1,0 +1,14 @@
+1. Zainstalować json-server. Należy przygotować plik z bazą danych zawierający
+listę rzeczy do zrobienia todos. Następnie należy przygotować aplikację na 
+wyświetlenie listy rzeczy do zrobienia, dodawanie nowych oraz usuwanie 
+elementów z listy.
+
+2. Należy dodać drugą kolekcję do bazy danych- subtodos, która będzie powiązana
+'relacją' z kolekcją todos. Co oznacza, że każdy Todo może mieć listę 
+dodatkowych rzeczy do zrobienia. Lista dodatwkowych elementów do wykonania ma 
+być dostępna tylko po naciśnięciu przycisku 'Pokaż szczegóły' przy danym todo 
+i tam też może być modyfikowana. 
+
+3. Należy przygotować komponent wyświetlający listę pierwszych 5 elementów do 
+wykonania i wyświetlić ten komponent 4-krotnie, czy da się tutaj zauważyć jakiś
+problem?
