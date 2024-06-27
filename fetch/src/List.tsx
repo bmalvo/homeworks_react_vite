@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useApi } from "./hooks/useApi";
 
 export type Entity = {
     id: string;
@@ -8,26 +9,19 @@ export type Entity = {
 
 export const List = () => {
 
-    const [entities, setEntities] = useState<Entity[]>([])
-    const [loading, setLoadning] = useState<boolean>(true);
-
-    const getData = async () => {
-        const response = await fetch('http://localhost:3000/collection1');
-        const data: Entity[] = await response.json();
-
-        setEntities(data);
-        setLoadning(false);
-    }
+    const { get, data, loading, error} = useApi<Entity[]>();
 
     useEffect(() => {
-        getData();
+        get('collection1');
     },[])
 
     if (loading) return <p>Loading...</p>
+    if (error) return <p>{error}</p>
+    if (!data) return null;
 
     return (
         <ul>
-            {entities.map(entity => <li key={entity.id}>{entity.prop1} - { entity.prop2}</li>)}
+            {data.map(entity => <li key={entity.id}>{entity.prop1} - { entity.prop2}</li>)}
         </ul>
     )    
 }
