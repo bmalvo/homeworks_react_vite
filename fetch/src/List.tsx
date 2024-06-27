@@ -13,7 +13,7 @@ export const List = () => {
 
     useEffect(() => {
         get('collection1');
-    },[])
+    },[get])
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
