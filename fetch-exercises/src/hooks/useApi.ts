@@ -2,13 +2,14 @@ import { useState } from "react"
 
 const API_BASE = 'http://localhost:3000/';
 
-export const useApi = <T>() => {
+export const useApi = () => {
 
     // const [data, setData] = useState<T>();
-    const [loading, setLoadning] = useState<boolean>(true);
+    const [loading, setLoadning] = useState<boolean>(false);
     const [error, setError] = useState('');
 
     const call = async <R>(url: string, method: 'GET' | 'DELETE') => {
+        setLoadning(true);
         try {
             const response = await fetch(`${API_BASE}${url}`, {method});
 
