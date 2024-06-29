@@ -13,11 +13,15 @@ export const useTodos = () => {
         if (response) setData(response);
     } 
 
+    const removeTodo = (id: string) => {
+        setData(prevData => prevData?.filter(todo => todo.id !== id));
+    }
+
     useEffect(() => {
         getTodos();
     }, [])
 
     return {
-        data, error, loading
+        data, error, loading, removeTodo
     }
 }
