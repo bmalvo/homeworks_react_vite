@@ -17,11 +17,15 @@ export const useTodos = () => {
         setData(prevData => prevData?.filter(todo => todo.id !== id));
     }
 
+    const addTodo = (todo: Todo) => {
+        setData(prevTodos => [...(prevTodos || []), todo]);
+    }
+
     useEffect(() => {
         getTodos();
     }, [])
 
     return {
-        data, error, loading, removeTodo
+        data, error, loading, removeTodo, addTodo
     }
 }
