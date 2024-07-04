@@ -1,13 +1,13 @@
 import { useGetTodosQuery } from "./hooks/useGetTodosQuery";
 import { useGetSubTodosQuery } from "./hooks/useGetSubTodosQuery";
-import { useTodosCreate } from "./hooks/useTodosCreate";
+import { useTodosCreateMutation } from "./hooks/useTodosCreateMutation";
 import { FormEvent, useState } from "react";
 
 export const Todos = () => {
 
     const [value, setValue] = useState('');
 
-    const { createTodo} = useTodosCreate();
+    const { mutate: createTodo } = useTodosCreateMutation();
 
     const { data, refetch } = useGetTodosQuery();
 
