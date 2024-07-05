@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTodosDelete } from "./hooks/seTodosDelete";
+import { useTodosDelete } from "./hooks/useTodosDelete";
 import { Todo } from "./types";
 import { SubTodos } from "./SubTodos";
 
