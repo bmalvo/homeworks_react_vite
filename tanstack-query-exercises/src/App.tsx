@@ -1,4 +1,13 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { TodoApp } from "./TodoApp"
+
 export const App = () => {
 
-  return null
+  const qClient = new QueryClient();
+
+  return (
+    <QueryClientProvider client={qClient}>
+      <TodoApp />
+    </QueryClientProvider>
+  )
 }
