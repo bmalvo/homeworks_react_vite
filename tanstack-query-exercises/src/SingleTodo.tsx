@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useTodosDelete } from "./hooks/useTodosDelete";
 import { Todo } from "./types";
 import { SubTodos } from "./SubTodos";
+import { useDeleteTodoMutation } from "./queries/useDeleteTodoMutation";
 
 type SingleTodoProps = {
     element: Todo;
@@ -9,7 +9,7 @@ type SingleTodoProps = {
 
 export const SingleTodo = ({element}: SingleTodoProps) => {
 
-    const { loading, error, deleteTodo} = useTodosDelete();
+    const { isPending, error, mutate: deleteTodo} = useDeleteTodoMutation();
     const [showTodos, setShowTodos] = useState(false);
 
     const onDelete = () => {
@@ -24,10 +24,10 @@ export const SingleTodo = ({element}: SingleTodoProps) => {
     return (
         <li>
             <p>{element.title}</p>
-            <button disabled={loading} onClick={onDelete}>Delete</button>
-            <button disabled={loading} onClick={toggleSubTodos}>Show details</button>
+            <button disabled={isPending} onClick={onDelete}>Delete</button>
+            <button disabled={isPending} onClick={toggleSubTodos}>Show details</button>
             {showTodos && <SubTodos todoId={element.id} />}
-            {error && <p>{error}</p>}
+            {error && <p>{error.message}</p>}
         </li>
     )
 }
