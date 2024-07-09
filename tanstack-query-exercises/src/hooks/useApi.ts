@@ -4,9 +4,7 @@ const API_BASE = 'http://localhost:3000/';
 
 export const useApi = () => {
 
-    // const [data, setData] = useState<T>();
     const [loading, setLoadning] = useState<boolean>(false);
-    const [error, setError] = useState('');
 
     const call = async <R, P = object>(url: string, method: 'GET' | 'DELETE' | 'POST', body?: P) => {
         setLoadning(true);
@@ -32,12 +30,12 @@ export const useApi = () => {
                 return data;
             } else {
                 const apiError: string = await response.text();
-                setError(apiError);
+                throw new Error(apiError);
             }
 
 
         } catch (e) {
-            setError('Error ocurred')  
+            throw new Error('Error ocurred')  
         } finally {
             setLoadning(false);
         }
@@ -57,6 +55,6 @@ export const useApi = () => {
     }
 
     return {
-        apiGet, apiDelete, apiPost, loading, error
+        apiGet, apiDelete, apiPost, loading
     }
 }
