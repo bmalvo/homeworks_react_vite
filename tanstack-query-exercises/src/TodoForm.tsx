@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react";
-import { useTodosCreate } from "./hooks/useTodosCreate";
+import { useCreateTodoMutation } from "./queries/useCreateTodoMutation";
 
 
 
 
 export const TodoForm = () => {
 
-    const { createTodo, error, loading, data} = useTodosCreate();
+    const { mutate: createTodo, error, isPending} = useCreateTodoMutation();
 
     const [value, setValue] = useState('');
 
@@ -17,11 +17,11 @@ export const TodoForm = () => {
         setValue('');
     }
 
-    if(loading) return <p>Loading...</p>
+    if(isPending) return <p>Loading...</p>
 
     return <form action="" onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" value={value} onChange={e => setValue(e.target.value)} />
-        {error && <p>{error}</p>}
+        {error && <p>{error.message}</p>}
     </form>
 }
