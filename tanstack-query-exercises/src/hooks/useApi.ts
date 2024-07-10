@@ -1,13 +1,8 @@
-import { useState } from "react"
-
 const API_BASE = 'http://localhost:3000/';
 
 export const useApi = () => {
 
-    const [loading, setLoadning] = useState<boolean>(false);
-
     const call = async <R, P = object>(url: string, method: 'GET' | 'DELETE' | 'POST', body?: P) => {
-        setLoadning(true);
 
         const commonData = {
             method,
@@ -36,8 +31,6 @@ export const useApi = () => {
 
         } catch (e) {
             throw new Error('Error ocurred')  
-        } finally {
-            setLoadning(false);
         }
     }
 
@@ -55,6 +48,6 @@ export const useApi = () => {
     }
 
     return {
-        apiGet, apiDelete, apiPost, loading
+        apiGet, apiDelete, apiPost
     }
 }

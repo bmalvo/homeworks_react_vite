@@ -1,4 +1,4 @@
-import { useSubTodosDelete } from "./hooks/useSubTodoDelete";
+import { useDeleteSubtodoMutation } from "./queries/useDeleteSubtodoMutation";
 import { SubTodo } from "./types"
 
 type SingleSubTodoProps = {
@@ -7,10 +7,12 @@ type SingleSubTodoProps = {
 
 export const SingleSubTodo = ({ element }: SingleSubTodoProps) => {
 
-    const { deleteSubTodo } = useSubTodosDelete();
+    const { mutate: deleteSubTodo } = useDeleteSubtodoMutation();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const onDelete = () => {
         deleteSubTodo(element.id);
+    }
 
         return (
             <li>
@@ -19,4 +21,3 @@ export const SingleSubTodo = ({ element }: SingleSubTodoProps) => {
             </li>
         )
     }
-}
