@@ -1,31 +1,22 @@
-import { useEffect } from "react";
 import { useSubTodosDelete } from "./hooks/useSubTodoDelete";
 import { SubTodo } from "./types"
 
 type SingleSubTodoProps = {
     element: SubTodo;
-    onDeleteCallback: () => void
 }
 
-export const SingleSubTodo = ({element, onDeleteCallback}: SingleSubTodoProps) => {
+export const SingleSubTodo = ({ element }: SingleSubTodoProps) => {
 
-    const { deleteSubTodo, data } = useSubTodosDelete();
+    const { deleteSubTodo } = useSubTodosDelete();
 
     const onDelete = () => {
         deleteSubTodo(element.id);
+
+        return (
+            <li>
+                <p>{element.title}</p>
+                <button onClick={onDelete}>Delete subtodo</button>
+            </li>
+        )
     }
-
-    useEffect(() => {
-        if (!data) return
-        
-        onDeleteCallback();
-
-    },[data])
-
-    return (
-        <li>
-            <p>{element.title}</p>
-            <button onClick={onDelete}>Delete subtodo</button>
-        </li>
-    )
 }

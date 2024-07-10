@@ -1,14 +1,13 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useSubTodoCreate } from "./hooks/useSubTodoCreate";
 
 type SubTodoFormProps = {
     todoId: string;
-    onNewSubTodoCallback: () => void;
 }
 
-export const SubTodoForm = ({onNewSubTodoCallback, todoId}: SubTodoFormProps) => {
+export const SubTodoForm = ({todoId}: SubTodoFormProps) => {
 
-    const { createSubTodo, error, loading, data} = useSubTodoCreate();
+    const { createSubTodo, error, loading} = useSubTodoCreate();
 
     const [value, setValue] = useState('');
 
@@ -18,11 +17,6 @@ export const SubTodoForm = ({onNewSubTodoCallback, todoId}: SubTodoFormProps) =>
         createSubTodo(value, todoId);
         setValue('');
     }
-
-    useEffect(() => {
-        if (!data) return;
-        onNewSubTodoCallback();
-    }, [data])
 
     if(loading) return <p>Loading...</p>
 
