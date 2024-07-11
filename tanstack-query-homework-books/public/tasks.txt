@@ -1,0 +1,25 @@
+1. Zainstaluj json-server. Przygotuj bazę danych zawierającą informację o 
+książkach zgodnie z następującą strukturą:
+
+'books': [
+    {'id': number, 'year': number, 'title': string, 'description': string}
+]
+
+2. Przygotuj komponent BookList wyświetlający listę dostępnych książek w 
+bibliotece.
+
+3. Przygotuj komponent AddBook zawierający formularz pozwalający na dodanie 
+nowej książki.
+
+4. Przygotuj komponent EditBook pozwalający na edycję wybranej książki - 
+komponent powinien zostać wyświetlony po naciśnięciu na przycisk "Edytuj" na 
+liście książek przy danej pozycji.
+
+5. Przygotuj komponent DeleteBookConfirmation, który zostanie 
+wyświetlony po naciśnięciu "Usuń" przy danej książce, ten komponent ma potwirdzić chęć usunięcia książki i faktycznie ją usunąć.
+
+6. Usunięcie i edycja książki ma spowodować automatyczną aktualizację listy książek.
+
+7. Przygotuj komponent BookStats wyświetlający informację na temat ilości książek znajdujących się w bazie danych.
+
+8. Wykorzystaj fetch do wykorzystania zapytań, ale dodatkowo stwórz hook useApi, który opakowuje fetcha- useQuery oraz useMutation powinny wykorzystywać useApi zamiast bezpośrednio fetch.
