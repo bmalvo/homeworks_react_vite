@@ -1,0 +1,34 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "year": 2022,
+            "title": "Nowoczesne Django",
+            "description": "Książka poświęcona Django, wolnej, otwartoźródłowej platformie programistycznej."
+        },
+        {
+            "id": 2,
+            "year": 2012,
+            "title": "Wielka Trwoga",
+            "description": "Obraz narodowej histerii, która prowadziła do wstrząsających zbrodni."
+        },
+        {
+            "id": 3,
+            "year": 1957,
+            "title": "Zapiski oficera armii czerwonej",
+            "description": "Prezentowana satyra jest opisem polskiej rzeczywistości na Kresach."
+        },
+        {
+            "id": 4,
+            "year": 2023,
+            "title": "Zło ze wschodu",
+            "description": "Zło zawsze przyciąga zło. Jeden grzech przeciera szlak kolejnym."
+        },
+        {
+            "id": 5,
+            "year": 2011,
+            "title": "Fantomowe cialo króla",
+            "description": "Książka jest propozycją przepisania historii Polski oraz opisania jej tożsamości."
+        }
+    ]
+}
