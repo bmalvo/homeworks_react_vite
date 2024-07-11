@@ -16,10 +16,15 @@ komponent powinien zostać wyświetlony po naciśnięciu na przycisk "Edytuj" na
 liście książek przy danej pozycji.
 
 5. Przygotuj komponent DeleteBookConfirmation, który zostanie 
-wyświetlony po naciśnięciu "Usuń" przy danej książce, ten komponent ma potwirdzić chęć usunięcia książki i faktycznie ją usunąć.
+wyświetlony po naciśnięciu "Usuń" przy danej książce, ten komponent ma 
+potwirdzić chęć usunięcia książki i faktycznie ją usunąć.
 
-6. Usunięcie i edycja książki ma spowodować automatyczną aktualizację listy książek.
+6. Usunięcie i edycja książki ma spowodować automatyczną aktualizację listy 
+książek.
 
-7. Przygotuj komponent BookStats wyświetlający informację na temat ilości książek znajdujących się w bazie danych.
+7. Przygotuj komponent BookStats wyświetlający informację na temat ilości 
+książek znajdujących się w bazie danych.
 
-8. Wykorzystaj fetch do wykorzystania zapytań, ale dodatkowo stwórz hook useApi, który opakowuje fetcha- useQuery oraz useMutation powinny wykorzystywać useApi zamiast bezpośrednio fetch.
+8. Wykorzystaj fetch do wykorzystania zapytań, ale dodatkowo stwórz hook 
+useApi, który opakowuje fetcha- useQuery oraz useMutation powinny wykorzystywać 
+useApi zamiast bezpośrednio fetch.
