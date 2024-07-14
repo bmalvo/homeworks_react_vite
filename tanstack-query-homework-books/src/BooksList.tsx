@@ -7,6 +7,6 @@ export const BooksList = () => {
     if(!data) return <p>Loading...</p>
 
     return <ul>
-        {data.map((book: any) => <li key={book.id}>{ book.title }</li>)}
+        {data.map(book => <li key={book.id}>{ book.title}</li>) }
     </ul>
 }
