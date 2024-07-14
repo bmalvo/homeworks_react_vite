@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { BookList } from "./BookList"
+import {BooksList} from './BooksList'
 
 const queryClient = new QueryClient();
 
@@ -7,7 +7,7 @@ export const App = () => {
 
   return <>
     <QueryClientProvider client={queryClient}>
-      <BookList />
+      <BooksList />
     </QueryClientProvider>
   </>
 }
