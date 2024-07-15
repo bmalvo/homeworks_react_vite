@@ -2,10 +2,14 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const useApi = () => {
 
-    const call = async<R>(url: string, method: 'GET' | 'DELETE' | 'POST'): Promise<R> => {
+    const call = async<R, P = object>(url: string, method: 'GET' | 'DELETE' | 'POST', payload?: P): Promise<R> => {
 
         const fetchConfig = {
-            method
+            method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: payload ? JSON.stringify(payload) : undefined
         }
 
         try {    
@@ -28,7 +32,13 @@ export const useApi = () => {
         return await call<R>(url, 'GET')
     }
 
+    const apiPost = async<R, P>(url: string, payload: P) => {
+
+        return await call<R, P>(url, 'POST', payload)
+    }
+
     return {
-        apiGet
+        apiGet,
+        apiPost
     }
 }

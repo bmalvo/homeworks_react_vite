@@ -6,12 +6,15 @@ export const useGetBooksQuery = () => {
 
     const { apiGet } = useApi();
 
-    const { data } = useQuery<BookEntity[]>({
+    const { data, isFetching } = useQuery<BookEntity[]>({
         queryKey: ['books'],
         queryFn: async () => {
             return apiGet<BookEntity[]>('books');
         }
     })
 
-    return { data }
+    return {
+        data,
+        isFetching
+    }
 }
