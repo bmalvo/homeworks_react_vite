@@ -1,15 +1,22 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useCreateBookMutation } from "./queries/useCreateBookMutation";
+import { BookEntity } from "./types"
 import { BookForm } from "./BookForm";
+import { useUpdateBookMutation } from "./queries/useApdateBookMutation";
 
-export const AddBook = () => {
 
-    const { mutate, isPending } = useCreateBookMutation();
+type EditBookProps = {
+
+    book: BookEntity
+}
+
+export const EditBook = ({book}: EditBookProps) => {
+
+    const { mutate, isPending } = useUpdateBookMutation(book.id);
 
     const [value, setValues] = useState({
-        title: 'book title',
-        description: 'description',
-        year: new Date().getFullYear()
+        title: book.title,
+        description: book.description,
+        year: book.year
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,14 +35,9 @@ export const AddBook = () => {
         mutate({
             title: value.title,
             description: value.description,
-            year: value.year
+            year: value.year,
         })
 
-        setValues({
-            title: 'book title',
-            description: 'description',
-            year: new Date().getFullYear()
-        })
     }
 
     return (

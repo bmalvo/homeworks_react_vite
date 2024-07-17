@@ -31,10 +31,10 @@
       "description": "Książka jest propozycją przepisania historii Polski oraz opisania jej tożsamości."
     },
     {
-      "id": "e52b",
-      "title": "book title",
-      "description": "description",
-      "year": 2024
+      "title": "Weźmisz czarno kure....",
+      "description": "Przygody Jakuba Wędrowycza.\n",
+      "year": 2024,
+      "id": "e52b"
     }
   ]
 }

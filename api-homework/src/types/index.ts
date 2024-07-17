@@ -7,3 +7,4 @@ export type BookEntity = {
 }
 
 export type BookDto = Omit<BookEntity, 'id'>
+
