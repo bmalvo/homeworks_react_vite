@@ -6,7 +6,7 @@ export const BooksList = () => {
 
     const { data, isFetching } = useGetBooksQuery();
 
-    if (!isFetching) return <p>Loading...</p>
+    if (isFetching) return <p>Loading...</p>
     
     if(!data) return <p>No data...</p>
 
