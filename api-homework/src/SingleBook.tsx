@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EditBook } from "./EditBook";
 import { BookEntity } from "./types";
+import { DeleteBookConfirmation } from "./DeleteBookConfirmation";
 
 type SingleBookProps = {
 
@@ -9,19 +10,29 @@ type SingleBookProps = {
 
 export const SingleBook = ({ book }: SingleBookProps) => {
     
-    const [isEditing, setIsEditing] = useState(false);
+    const [mode, setMode] = useState<'edit' | 'delete' | 'none'>('none');
 
     const toggleEditMode = () => {
 
-        setIsEditing(prevIsEditing => !prevIsEditing);
+        setMode(prevMode => prevMode === 'edit' ? 'none' : 'edit');
+    }
+
+    const toggleDeleteMode = () => {
+
+        setMode(prevMode => prevMode === 'delete' ? 'none' : 'delete');
     }
 
     return (
         <li key={book.id}>
             <h2><strong>{book.title}</strong> {book.year}</h2>
             <p>{book.description}</p>
-            <button onClick={toggleEditMode}>{ isEditing ? 'Cancel' : 'Edit'}</button>
-            {isEditing ? <EditBook book={book} /> : undefined}
+
+            <button onClick={toggleEditMode}>{ mode === 'edit' ? 'Cancel' : 'Edit'}</button>
+            {mode === 'edit' ? <EditBook book={book} /> : undefined}
+            <br></br>
+
+            <button onClick={toggleDeleteMode}>{ mode === 'delete' ? 'Cancel' : 'delete'}</button>
+            {mode === 'delete' ? <DeleteBookConfirmation onCancel={toggleDeleteMode} book={book} /> : undefined}
             <br></br>
         </li>
     )
