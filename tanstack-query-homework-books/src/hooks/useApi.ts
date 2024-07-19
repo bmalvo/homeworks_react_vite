@@ -9,7 +9,7 @@ export const useApi = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: payload? JSON.stringify(payload) : undefined
+            body: payload ? JSON.stringify(payload) : undefined
         }
 
         try {    
@@ -31,7 +31,7 @@ export const useApi = () => {
 
         return await call<R>(url, 'GET')
     }
-    
+
     const apiPost = async<R, P>(url: string, payload: P) => {
 
         return await call<R, P>(url, 'POST', payload)
@@ -42,9 +42,15 @@ export const useApi = () => {
         return await call<R, P>(url, 'PUT', payload)
     }
 
+    const apiDelete = async<R>(url: string) => {
+
+        return await call<R>(url, 'DELETE')
+    }
+
     return {
         apiGet,
-        apiPost, 
-        apiPut
+        apiPost,
+        apiPut,
+        apiDelete
     }
 }
