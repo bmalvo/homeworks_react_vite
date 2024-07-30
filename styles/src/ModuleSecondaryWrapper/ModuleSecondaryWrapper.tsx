@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react"
 import styles from './ModuleSecondaryWrapper.module.scss'
+import clsx from "clsx"
 
 type ModuleSecondaryWrapperProps = {
 
@@ -24,8 +25,12 @@ export const ModuleSecondaryWrapper = ({ children }: ModuleSecondaryWrapperProps
     return (
         <>
             <button onClick={togglePrimary}>toggle primary</button>
-        <div className={`${styles.wrapper} ${isActive? styles.active : ''} ${isPrimary? styles.primary : ''}`} onClick={toggleActive} role="button">
-            {children}
+            <div className={clsx(styles.wrapper, {
+                [styles.active]: isActive,
+                [styles.primary]: isPrimary
+            })}
+                onClick={toggleActive} role="button">
+                {children}
         </div>
         </>
     )
