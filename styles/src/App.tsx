@@ -1,6 +1,7 @@
 import { ModuleSecondaryWrapper } from "./ModuleSecondaryWrapper/ModuleSecondaryWrapper"
 import { ModuleWrapper } from "./ModuleWrapper/ModuleWrapper"
 import { SecondaryWrapper } from "./SecondaryWrapper/SecondaryWrapper"
+import { StyledWrapper } from "./StyledWrapper/StyledWrapper"
 import { Wrapper } from "./Wrapper/Wrapper"
 
 export const App = () => {
@@ -19,5 +20,8 @@ export const App = () => {
     <ModuleSecondaryWrapper>
       <h1>Lorem Ipsum</h1>
     </ModuleSecondaryWrapper>
+    <StyledWrapper>
+      Lorem ipsum dolor, sit amet consectetur adipisicing.
+    </StyledWrapper>
   </>
 }
