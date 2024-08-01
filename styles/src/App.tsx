@@ -1,12 +1,24 @@
+import { ThemeProvider } from "styled-components"
+import { Button } from "./Button/Button"
 import { ModuleSecondaryWrapper } from "./ModuleSecondaryWrapper/ModuleSecondaryWrapper"
 import { ModuleWrapper } from "./ModuleWrapper/ModuleWrapper"
 import { SecondaryWrapper } from "./SecondaryWrapper/SecondaryWrapper"
 import { StyledWrapper } from "./StyledWrapper/StyledWrapper"
 import { Wrapper } from "./Wrapper/Wrapper"
+import { Elements } from "./Elements/Elements"
 
 export const App = () => {
 
-  return <>
+  const theme = {
+
+    colors: {
+      primary: '#0242e4',
+      textLight: '#fee0fe'
+
+    }
+  }
+
+  return <ThemeProvider theme={theme}>
     <Wrapper>
       <h1>Lorem Ipsum</h1>
     </Wrapper>
@@ -23,5 +35,7 @@ export const App = () => {
     <StyledWrapper>
       Lorem ipsum dolor, sit amet consectetur adipisicing.
     </StyledWrapper>
-  </>
+    <Button />
+    <Elements/>
+  </ThemeProvider>
 }
