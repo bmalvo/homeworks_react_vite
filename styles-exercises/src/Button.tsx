@@ -1,0 +1,22 @@
+import styled from "styled-components";
+
+type ButtonProps = {
+
+    label: string;
+}
+
+const StyledButton = styled.button`
+    
+    color: ${props => props.theme.colors.textPrimary};
+    background-color: ${props => props.theme.colors.primary};
+    border: none;
+    padding: 15px;
+    min-width: 200px;
+    border-radius: 7px;`
+
+export const Button = ({label}: ButtonProps) => {
+
+    return <StyledButton>
+        {label}
+    </StyledButton>
+}
