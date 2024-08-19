@@ -8,7 +8,7 @@ type TextProps = {
 
 const StyledText = styled.p`
     
-    color: ${props => props.theme.colors.textBackground}`
+    color: ${props => props.theme.colors.textBackground};`
 
 export const Text = ({children}: TextProps) => {
 

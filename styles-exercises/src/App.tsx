@@ -1,7 +1,14 @@
-import { ThemeProvider } from "styled-components"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Button } from "./Button"
 import { Text } from "./Text"
 import { Wrapper } from "./Wrapper"
+
+const GlobalStyle = createGlobalStyle`
+    
+  body {
+    background-color: ${props => props.theme.colors.background}
+    }
+  `
 
 export const App = () => {
 
@@ -16,6 +23,7 @@ export const App = () => {
   }
 
   return <ThemeProvider theme={light}>
+    <GlobalStyle/>
     <Wrapper>
     <Button label='super button' />
     <Text>Lorem ipsum dolor sit amet consectetur.</Text>
