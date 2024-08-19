@@ -3,6 +3,7 @@ import styled from "styled-components";
 type ButtonProps = {
 
     label: string;
+    onClick: () => void;
 }
 
 const StyledButton = styled.button`
@@ -14,9 +15,9 @@ const StyledButton = styled.button`
     min-width: 200px;
     border-radius: 7px;`
 
-export const Button = ({label}: ButtonProps) => {
+export const Button = ({label, onClick}: ButtonProps) => {
 
-    return <StyledButton>
+    return <StyledButton onClick= {onClick}>
         {label}
     </StyledButton>
 }
