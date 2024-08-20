@@ -3,6 +3,7 @@ import { Button } from "./Button"
 import { Text } from "./Text"
 import { Wrapper } from "./Wrapper"
 import { useState } from "react"
+import { Bouncy } from "./Bouncy"
 // import { Foo } from "./Foo"
 // import { Bar } from "./Bar"
 
@@ -17,44 +18,50 @@ export const App = () => {
 
   // Exercise 1:
 
-  const [isLight, setLight] = useState(true);
+  // const [isLight, setLight] = useState(true);
 
-  const light = {
+  // const light = {
 
-    colors: {
-      primary: '#0333ee',
-      textPrimary: '#fff',
-      background: '#eee',
-      textBackground: '#333'
-    }
-  }
+  //   colors: {
+  //     primary: '#0333ee',
+  //     textPrimary: '#fff',
+  //     background: '#eee',
+  //     textBackground: '#333'
+  //   }
+  // }
 
-  const dark = {
+  // const dark = {
 
-    colors: {
-      primary: '#9ca5df',
-      textPrimary: '#222',
-      background: '#333',
-      textBackground: '#eee'
-    }
-  }
+  //   colors: {
+  //     primary: '#9ca5df',
+  //     textPrimary: '#222',
+  //     background: '#333',
+  //     textBackground: '#eee'
+  //   }
+  // }
 
-  const toggleTheme = () => {
+  // const toggleTheme = () => {
 
-    setLight(prevLight => !prevLight);
-  }
+  //   setLight(prevLight => !prevLight);
+  // }
 
-  return <ThemeProvider theme={isLight ? light : dark}>
-    <GlobalStyle/>
-    <Wrapper>
-    <Button label='shift Theme' onClick={toggleTheme}/>
-    <Text>Lorem ipsum dolor sit amet consectetur.</Text>
-    </Wrapper>
-  </ThemeProvider>
+  // return <ThemeProvider theme={isLight ? light : dark}>
+  //   <GlobalStyle/>
+  //   <Wrapper>
+  //   <Button label='shift Theme' onClick={toggleTheme}/>
+  //   <Text>Lorem ipsum dolor sit amet consectetur.</Text>
+  //   </Wrapper>
+  // </ThemeProvider>
 
-  // Exercise 2: 
+  // Exercise 2:
   // return <>
   //   <Foo /><br />
   //   <Bar />
   // </>
+  
+  // Homework 2:
+
+  return <>
+    <Bouncy />
+  </>
 }
