@@ -1,4 +1,4 @@
-import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom"
+import { BrowserRouter, createBrowserRouter, Navigate, Route, RouterProvider, Routes } from "react-router-dom"
 import { Hello } from "./Hello"
 import { Home } from "./Home"
 import { AboutUs } from "./AboutUs"
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'product/details',
         element: <ProductDetails />
+      },
+      {
+        path: '*',
+        element: <Navigate to='/hello' />
       }
     ]
   },
