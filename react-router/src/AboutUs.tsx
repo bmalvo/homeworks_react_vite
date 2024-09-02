@@ -1,1 +1,1 @@
-export const AboutUs = () => <h1>About Us</h1>
+export const AboutUs = () => <h2>About Us</h2>

@@ -3,6 +3,7 @@ import { Hello } from "./Hello"
 import { Home } from "./Home"
 import { AboutUs } from "./AboutUs"
 import { AboutCompany } from "./AboutCompany"
+import { About } from "./About"
 
 const router = createBrowserRouter([
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'about',
+    element: <About />,
     children: [
       {
         path: 'us',
@@ -33,17 +35,17 @@ const router = createBrowserRouter([
 export const App = () => {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={ <Home />} />
-        <Route path='/hello' element={<Hello />} />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path='/' element={ <Home />} />
+    //     <Route path='/hello' element={<Hello />} />
         
-        <Route path='about'>
-        <Route path='/us' element={ <AboutUs />} />
-        <Route path='/company' element={ <AboutCompany />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    // <RouterProvider router={router} />
+    //     <Route path='about' element={<About />}>
+    //     <Route path='us' element={ <AboutUs />} />
+    //     <Route path='company' element={ <AboutCompany />} />
+    //     </Route>
+    //   </Routes>
+    // </BrowserRouter>
+    <RouterProvider router={router} />
   )
 }
