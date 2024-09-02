@@ -9,7 +9,9 @@ import { Product } from "./Product"
 import { ProductDetails } from "./ProductDetails"
 
 const router = createBrowserRouter([
-
+  {
+    element: <MainLayout />,
+    children: [
   {
     path: '/',
     element: <Home />
@@ -31,31 +33,42 @@ const router = createBrowserRouter([
         element: <AboutCompany />
       }
     ]
-  }
+      },
+      {
+        path: 'product',
+        element: <Product />
+      },
+      {
+        path: 'product/details',
+        element: <ProductDetails />
+      }
+    ]
+  },
+  
   
 ])
 
 export const App = () => {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route element={<MainLayout />}>
 
-        <Route path='/' element={ <Home />} />
-        <Route path='/hello' element={<Hello />} />
+    //     <Route path='/' element={ <Home />} />
+    //     <Route path='/hello' element={<Hello />} />
         
-        <Route path='about' element={<About />}>
-        <Route index element={ <AboutUs />} />
-        <Route path='company' element={ <AboutCompany />} />
-        </Route>
+    //     <Route path='about' element={<About />}>
+    //     <Route index element={ <AboutUs />} />
+    //     <Route path='company' element={ <AboutCompany />} />
+    //     </Route>
 
-          <Route path='product' element={ <Product />} />
-          <Route path='product/details' element={ <ProductDetails />} />
+    //       <Route path='product' element={ <Product />} />
+    //       <Route path='product/details' element={ <ProductDetails />} />
         
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    // <RouterProvider router={router} />
+    //     </Route>
+    //   </Routes>
+    // </BrowserRouter>
+    <RouterProvider router={router} />
   )
 }
