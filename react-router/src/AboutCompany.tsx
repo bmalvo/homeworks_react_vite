@@ -1,0 +1,1 @@
+export const AboutCompany = () => <h1>About Company</h1>

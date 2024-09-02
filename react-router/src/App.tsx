@@ -1,6 +1,8 @@
 import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom"
 import { Hello } from "./Hello"
 import { Home } from "./Home"
+import { AboutUs } from "./AboutUs"
+import { AboutCompany } from "./AboutCompany"
 
 const router = createBrowserRouter([
 
@@ -11,7 +13,21 @@ const router = createBrowserRouter([
   {
     path: '/hello',
     element: <Hello />
+  },
+  {
+    path: 'about',
+    children: [
+      {
+        path: 'us',
+        element: <AboutUs />
+      },
+      {
+        path: 'company',
+        element: <AboutCompany />
+      }
+    ]
   }
+  
 ])
 
 export const App = () => {
@@ -20,7 +36,12 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={ <Home />} />
-        <Route path='/hello' element={ <Hello />} />
+        <Route path='/hello' element={<Hello />} />
+        
+        <Route path='about'>
+        <Route path='/us' element={ <AboutUs />} />
+        <Route path='/company' element={ <AboutCompany />} />
+        </Route>
       </Routes>
     </BrowserRouter>
     // <RouterProvider router={router} />
