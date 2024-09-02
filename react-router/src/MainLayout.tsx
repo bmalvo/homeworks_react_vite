@@ -1,4 +1,5 @@
-import { Link, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
+import { AppLink } from "./AppLink"
 
 export const MainLayout = () => {
 
@@ -8,16 +9,16 @@ export const MainLayout = () => {
                 <nav>
                     <ul>
                         <li>
-                            <Link to='.'>Home</Link>
+                            <AppLink to='.'>Home</AppLink>
                         </li>
                         <li>
-                            <Link to='about'>About</Link>
+                            <AppLink to='about'>About</AppLink>
                         </li>
                         <li>
-                            <Link to='product'>Product</Link>
+                            <AppLink to='product'>Product</AppLink>
                         </li>
                         <li>
-                            <Link to='product/details'>Product details</Link>
+                            <AppLink to='product/details'>Product details</AppLink>
                         </li>
                     </ul>
                 </nav>
