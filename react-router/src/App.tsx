@@ -31,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'company',
         element: <AboutCompany />
+      },
+      {
+        path: '*',
+        element: <Navigate to='.' />
       }
     ]
       },
@@ -55,24 +59,27 @@ const router = createBrowserRouter([
 export const App = () => {
 
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route element={<MainLayout />}>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
 
-    //     <Route path='/' element={ <Home />} />
-    //     <Route path='/hello' element={<Hello />} />
+        <Route path='/' element={ <Home />} />
+        <Route path='/hello' element={<Hello />} />
         
-    //     <Route path='about' element={<About />}>
-    //     <Route index element={ <AboutUs />} />
-    //     <Route path='company' element={ <AboutCompany />} />
-    //     </Route>
+        <Route path='about' element={<About />}>
+        <Route index element={ <AboutUs />} />
+        <Route path='company' element={<AboutCompany />} />
+        <Route path='*' element={<Navigate to='.' />} />
+            
+        </Route>
 
-    //       <Route path='product' element={ <Product />} />
-    //       <Route path='product/details' element={ <ProductDetails />} />
+          <Route path='product' element={ <Product />} />
+          <Route path='product/details' element={ <ProductDetails />} />
         
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
-    <RouterProvider router={router} />
+        </Route>
+        <Route path='*' element={<Navigate to='hello' />} />
+      </Routes>
+    </BrowserRouter>
+    // <RouterProvider router={router} />
   )
 }

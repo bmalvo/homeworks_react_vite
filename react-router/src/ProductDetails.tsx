@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 
 export const ProductDetails = () => {
+
+    const disable = true;
+
+    if(disable) return <Navigate relative='path' to='..' />
 
     return <>
         <div>
