@@ -1,10 +1,22 @@
-import { Link, Navigate } from "react-router-dom"
+import { useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom"
 
 export const ProductDetails = () => {
 
+    const navigate = useNavigate();
+
     const disable = true;
 
-    if(disable) return <Navigate relative='path' to='..' />
+    useEffect(() => {
+
+        setTimeout(() => {
+            navigate('..', {
+                relative: 'path'
+            })
+        }, 1000)
+    },[])
+
+    // if(disable) return <Navigate relative='path' to='..' />
 
     return <>
         <div>
