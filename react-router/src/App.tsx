@@ -10,6 +10,7 @@ import { ProductDetails } from "./ProductDetails"
 import { DynamicProduct } from "./DynamicProduct"
 import { FooBar } from "./FooBar"
 import { Content } from "./Content"
+import { Payment } from "./Payment"
 
 const router = createBrowserRouter([
   {
@@ -75,11 +76,14 @@ export const App = () => {
         <Route path='*' element={<Navigate to='.' />} />
         </Route>
 
-          <Route path='product' element={ <Product />} />
-          <Route path='product/details' element={<ProductDetails />} />
-          <Route path='product/:productId/:additionalParam?' element={<DynamicProduct />} />
-          <Route path='/foo/bar?' element={<FooBar />} />
-          <Route path='/:lang?/content' element={<Content />} />
+        <Route path='product' element={ <Product />} />
+        <Route path='product/details' element={<ProductDetails />} />
+        <Route path='product/:productId/:additionalParam?' element={<DynamicProduct />} />
+        <Route path='/foo/bar?' element={<FooBar />} />
+        <Route path='/:lang?/content' element={<Content />} />
+
+        <Route path='/payment' element={<Payment />} />
+
         </Route>
         
         <Route path='*' element={<Navigate to='hello' />} />
