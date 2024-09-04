@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom"
 
 export const DynamicProduct = () => {
 
-    const { productId, additionalParam} = useParams<{ productId: string, additionalParam: string }>();
+    const { productId, additionalParam} = useParams<{ productId: string, additionalParam?: string }>();
 
     return <>
-        <h1>Product {productId}-{ additionalParam}</h1>
+        <h1>Product {productId} {additionalParam ? `- ${additionalParam}`: null }</h1>
     </>
 } 
