@@ -11,6 +11,8 @@ import { DynamicProduct } from "./DynamicProduct"
 import { FooBar } from "./FooBar"
 import { Content } from "./Content"
 import { Payment } from "./Payment"
+import { Dashboard } from "./Dashboard"
+import { ProtectedRoute } from "./routes/ProtectedRoute"
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,10 @@ export const App = () => {
 
         <Route path='/' element={ <Home />} />
         <Route path='/hello' element={<Hello />} />
+          
+        <Route element={<ProtectedRoute />} >
+        <Route path='/dashboard' element={ <Dashboard />} />
+        </Route>
         
         <Route path='about' element={<About />}>
         <Route index element={ <AboutUs />} />
