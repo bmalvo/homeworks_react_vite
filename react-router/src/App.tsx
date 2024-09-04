@@ -8,6 +8,8 @@ import { MainLayout } from "./MainLayout"
 import { Product } from "./Product"
 import { ProductDetails } from "./ProductDetails"
 import { DynamicProduct } from "./DynamicProduct"
+import { FooBar } from "./FooBar"
+import { Content } from "./Content"
 
 const router = createBrowserRouter([
   {
@@ -76,7 +78,8 @@ export const App = () => {
           <Route path='product' element={ <Product />} />
           <Route path='product/details' element={<ProductDetails />} />
           <Route path='product/:productId/:additionalParam?' element={<DynamicProduct />} />
-          {/* <Route path='/foo/bar?' element={<FooBar />} /> */}
+          <Route path='/foo/bar?' element={<FooBar />} />
+          <Route path='/:lang?/content' element={<Content />} />
         </Route>
         
         <Route path='*' element={<Navigate to='hello' />} />
