@@ -28,6 +28,9 @@ export const MainLayout = () => {
                         <li>
                             <AppLink to='path-with-loader'>Loader</AppLink>
                         </li>
+                        <li>
+                            <AppLink to='ip-address'>My IP</AppLink>
+                        </li>
                     </ul>
                 </nav>
             </header>

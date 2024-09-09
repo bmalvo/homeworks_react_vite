@@ -15,6 +15,7 @@ import { Dashboard } from "./Dashboard"
 import { ProtectedRoute } from "./routes/ProtectedRoute"
 import { DataComponent } from "./DataComponent"
 import { ErrorElement } from "./ErrorElement"
+import { MyIp } from "./MyIp"
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
               reject('loader...');
             }, 5000)
         })
+        }
+      },
+    {
+        path: '/ip-address',
+        element: <MyIp />,
+        errorElement: <ErrorElement />,
+        loader: async () => {
+          return fetch('https://api.ipify.org?format=json')
         }
     },
       {
