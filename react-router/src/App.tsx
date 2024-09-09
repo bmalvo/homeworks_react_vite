@@ -14,6 +14,7 @@ import { Payment } from "./Payment"
 import { Dashboard } from "./Dashboard"
 import { ProtectedRoute } from "./routes/ProtectedRoute"
 import { DataComponent } from "./DataComponent"
+import { ErrorElement } from "./ErrorElement"
 
 const router = createBrowserRouter([
   {
@@ -56,10 +57,11 @@ const router = createBrowserRouter([
       {
         path: '/path-with-loader/id?',
         element: <DataComponent />,
+        errorElement: <ErrorElement />,
         loader: async () => {
-          return new Promise<string>(resolve => {
+          return new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              resolve('loader...');
+              reject('loader...');
             }, 5000)
         })
         }

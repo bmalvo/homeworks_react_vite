@@ -5,5 +5,5 @@ export const DataComponent = () => {
     const data = useLoaderData() as string;
     console.log('render', data)
 
-    return null
+    return <h1>Data loaded</h1>
 }
