@@ -56,7 +56,13 @@ const router = createBrowserRouter([
       {
         path: '/path-with-loader/id?',
         element: <DataComponent />,
-        loader: () => 'loader...'
+        loader: async () => {
+          return new Promise<string>(resolve => {
+            setTimeout(() => {
+              resolve('loader...');
+            }, 5000)
+        })
+        }
     },
       {
         path: '*',
