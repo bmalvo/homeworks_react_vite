@@ -23,6 +23,9 @@ export const MainLayout = () => {
                         <li>
                             <AppLink to='dashboard'>Dashboard</AppLink>
                         </li>
+                        <li>
+                            <AppLink to='path-with-loader'>Loader</AppLink>
+                        </li>
                     </ul>
                 </nav>
             </header>
