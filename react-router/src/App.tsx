@@ -58,14 +58,16 @@ const router = createBrowserRouter([
         element: <ProductDetails />
       },
       {
-        path: '/path-with-loader/id?',
+        path: '/path-with-loader/:id?',
         element: <DataComponent />,
         errorElement: <ErrorElement />,
-        loader: async () => {
+        loader: async ({ request, params }) => {
+          console.log('request: ', request)
+          console.log('params: ', params)
           return new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              reject('loader...');
-            }, 5000)
+              resolve(`loader... - ${params.id}`);
+            }, 2000)
         })
         }
       },
