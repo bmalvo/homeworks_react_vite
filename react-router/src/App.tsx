@@ -16,10 +16,12 @@ import { ProtectedRoute } from "./routes/ProtectedRoute"
 import { DataComponent } from "./DataComponent"
 import { ErrorElement } from "./ErrorElement"
 import { MyIp } from "./MyIp"
+import { GlobalErrorBoundary } from "./GlobalErrorBoundary"
 
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
+    errorElement: <GlobalErrorBoundary />,
     children: [
       {
         path: '/',
