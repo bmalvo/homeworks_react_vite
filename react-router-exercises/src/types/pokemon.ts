@@ -10,3 +10,9 @@ export type SinglePokemon = {
         }
     }]
 }
+
+export type PokemonError = {
+
+    message: string;
+    
+}

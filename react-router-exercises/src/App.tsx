@@ -3,6 +3,7 @@ import { Home } from "./Home"
 import { Pokemon } from "./Pokemon"
 import { pokemonLoader } from "./loaders/pokemon"
 import { NoPokemon } from "./NoPokemon"
+import { PokemonErrorElement } from "./PokemonErrorElement"
 
 const routes = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const routes = createBrowserRouter([
       {
         path: 'pokemon/:name',
         element: <Pokemon />,
+        errorElement: <PokemonErrorElement />,
         loader: pokemonLoader
       },
       {

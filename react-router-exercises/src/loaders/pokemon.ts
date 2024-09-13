@@ -1,10 +1,23 @@
-import { Params } from "react-router-dom"
+import { json, Params } from "react-router-dom"
+import { PokemonError } from "../types/pokemon";
 
-export const pokemonLoader = ({ params }: { params: Params<'name'> }) => {
+export const pokemonLoader = async ({ params }: { params: Params<'name'> }) => {
 
     const { name } = params;
 
     if (!name) return null;
 
-    return fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+
+    if (response.status === 404) {
+        
+        throw json({
+
+            message: `Pokemon ${name} does not exist!`
+        } as PokemonError, {
+            status: 404
+        })
+    }
+
+    return response.json();
 }
