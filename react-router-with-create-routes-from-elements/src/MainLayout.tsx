@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 export const MainLayout = () => {
 
     return (
         <main>
             <nav>
-                <ul>
-                    <li>
+                <div className="row">
+                    <div className="item">
                         <Link to='account'> Account </Link>
-                    </li>
-                    <li>
+                    </div>
+                    <div className="item">
                         <Link to='about'> About </Link>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </nav>
+            <Outlet />
         </main>
     )
 }
