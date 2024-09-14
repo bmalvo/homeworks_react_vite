@@ -54,6 +54,29 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.row {
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.item {
+  
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #213547;
+  margin: 5%;
+  border-radius: 5%;
+  transition: scale 0.3s;
+}
+
+.item:hover {
+
+  scale: 102%;
+  box-shadow: 0 5px 11px rgba(240, 238, 238, 0.2);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
