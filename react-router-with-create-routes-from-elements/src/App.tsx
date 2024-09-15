@@ -1,7 +1,9 @@
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider, Routes } from "react-router-dom"
 import { MainLayout } from "./MainLayout"
 import { Account } from "./Account"
-import { About } from "./About"
+import { lazy, Suspense } from "react";
+import { aboutLoader } from "./loaders/about";
+// import { About } from "./About"
 
 //  1- classic way
 
@@ -55,19 +57,20 @@ import { About } from "./About"
 //   </>
 // }
 
-//  using createRoutesFromElements
+//  3- using createRoutesFromElements
+
+const About = lazy(() => import('./About'));
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route element={<MainLayout />}>
     <Route
       path='account'
       element={<Account />}
-      loader={() => {
-        
-        return 'lorem ipsum'
-      }} />
+      loader={aboutLoader} />
     <Route
       path='about'
+      loader={aboutLoader}
+      lazy={() => import('./routes/About')}
       element={<About />} />
     <Route
       path='*'
