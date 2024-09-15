@@ -3,6 +3,7 @@ import { MainLayout } from "./MainLayout"
 import { Account } from "./Account"
 import { lazy, Suspense } from "react";
 import { aboutLoader } from "./loaders/about";
+import { Create } from "./Create";
 // import { About } from "./About"
 
 //  1- classic way
@@ -72,6 +73,20 @@ const router = createBrowserRouter(createRoutesFromElements(
       loader={aboutLoader}
       lazy={() => import('./routes/About')}
       element={<About />} />
+    <Route
+      path="create"
+      element={<Create />}
+      action={async ({ request }) => {
+        const data = await request.formData();
+        // console.log('handling action..', data.get('title'))
+
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(data.get('title'))
+          },2000)
+        })
+        return null;
+      }} />
     <Route
       path='*'
       element={<Navigate to='account' />} />
