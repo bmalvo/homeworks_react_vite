@@ -4,6 +4,8 @@ import { Account } from "./Account"
 import { lazy, Suspense } from "react";
 import { aboutLoader } from "./loaders/about";
 import { Create } from "./Create";
+import { AwaitedDate } from "./AwaitedData";
+import { fakeLoader } from "./loaders/fakeLoader";
 // import { About } from "./About"
 
 //  1- classic way
@@ -87,6 +89,10 @@ const router = createBrowserRouter(createRoutesFromElements(
         })
         return null;
       }} />
+    <Route
+      path="awaited"
+      element={<AwaitedDate />}
+      loader={ fakeLoader} />
     <Route
       path='*'
       element={<Navigate to='account' />} />
