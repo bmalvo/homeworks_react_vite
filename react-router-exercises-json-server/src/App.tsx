@@ -4,6 +4,8 @@ import { Tasks } from "./Tasks";
 import { tasksLoader } from "./loaders/tasks";
 import { Task } from "./Task";
 import { taskLoader } from "./loaders/task";
+import { AddTask } from "./AddTask";
+import { addTaskAction } from "./actions/addTask";
 
 const router = createBrowserRouter([
 
@@ -15,7 +17,13 @@ const router = createBrowserRouter([
       element: <Tasks />,
       loader: tasksLoader
 
-    }, {
+    },
+      {
+        path: 'create',
+        element: <AddTask />,
+        action: addTaskAction,
+      },
+    {
       path: ':id',
       element: <Task />,
       loader: taskLoader

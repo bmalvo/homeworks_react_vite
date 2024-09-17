@@ -8,6 +8,9 @@ export const MainLayout = () => {
                 <li>
                     <Link to='/'>Tasks</Link>
                 </li>
+                <li>
+                    <Link to='/create'>add new task</Link>
+                </li>
             </ul>
         </nav>
         <Outlet />
