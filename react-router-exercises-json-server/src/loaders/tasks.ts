@@ -1,4 +1,6 @@
+import { apicall } from "../utils/apicall";
+
 export const tasksLoader = async() => {
 
-    return fetch('http://localhost:3000/tasks');
+    return apicall('tasks');
 }

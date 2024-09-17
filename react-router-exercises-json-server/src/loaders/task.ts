@@ -1,8 +1,9 @@
 import { Params } from "react-router-dom";
+import { apicall } from "../utils/apicall";
 
 export const taskLoader = ({ params }: { params: Params<'id'> }) => {
     
     const { id } = params;
 
-    return fetch(`http://localhost:3000/tasks/${id}`)
+    return apicall(`tasks/${id}`)
 }
