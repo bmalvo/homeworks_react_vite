@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
 import { Tasks } from "./Tasks";
 import { tasksLoader } from "./loaders/tasks";
+import { Task } from "./Task";
+import { taskLoader } from "./loaders/task";
 
 const router = createBrowserRouter([
 
@@ -13,6 +15,10 @@ const router = createBrowserRouter([
       element: <Tasks />,
       loader: tasksLoader
 
+    }, {
+      path: ':id',
+      element: <Task />,
+      loader: taskLoader
     }]
   }
 ]);
