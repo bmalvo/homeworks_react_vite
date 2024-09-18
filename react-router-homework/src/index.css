@@ -33,6 +33,9 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  background: linear-gradient(45deg, red 0%, blue 100%);
+  background-clip: text;
+  color: transparent;
 }
 
 button {
