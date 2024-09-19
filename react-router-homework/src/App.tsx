@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { Infos } from "./Infos"
 import { MainLayout } from "./MainLayout";
+import { infosLoader } from "./loaders/infosLoader";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,8 @@ const router = createBrowserRouter([
 
       {
         path: '',
-        element: <Infos />
+        element: <Infos />,
+        loader: infosLoader
     }
     ]
   }
