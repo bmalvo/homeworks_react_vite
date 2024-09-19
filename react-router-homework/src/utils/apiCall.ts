@@ -1,6 +1,8 @@
-export const apiCall = (url: string) => {
+export const apiCall = async<R>(url: string) => {
     
     const baseUrl = 'http://localhost:3000';
 
-    return fetch(`${baseUrl}/${url}`);
+    const response = await fetch(`${baseUrl}/${url}`);
+    
+    return response.json() as Promise<R>
 }
