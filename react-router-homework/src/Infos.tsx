@@ -8,7 +8,7 @@ export const Infos = () => {
     return <>
         <div>
             <h1>Infos</h1>
-            <div className="grid-temple">
+            <div className="grid-container">
                 {infos.map(info => <div key={info.id} className="grid-item">{ info.title}</div>)}
             </div>
         </div>
