@@ -5,10 +5,12 @@ import { infosLoader } from "./loaders/infosLoader";
 import { AddInfo } from "./AddInfo";
 import { addInfoAction } from "./actions/addInfo";
 import { ErrorPage } from "./ErrorPage";
+import { deleteInfo } from "./actions/deleteInfo";
 
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
+    action: deleteInfo,
     children: [
 
       {

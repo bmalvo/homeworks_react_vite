@@ -1,6 +1,6 @@
 type ApiConfig<P = object> = {
 
-    method?: 'GET' | 'POST',
+    method?: 'GET' | 'POST' | 'DELETE',
     body?: P, 
 }
 

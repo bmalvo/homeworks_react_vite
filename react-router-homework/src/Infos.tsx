@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom"
 import { SingleInfo } from "./types";
+import { Info } from "./Info";
 
 export const Infos = () => {
 
@@ -9,7 +10,7 @@ export const Infos = () => {
         <div>
             <h1>Infos</h1>
             <div className="grid-container">
-                {infos.map(info => <div key={info.id} className="grid-item">{ info.title}</div>)}
+                {infos.map(info => <Info key={info.id} info={info}/>)}
             </div>
         </div>
     </>
