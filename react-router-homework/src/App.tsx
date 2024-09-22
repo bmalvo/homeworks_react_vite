@@ -8,6 +8,8 @@ import { ErrorPage } from "./ErrorPage";
 import { infoAction } from "./actions/infoAction";
 import { EditInfo } from "./EditInfo";
 import { infoLoader } from "./loaders/Info";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { AccessDenied } from "./AccessDenied";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,13 @@ const router = createBrowserRouter([
         loader: infosLoader
       },
       {
+        path: 'denied',
+        element: <AccessDenied />
+      },
+      {
+        element: <ProtectedRoute  redirect='/denied'/>,
+        children: [
+          {
         path: ':id',
         element: <EditInfo />,
         loader: infoLoader
@@ -29,6 +38,8 @@ const router = createBrowserRouter([
         path: 'add',
         element: <AddInfo />,
         action: addInfoAction
+      }
+        ]
       }
     ],
     errorElement: <ErrorPage />
