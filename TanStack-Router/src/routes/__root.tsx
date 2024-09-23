@@ -35,6 +35,9 @@ const RootComponent = () => {
                     <Link to='/posts/new'>New post</Link>
                 </li>
                 <li>
+                        <Link to='/posts/$postId' params={{postId: '1234F'}}>Post 1234F</Link>
+                </li>
+                <li>
                     <Link to={postsRoute.fullPath}>Posts</Link>
                 </li>
             </ul>
