@@ -11,9 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LoremImport } from './routes/lorem'
+import { Route as DolorImport } from './routes/dolor'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const LoremRoute = LoremImport.update({
+  path: '/lorem',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DolorRoute = DolorImport.update({
+  path: '/dolor',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -31,6 +43,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/dolor': {
+      id: '/dolor'
+      path: '/dolor'
+      fullPath: '/dolor'
+      preLoaderRoute: typeof DolorImport
+      parentRoute: typeof rootRoute
+    }
+    '/lorem': {
+      id: '/lorem'
+      path: '/lorem'
+      fullPath: '/lorem'
+      preLoaderRoute: typeof LoremImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -38,32 +64,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/dolor' | '/lorem'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/dolor' | '/lorem'
+  id: '__root__' | '/' | '/dolor' | '/lorem'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DolorRoute: typeof DolorRoute
+  LoremRoute: typeof LoremRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DolorRoute: DolorRoute,
+  LoremRoute: LoremRoute,
 }
 
 export const routeTree = rootRoute
@@ -78,11 +114,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/dolor",
+        "/lorem"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/dolor": {
+      "filePath": "dolor.tsx"
+    },
+    "/lorem": {
+      "filePath": "lorem.tsx"
     }
   }
 }
