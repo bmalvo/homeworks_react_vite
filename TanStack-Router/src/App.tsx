@@ -1,4 +1,4 @@
 export const App = () => {
 
-  return null 
+  return <h1>test</h1> 
 }
