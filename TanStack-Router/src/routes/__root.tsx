@@ -32,6 +32,9 @@ const RootComponent = () => {
                     <Link to='/posts'>Posts</Link>
                 </li>
                 <li>
+                    <Link to='/posts/new'>New post</Link>
+                </li>
+                <li>
                     <Link to={postsRoute.fullPath}>Posts</Link>
                 </li>
             </ul>
