@@ -1,8 +1,21 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 
 const Lorem = () => {
 
-  return <p>Lorem ipsum dolor sit.</p>
+  const navigate = useNavigate();
+
+  const goToValue = () => {
+
+    navigate({
+      to: '/value/$value',
+      params: {value: '123'}
+    })
+  }
+
+  return <>
+          <p>Lorem ipsum dolor sit.</p>
+          <button onClick={goToValue}>Go to Value</button>
+         </>
 }
 
 export const Route = createFileRoute('/lorem')({

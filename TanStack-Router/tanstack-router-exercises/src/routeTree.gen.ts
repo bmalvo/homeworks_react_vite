@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoremImport } from './routes/lorem'
 import { Route as DolorImport } from './routes/dolor'
 import { Route as IndexImport } from './routes/index'
+import { Route as ValueValueImport } from './routes/value.$value'
 
 // Create/Update Routes
 
@@ -29,6 +30,11 @@ const DolorRoute = DolorImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ValueValueRoute = ValueValueImport.update({
+  path: '/value/$value',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -57,6 +63,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoremImport
       parentRoute: typeof rootRoute
     }
+    '/value/$value': {
+      id: '/value/$value'
+      path: '/value/$value'
+      fullPath: '/value/$value'
+      preLoaderRoute: typeof ValueValueImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -66,12 +79,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRoutesById {
@@ -79,14 +94,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dolor' | '/lorem'
+  fullPaths: '/' | '/dolor' | '/lorem' | '/value/$value'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dolor' | '/lorem'
-  id: '__root__' | '/' | '/dolor' | '/lorem'
+  to: '/' | '/dolor' | '/lorem' | '/value/$value'
+  id: '__root__' | '/' | '/dolor' | '/lorem' | '/value/$value'
   fileRoutesById: FileRoutesById
 }
 
@@ -94,12 +110,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DolorRoute: typeof DolorRoute
   LoremRoute: typeof LoremRoute
+  ValueValueRoute: typeof ValueValueRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DolorRoute: DolorRoute,
   LoremRoute: LoremRoute,
+  ValueValueRoute: ValueValueRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,7 +134,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/dolor",
-        "/lorem"
+        "/lorem",
+        "/value/$value"
       ]
     },
     "/": {
@@ -127,6 +146,9 @@ export const routeTree = rootRoute
     },
     "/lorem": {
       "filePath": "lorem.tsx"
+    },
+    "/value/$value": {
+      "filePath": "value.$value.tsx"
     }
   }
 }
