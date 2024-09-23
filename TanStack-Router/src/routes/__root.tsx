@@ -1,7 +1,24 @@
-import { Link, Outlet, createRootRoute } from '@tanstack/react-router'
+import { Link, Navigate, Outlet, createRootRoute, useNavigate } from '@tanstack/react-router'
+import {Route as postsRoute} from './posts'
+import { useEffect } from 'react'
 
 
 const RootComponent = () => {
+
+    const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     navigate({to: '/posts'})
+    // }, [])
+
+    // const random = Math.random()
+
+    // console.log(random)
+    
+    // if (random > 0.5) {
+        
+    //     return <Navigate to='/posts'/>
+    // }
     
     return <>
     <div>
@@ -9,7 +26,13 @@ const RootComponent = () => {
         <nav>
             <ul>
                 <li>
-                    <Link to='/post'>Posts</Link>
+                    <Link to='..'>Home</Link>
+                </li>
+                <li>
+                    <Link to='/posts'>Posts</Link>
+                </li>
+                <li>
+                    <Link to={postsRoute.fullPath}>Posts</Link>
                 </li>
             </ul>
         </nav>

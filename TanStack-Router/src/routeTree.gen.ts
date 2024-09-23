@@ -11,12 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PostImport } from './routes/post'
+import { Route as PostsImport } from './routes/posts'
 
 // Create/Update Routes
 
-const PostRoute = PostImport.update({
-  path: '/post',
+const PostsRoute = PostsImport.update({
+  path: '/posts',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -24,11 +24,11 @@ const PostRoute = PostImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/post': {
-      id: '/post'
-      path: '/post'
-      fullPath: '/post'
-      preLoaderRoute: typeof PostImport
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsImport
       parentRoute: typeof rootRoute
     }
   }
@@ -37,33 +37,33 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/post': typeof PostRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRoutesByTo {
-  '/post': typeof PostRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/post': typeof PostRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/post'
+  fullPaths: '/posts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/post'
-  id: '__root__' | '/post'
+  to: '/posts'
+  id: '__root__' | '/posts'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  PostRoute: typeof PostRoute
+  PostsRoute: typeof PostsRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  PostRoute: PostRoute,
+  PostsRoute: PostsRoute,
 }
 
 export const routeTree = rootRoute
@@ -78,11 +78,11 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/post"
+        "/posts"
       ]
     },
-    "/post": {
-      "filePath": "post.tsx"
+    "/posts": {
+      "filePath": "posts.tsx"
     }
   }
 }
