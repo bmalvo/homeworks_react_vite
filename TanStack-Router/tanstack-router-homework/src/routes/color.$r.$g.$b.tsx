@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const Rgb = () => {
+const Color = () => {
 
   const { r, g, b } = Route.useParams();
   
@@ -17,6 +17,6 @@ const Rgb = () => {
   )
 }
   export const Route = createFileRoute('/color/$r/$g/$b')({
-    component: Rgb,
+    component: Color,
   })
   
