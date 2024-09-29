@@ -1,8 +1,13 @@
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+// import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import {Route as postsRoute} from './posts'
+import React, { Suspense } from 'react';
 
-
+const TanstackRouterDevtools = import.meta.env.DEV ?
+    React.lazy(() => import('@tanstack/router-devtools').then((res) => ({
+        default: res.TanStackRouterDevtools
+    })))
+    : () => null;
 
 const RootComponent = () => {
 
@@ -30,7 +35,9 @@ const RootComponent = () => {
             </ul>
         </nav>
             <Outlet />
-            <TanStackRouterDevtools />
+            <Suspense>
+            <TanstackRouterDevtools />
+            </Suspense>
     </div>
     </>
 }
