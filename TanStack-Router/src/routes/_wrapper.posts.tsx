@@ -10,6 +10,6 @@ const Post = () => {
   )
 }
 
-export const Route = createFileRoute('/posts')({
+export const Route = createFileRoute('/_wrapper/posts')({
   component: Post,
 })
