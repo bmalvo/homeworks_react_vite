@@ -1,24 +1,11 @@
-import { Link, Navigate, Outlet, createRootRoute, useNavigate } from '@tanstack/react-router'
+import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import {Route as postsRoute} from './posts'
-import { useEffect } from 'react'
+
 
 
 const RootComponent = () => {
 
-    const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     navigate({to: '/posts'})
-    // }, [])
-
-    // const random = Math.random()
-
-    // console.log(random)
-    
-    // if (random > 0.5) {
-        
-    //     return <Navigate to='/posts'/>
-    // }
     
     return <>
     <div>
@@ -42,7 +29,8 @@ const RootComponent = () => {
                 </li>
             </ul>
         </nav>
-        <Outlet />
+            <Outlet />
+            <TanStackRouterDevtools />
     </div>
     </>
 }
