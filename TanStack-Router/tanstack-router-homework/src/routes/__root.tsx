@@ -27,6 +27,7 @@ const Root = () => {
 
   return <>
     <ul>
+      <p>Intensional: </p>
       <li>
         <Link to='/color/$r/$g/$b' params={{r: '255', g:'17', b:'120'}}>rgb(255, 17, 120)</Link>
       </li>
@@ -36,9 +37,7 @@ const Root = () => {
       <li>
         <Link to='/color/$r/$g/$b' params={{r: '124', g:'255', b:'1'}}>rgb(124, 255, 1)</Link>
       </li>
-      <li>
-        <Link to='/color/$r/$g/$b' params={{r: '124', g:'255', b:'1'}}>rgb(124, 255, 1)</Link>
-      </li>
+      <p>Random: </p>
       {colors.map((color, index) => (
       
       <li key={index}>
