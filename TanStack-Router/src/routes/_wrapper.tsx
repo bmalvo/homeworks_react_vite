@@ -1,6 +1,6 @@
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router'
 
-let isLogged = false;
+let isLogged = true;
 
 const Wrapper = () => {
 

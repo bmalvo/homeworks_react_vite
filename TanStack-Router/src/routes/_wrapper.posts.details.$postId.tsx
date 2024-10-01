@@ -5,6 +5,6 @@ const SinglePost = () => {
   return <h3>Post {postId}</h3>
 }
 
-export const Route = createFileRoute('/_wrapper/posts/$postId')({
+export const Route = createFileRoute('/_wrapper/posts/details/$postId')({
   component: SinglePost,
 })
