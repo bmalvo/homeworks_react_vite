@@ -1,6 +1,10 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router'
+
+let isLogged = false;
 
 const Wrapper = () => {
+
+  if(!isLogged) return <Navigate to='/' />
 
   return <>
     <main>
