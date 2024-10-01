@@ -6,7 +6,8 @@ import { routeTree } from './routeTree.gen.ts';
 
 const router = createRouter({
 
-  routeTree
+  routeTree,
+  defaultNotFoundComponent: () => <p>Page not found (caught in root)</p>
 });
 
 declare module '@tanstack/react-router' {

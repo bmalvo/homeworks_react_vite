@@ -1,15 +1,14 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 const WrongPostsPlace = () => {
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
       navigate({ to: '/posts/new' })
     }, 3000)
-  }, []);
+  }, [])
 
   return (
     <div>
@@ -19,6 +18,6 @@ const WrongPostsPlace = () => {
   )
 }
 
-export const Route = createFileRoute('/_wrapper/posts/$')({
+export const Route = createFileRoute('/_wrapper/posts/edit/$')({
   component: WrongPostsPlace,
 })
