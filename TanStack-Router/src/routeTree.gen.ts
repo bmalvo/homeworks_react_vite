@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
+import { Route as IpIndexImport } from './routes/ip/index'
 import { Route as DataIndexImport } from './routes/data/index'
 import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
 import { Route as WrapperPostsIndexImport } from './routes/_wrapper/posts/index'
@@ -30,6 +31,11 @@ const WrapperRoute = WrapperImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const IpIndexRoute = IpIndexImport.update({
+  path: '/ip/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -98,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/data'
       fullPath: '/data'
       preLoaderRoute: typeof DataIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/ip/': {
+      id: '/ip/'
+      path: '/ip'
+      fullPath: '/ip'
+      preLoaderRoute: typeof IpIndexImport
       parentRoute: typeof rootRoute
     }
     '/_wrapper/details/$': {
@@ -176,6 +189,7 @@ export interface FileRoutesByFullPath {
   '': typeof WrapperRouteWithChildren
   '/posts': typeof WrapperPostsRouteWithChildren
   '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
   '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts/': typeof WrapperPostsIndexRoute
@@ -187,6 +201,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof WrapperRouteWithChildren
   '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
   '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts': typeof WrapperPostsIndexRoute
@@ -200,6 +215,7 @@ export interface FileRoutesById {
   '/_wrapper': typeof WrapperRouteWithChildren
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
   '/data/': typeof DataIndexRoute
+  '/ip/': typeof IpIndexRoute
   '/_wrapper/details/$': typeof WrapperDetailsSplatRoute
   '/_wrapper/posts/new': typeof WrapperPostsNewRoute
   '/_wrapper/posts/': typeof WrapperPostsIndexRoute
@@ -214,6 +230,7 @@ export interface FileRouteTypes {
     | ''
     | '/posts'
     | '/data'
+    | '/ip'
     | '/details/$'
     | '/posts/new'
     | '/posts/'
@@ -224,6 +241,7 @@ export interface FileRouteTypes {
     | '/'
     | ''
     | '/data'
+    | '/ip'
     | '/details/$'
     | '/posts/new'
     | '/posts'
@@ -235,6 +253,7 @@ export interface FileRouteTypes {
     | '/_wrapper'
     | '/_wrapper/posts'
     | '/data/'
+    | '/ip/'
     | '/_wrapper/details/$'
     | '/_wrapper/posts/new'
     | '/_wrapper/posts/'
@@ -247,12 +266,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WrapperRoute: typeof WrapperRouteWithChildren
   DataIndexRoute: typeof DataIndexRoute
+  IpIndexRoute: typeof IpIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WrapperRoute: WrapperRouteWithChildren,
   DataIndexRoute: DataIndexRoute,
+  IpIndexRoute: IpIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -269,7 +290,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_wrapper",
-        "/data/"
+        "/data/",
+        "/ip/"
       ]
     },
     "/": {
@@ -294,6 +316,9 @@ export const routeTree = rootRoute
     },
     "/data/": {
       "filePath": "data/index.tsx"
+    },
+    "/ip/": {
+      "filePath": "ip/index.tsx"
     },
     "/_wrapper/details/$": {
       "filePath": "_wrapper/details.$.tsx",

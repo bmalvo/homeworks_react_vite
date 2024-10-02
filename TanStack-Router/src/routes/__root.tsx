@@ -23,6 +23,9 @@ const RootComponent = () => {
                 <li>
                     <Link to='/data'>Data</Link>
                 </li>
+                    <li>
+                    <Link to='/ip'>My IP</Link>
+                    </li>    
                 <li>
                     <Link to='/posts'>Posts</Link>
                 </li>
