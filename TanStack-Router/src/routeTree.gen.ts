@@ -13,12 +13,12 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
-import { Route as DetailsSplatImport } from './routes/details.$'
 import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
 import { Route as WrapperPostsIndexImport } from './routes/_wrapper/posts/index'
 import { Route as WrapperPostsNewImport } from './routes/_wrapper/posts/new'
+import { Route as WrapperDetailsSplatImport } from './routes/_wrapper/details.$'
+import { Route as WrapperPostsDetailsPostIdImport } from './routes/_wrapper/posts_/details.$postId'
 import { Route as WrapperPostsEditSplatImport } from './routes/_wrapper/posts/edit.$'
-import { Route as WrapperPostsDetailsPostIdImport } from './routes/_wrapper/posts/details.$postId'
 
 // Create/Update Routes
 
@@ -29,11 +29,6 @@ const WrapperRoute = WrapperImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DetailsSplatRoute = DetailsSplatImport.update({
-  path: '/details/$',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -52,13 +47,18 @@ const WrapperPostsNewRoute = WrapperPostsNewImport.update({
   getParentRoute: () => WrapperPostsRoute,
 } as any)
 
-const WrapperPostsEditSplatRoute = WrapperPostsEditSplatImport.update({
-  path: '/edit/$',
-  getParentRoute: () => WrapperPostsRoute,
+const WrapperDetailsSplatRoute = WrapperDetailsSplatImport.update({
+  path: '/details/$',
+  getParentRoute: () => WrapperRoute,
 } as any)
 
 const WrapperPostsDetailsPostIdRoute = WrapperPostsDetailsPostIdImport.update({
-  path: '/details/$postId',
+  path: '/posts/details/$postId',
+  getParentRoute: () => WrapperRoute,
+} as any)
+
+const WrapperPostsEditSplatRoute = WrapperPostsEditSplatImport.update({
+  path: '/edit/$',
   getParentRoute: () => WrapperPostsRoute,
 } as any)
 
@@ -87,12 +87,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperPostsImport
       parentRoute: typeof WrapperImport
     }
-    '/details/$': {
-      id: '/details/$'
+    '/_wrapper/details/$': {
+      id: '/_wrapper/details/$'
       path: '/details/$'
       fullPath: '/details/$'
-      preLoaderRoute: typeof DetailsSplatImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof WrapperDetailsSplatImport
+      parentRoute: typeof WrapperImport
     }
     '/_wrapper/posts/new': {
       id: '/_wrapper/posts/new'
@@ -108,19 +108,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperPostsIndexImport
       parentRoute: typeof WrapperPostsImport
     }
-    '/_wrapper/posts/details/$postId': {
-      id: '/_wrapper/posts/details/$postId'
-      path: '/details/$postId'
-      fullPath: '/posts/details/$postId'
-      preLoaderRoute: typeof WrapperPostsDetailsPostIdImport
-      parentRoute: typeof WrapperPostsImport
-    }
     '/_wrapper/posts/edit/$': {
       id: '/_wrapper/posts/edit/$'
       path: '/edit/$'
       fullPath: '/posts/edit/$'
       preLoaderRoute: typeof WrapperPostsEditSplatImport
       parentRoute: typeof WrapperPostsImport
+    }
+    '/_wrapper/posts/details/$postId': {
+      id: '/_wrapper/posts/details/$postId'
+      path: '/posts/details/$postId'
+      fullPath: '/posts/details/$postId'
+      preLoaderRoute: typeof WrapperPostsDetailsPostIdImport
+      parentRoute: typeof WrapperImport
     }
   }
 }
@@ -130,14 +130,12 @@ declare module '@tanstack/react-router' {
 interface WrapperPostsRouteChildren {
   WrapperPostsNewRoute: typeof WrapperPostsNewRoute
   WrapperPostsIndexRoute: typeof WrapperPostsIndexRoute
-  WrapperPostsDetailsPostIdRoute: typeof WrapperPostsDetailsPostIdRoute
   WrapperPostsEditSplatRoute: typeof WrapperPostsEditSplatRoute
 }
 
 const WrapperPostsRouteChildren: WrapperPostsRouteChildren = {
   WrapperPostsNewRoute: WrapperPostsNewRoute,
   WrapperPostsIndexRoute: WrapperPostsIndexRoute,
-  WrapperPostsDetailsPostIdRoute: WrapperPostsDetailsPostIdRoute,
   WrapperPostsEditSplatRoute: WrapperPostsEditSplatRoute,
 }
 
@@ -147,10 +145,14 @@ const WrapperPostsRouteWithChildren = WrapperPostsRoute._addFileChildren(
 
 interface WrapperRouteChildren {
   WrapperPostsRoute: typeof WrapperPostsRouteWithChildren
+  WrapperDetailsSplatRoute: typeof WrapperDetailsSplatRoute
+  WrapperPostsDetailsPostIdRoute: typeof WrapperPostsDetailsPostIdRoute
 }
 
 const WrapperRouteChildren: WrapperRouteChildren = {
   WrapperPostsRoute: WrapperPostsRouteWithChildren,
+  WrapperDetailsSplatRoute: WrapperDetailsSplatRoute,
+  WrapperPostsDetailsPostIdRoute: WrapperPostsDetailsPostIdRoute,
 }
 
 const WrapperRouteWithChildren =
@@ -160,21 +162,21 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof WrapperRouteWithChildren
   '/posts': typeof WrapperPostsRouteWithChildren
-  '/details/$': typeof DetailsSplatRoute
+  '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts/': typeof WrapperPostsIndexRoute
-  '/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
   '/posts/edit/$': typeof WrapperPostsEditSplatRoute
+  '/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof WrapperRouteWithChildren
-  '/details/$': typeof DetailsSplatRoute
+  '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts': typeof WrapperPostsIndexRoute
-  '/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
   '/posts/edit/$': typeof WrapperPostsEditSplatRoute
+  '/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
 }
 
 export interface FileRoutesById {
@@ -182,11 +184,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_wrapper': typeof WrapperRouteWithChildren
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
-  '/details/$': typeof DetailsSplatRoute
+  '/_wrapper/details/$': typeof WrapperDetailsSplatRoute
   '/_wrapper/posts/new': typeof WrapperPostsNewRoute
   '/_wrapper/posts/': typeof WrapperPostsIndexRoute
-  '/_wrapper/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
   '/_wrapper/posts/edit/$': typeof WrapperPostsEditSplatRoute
+  '/_wrapper/posts/details/$postId': typeof WrapperPostsDetailsPostIdRoute
 }
 
 export interface FileRouteTypes {
@@ -198,8 +200,8 @@ export interface FileRouteTypes {
     | '/details/$'
     | '/posts/new'
     | '/posts/'
-    | '/posts/details/$postId'
     | '/posts/edit/$'
+    | '/posts/details/$postId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -207,31 +209,29 @@ export interface FileRouteTypes {
     | '/details/$'
     | '/posts/new'
     | '/posts'
-    | '/posts/details/$postId'
     | '/posts/edit/$'
+    | '/posts/details/$postId'
   id:
     | '__root__'
     | '/'
     | '/_wrapper'
     | '/_wrapper/posts'
-    | '/details/$'
+    | '/_wrapper/details/$'
     | '/_wrapper/posts/new'
     | '/_wrapper/posts/'
-    | '/_wrapper/posts/details/$postId'
     | '/_wrapper/posts/edit/$'
+    | '/_wrapper/posts/details/$postId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WrapperRoute: typeof WrapperRouteWithChildren
-  DetailsSplatRoute: typeof DetailsSplatRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WrapperRoute: WrapperRouteWithChildren,
-  DetailsSplatRoute: DetailsSplatRoute,
 }
 
 export const routeTree = rootRoute
@@ -247,8 +247,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_wrapper",
-        "/details/$"
+        "/_wrapper"
       ]
     },
     "/": {
@@ -257,7 +256,9 @@ export const routeTree = rootRoute
     "/_wrapper": {
       "filePath": "_wrapper.tsx",
       "children": [
-        "/_wrapper/posts"
+        "/_wrapper/posts",
+        "/_wrapper/details/$",
+        "/_wrapper/posts/details/$postId"
       ]
     },
     "/_wrapper/posts": {
@@ -266,12 +267,12 @@ export const routeTree = rootRoute
       "children": [
         "/_wrapper/posts/new",
         "/_wrapper/posts/",
-        "/_wrapper/posts/details/$postId",
         "/_wrapper/posts/edit/$"
       ]
     },
-    "/details/$": {
-      "filePath": "details.$.tsx"
+    "/_wrapper/details/$": {
+      "filePath": "_wrapper/details.$.tsx",
+      "parent": "/_wrapper"
     },
     "/_wrapper/posts/new": {
       "filePath": "_wrapper/posts/new.tsx",
@@ -281,13 +282,13 @@ export const routeTree = rootRoute
       "filePath": "_wrapper/posts/index.tsx",
       "parent": "/_wrapper/posts"
     },
-    "/_wrapper/posts/details/$postId": {
-      "filePath": "_wrapper/posts/details.$postId.tsx",
-      "parent": "/_wrapper/posts"
-    },
     "/_wrapper/posts/edit/$": {
       "filePath": "_wrapper/posts/edit.$.tsx",
       "parent": "/_wrapper/posts"
+    },
+    "/_wrapper/posts/details/$postId": {
+      "filePath": "_wrapper/posts_/details.$postId.tsx",
+      "parent": "/_wrapper"
     }
   }
 }

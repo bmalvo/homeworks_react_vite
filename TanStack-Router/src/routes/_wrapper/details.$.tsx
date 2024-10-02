@@ -11,6 +11,6 @@ const WrongPlace = () => {
   )
 }
 
-export const Route = createFileRoute('/details/$')({
+export const Route = createFileRoute('/_wrapper/details/$')({
   component: WrongPlace,
 })
