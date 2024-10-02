@@ -14,11 +14,11 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
 import { Route as DetailsSplatImport } from './routes/details.$'
-import { Route as WrapperPostsImport } from './routes/_wrapper.posts'
-import { Route as WrapperPostsIndexImport } from './routes/_wrapper.posts.index'
-import { Route as WrapperPostsNewImport } from './routes/_wrapper.posts.new'
-import { Route as WrapperPostsEditSplatImport } from './routes/_wrapper.posts.edit.$'
-import { Route as WrapperPostsDetailsPostIdImport } from './routes/_wrapper.posts.details.$postId'
+import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
+import { Route as WrapperPostsIndexImport } from './routes/_wrapper/posts/index'
+import { Route as WrapperPostsNewImport } from './routes/_wrapper/posts/new'
+import { Route as WrapperPostsEditSplatImport } from './routes/_wrapper/posts/edit.$'
+import { Route as WrapperPostsDetailsPostIdImport } from './routes/_wrapper/posts/details.$postId'
 
 // Create/Update Routes
 
@@ -261,7 +261,7 @@ export const routeTree = rootRoute
       ]
     },
     "/_wrapper/posts": {
-      "filePath": "_wrapper.posts.tsx",
+      "filePath": "_wrapper/posts.tsx",
       "parent": "/_wrapper",
       "children": [
         "/_wrapper/posts/new",
@@ -274,19 +274,19 @@ export const routeTree = rootRoute
       "filePath": "details.$.tsx"
     },
     "/_wrapper/posts/new": {
-      "filePath": "_wrapper.posts.new.tsx",
+      "filePath": "_wrapper/posts/new.tsx",
       "parent": "/_wrapper/posts"
     },
     "/_wrapper/posts/": {
-      "filePath": "_wrapper.posts.index.tsx",
+      "filePath": "_wrapper/posts/index.tsx",
       "parent": "/_wrapper/posts"
     },
     "/_wrapper/posts/details/$postId": {
-      "filePath": "_wrapper.posts.details.$postId.tsx",
+      "filePath": "_wrapper/posts/details.$postId.tsx",
       "parent": "/_wrapper/posts"
     },
     "/_wrapper/posts/edit/$": {
-      "filePath": "_wrapper.posts.edit.$.tsx",
+      "filePath": "_wrapper/posts/edit.$.tsx",
       "parent": "/_wrapper/posts"
     }
   }
