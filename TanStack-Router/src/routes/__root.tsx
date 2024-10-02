@@ -21,6 +21,9 @@ const RootComponent = () => {
                     <Link to='..'>Home</Link>
                 </li>
                 <li>
+                    <Link to='/data'>Data</Link>
+                </li>
+                <li>
                     <Link to='/posts'>Posts</Link>
                 </li>
                 <li>
