@@ -13,8 +13,10 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
+import { Route as PokemonIndexImport } from './routes/pokemon/index'
 import { Route as IpIndexImport } from './routes/ip/index'
 import { Route as DataIndexImport } from './routes/data/index'
+import { Route as PokemonPokemonNameImport } from './routes/pokemon/$pokemonName'
 import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
 import { Route as WrapperPostsIndexImport } from './routes/_wrapper/posts/index'
 import { Route as WrapperPostsNewImport } from './routes/_wrapper/posts/new'
@@ -34,6 +36,11 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const PokemonIndexRoute = PokemonIndexImport.update({
+  path: '/pokemon/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IpIndexRoute = IpIndexImport.update({
   path: '/ip/',
   getParentRoute: () => rootRoute,
@@ -41,6 +48,11 @@ const IpIndexRoute = IpIndexImport.update({
 
 const DataIndexRoute = DataIndexImport.update({
   path: '/data/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PokemonPokemonNameRoute = PokemonPokemonNameImport.update({
+  path: '/pokemon/$pokemonName',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -99,6 +111,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperPostsImport
       parentRoute: typeof WrapperImport
     }
+    '/pokemon/$pokemonName': {
+      id: '/pokemon/$pokemonName'
+      path: '/pokemon/$pokemonName'
+      fullPath: '/pokemon/$pokemonName'
+      preLoaderRoute: typeof PokemonPokemonNameImport
+      parentRoute: typeof rootRoute
+    }
     '/data/': {
       id: '/data/'
       path: '/data'
@@ -111,6 +130,13 @@ declare module '@tanstack/react-router' {
       path: '/ip'
       fullPath: '/ip'
       preLoaderRoute: typeof IpIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/pokemon/': {
+      id: '/pokemon/'
+      path: '/pokemon'
+      fullPath: '/pokemon'
+      preLoaderRoute: typeof PokemonIndexImport
       parentRoute: typeof rootRoute
     }
     '/_wrapper/details/$': {
@@ -188,8 +214,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof WrapperRouteWithChildren
   '/posts': typeof WrapperPostsRouteWithChildren
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
   '/data': typeof DataIndexRoute
   '/ip': typeof IpIndexRoute
+  '/pokemon': typeof PokemonIndexRoute
   '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts/': typeof WrapperPostsIndexRoute
@@ -200,8 +228,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof WrapperRouteWithChildren
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
   '/data': typeof DataIndexRoute
   '/ip': typeof IpIndexRoute
+  '/pokemon': typeof PokemonIndexRoute
   '/details/$': typeof WrapperDetailsSplatRoute
   '/posts/new': typeof WrapperPostsNewRoute
   '/posts': typeof WrapperPostsIndexRoute
@@ -214,8 +244,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_wrapper': typeof WrapperRouteWithChildren
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
   '/data/': typeof DataIndexRoute
   '/ip/': typeof IpIndexRoute
+  '/pokemon/': typeof PokemonIndexRoute
   '/_wrapper/details/$': typeof WrapperDetailsSplatRoute
   '/_wrapper/posts/new': typeof WrapperPostsNewRoute
   '/_wrapper/posts/': typeof WrapperPostsIndexRoute
@@ -229,8 +261,10 @@ export interface FileRouteTypes {
     | '/'
     | ''
     | '/posts'
+    | '/pokemon/$pokemonName'
     | '/data'
     | '/ip'
+    | '/pokemon'
     | '/details/$'
     | '/posts/new'
     | '/posts/'
@@ -240,8 +274,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | ''
+    | '/pokemon/$pokemonName'
     | '/data'
     | '/ip'
+    | '/pokemon'
     | '/details/$'
     | '/posts/new'
     | '/posts'
@@ -252,8 +288,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_wrapper'
     | '/_wrapper/posts'
+    | '/pokemon/$pokemonName'
     | '/data/'
     | '/ip/'
+    | '/pokemon/'
     | '/_wrapper/details/$'
     | '/_wrapper/posts/new'
     | '/_wrapper/posts/'
@@ -265,15 +303,19 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WrapperRoute: typeof WrapperRouteWithChildren
+  PokemonPokemonNameRoute: typeof PokemonPokemonNameRoute
   DataIndexRoute: typeof DataIndexRoute
   IpIndexRoute: typeof IpIndexRoute
+  PokemonIndexRoute: typeof PokemonIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WrapperRoute: WrapperRouteWithChildren,
+  PokemonPokemonNameRoute: PokemonPokemonNameRoute,
   DataIndexRoute: DataIndexRoute,
   IpIndexRoute: IpIndexRoute,
+  PokemonIndexRoute: PokemonIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -290,8 +332,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_wrapper",
+        "/pokemon/$pokemonName",
         "/data/",
-        "/ip/"
+        "/ip/",
+        "/pokemon/"
       ]
     },
     "/": {
@@ -314,11 +358,17 @@ export const routeTree = rootRoute
         "/_wrapper/posts/edit/$"
       ]
     },
+    "/pokemon/$pokemonName": {
+      "filePath": "pokemon/$pokemonName.tsx"
+    },
     "/data/": {
       "filePath": "data/index.tsx"
     },
     "/ip/": {
       "filePath": "ip/index.tsx"
+    },
+    "/pokemon/": {
+      "filePath": "pokemon/index.tsx"
     },
     "/_wrapper/details/$": {
       "filePath": "_wrapper/details.$.tsx",

@@ -37,7 +37,13 @@ const RootComponent = () => {
                 </li>
                 <li>
                     <Link to={postsRoute.fullPath}>Posts</Link>
+                </li> 
+                <li>
+                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'raichu' }}> Raichu</Link>
                 </li>
+                <li>
+                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'charizard' }}> Charizard</Link>
+                </li> 
             </ul>
         </nav>
             <Outlet />

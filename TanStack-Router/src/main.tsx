@@ -9,6 +9,7 @@ const router = createRouter({
   routeTree,
   defaultNotFoundComponent: () => <p>Page not found (caught in root)</p>,
   notFoundMode: 'fuzzy',
+  defaultStaleTime: 10000,
 });
 
 declare module '@tanstack/react-router' {
