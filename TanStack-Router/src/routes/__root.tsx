@@ -33,16 +33,29 @@ const RootComponent = () => {
                     <Link to='/posts/new'>New post</Link>
                 </li>
                 <li>
-                        <Link to='/posts/details/$postId' params={{postId: '1234F'}}>Post 1234F</Link>
+                        <Link
+                            to='/posts/details/$postId'
+                            params={{ postId: '1234F' }}
+                            >Post 1234F</Link>
                 </li>
                 <li>
                     <Link to={postsRoute.fullPath}>Posts</Link>
                 </li> 
                 <li>
-                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'raichu' }}> Raichu</Link>
+                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'raichu' }}
+                        search={{
+                                page: 3,
+                                pageSize: 10,
+                                filters: ['oldest']
+                            }}> Raichu</Link>
                 </li>
                 <li>
-                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'charizard' }}> Charizard</Link>
+                        <Link to='/pokemon/$pokemonName' params={{ pokemonName: 'charizard' }}
+                        search={{
+                                page: 1,
+                                pageSize: 100,
+                                filters: ['new', 'laters']
+                            }}> Charizard</Link>
                 </li> 
             </ul>
         </nav>
