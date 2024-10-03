@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useSearch } from '@tanstack/react-router'
+import { createFileRoute, Link} from '@tanstack/react-router'
 import { getPokemon } from './-loaders';
 
 type PokemonSearch = {

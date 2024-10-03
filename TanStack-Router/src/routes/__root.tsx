@@ -56,7 +56,11 @@ const RootComponent = () => {
                                 pageSize: 100,
                                 filters: ['new', 'laters']
                             }}> Charizard</Link>
-                </li> 
+                    </li> 
+                     <li>
+                        <Link to='/pokemon/defer/$pokemonName' params={{ pokemonName: 'raichu' }}
+                        > Deferred Raichu</Link>
+                </li>
             </ul>
         </nav>
             <Outlet />
