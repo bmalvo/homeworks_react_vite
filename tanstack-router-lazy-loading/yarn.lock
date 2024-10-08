@@ -734,6 +734,14 @@
     "@tanstack/store" "0.5.5"
     use-sync-external-store "^1.2.2"
 
+"@tanstack/router-devtools@^1.63.4":
+  version "1.63.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-devtools/-/router-devtools-1.63.4.tgz#fcabc232deae1f35c8e2489b5fbb12291d4fbb6c"
+  integrity sha512-ru19BaY7CIggGibfCS/Ux8DWFm8Ts7vzXotSJmwolhpm4/0Ix8144znsBFlSWrotgAOGZqM+j1jGaKSK/APGwQ==
+  dependencies:
+    clsx "^2.1.1"
+    goober "^2.1.14"
+
 "@tanstack/router-generator@^1.58.12":
   version "1.58.12"
   resolved "https://registry.yarnpkg.com/@tanstack/router-generator/-/router-generator-1.58.12.tgz#eb8679f26180a4d285c1c3c74f6565de5a7ea632"
@@ -1069,6 +1077,11 @@ chokidar@^3.6.0:
     readdirp "~3.6.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+clsx@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
+  integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -1424,6 +1437,11 @@ globals@^15.9.0:
   version "15.10.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-15.10.0.tgz#a7eab3886802da248ad8b6a9ccca6573ff899c9b"
   integrity sha512-tqFIbz83w4Y5TCbtgjZjApohbuh7K9BxGYFm7ifwDR240tvdb7P9x+/9VvUKlmkPoiknoJtanI8UOrqxS3a7lQ==
+
+goober@^2.1.14:
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.15.tgz#23f330f36f41c5695fed00ae1651189fa055d16e"
+  integrity sha512-LP0xChUqgLlr5ORa1m4LobVy++/dhP4Kta2gVla9i2pc30XvtpEFrye4JtcD265g1tEFLOjYIQEiTa+9bGGQ/g==
 
 graphemer@^1.4.0:
   version "1.4.0"
