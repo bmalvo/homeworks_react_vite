@@ -1,22 +1,18 @@
-import { createRootRouteWithContext, Link, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
+import React from "react";
 import { Suspense } from "react";
+
+const TanStackRouterDevtools = import.meta.env.DEV ?
+    React.lazy(() => import('@tanstack/router-devtools').then((res) => ({
+        default: res.TanStackRouterDevtools
+    })))
+    : () => null;
 
 const RootComponent = () => {
 
     return <>
         <div>
             <h1>My app</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/ip'>my ip</Link>
-                    </li>
-                </ul>
-            </nav>
             <Outlet />
             <Suspense>
                 <TanStackRouterDevtools />
@@ -25,6 +21,11 @@ const RootComponent = () => {
     </>
 }
 
-export const Route = createRootRouteWithContext<{allowed: boolean}>()({
+type RootContext = {
+
+
+}
+
+export const Route = createRootRouteWithContext<RootContext>()({
     component: RootComponent,
 })
