@@ -11,10 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TasksImport } from './routes/tasks'
 import { Route as IpImport } from './routes/ip'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const TasksRoute = TasksImport.update({
+  path: '/tasks',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IpRoute = IpImport.update({
   path: '/ip',
@@ -44,6 +50,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IpImport
       parentRoute: typeof rootRoute
     }
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -52,36 +65,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ip': typeof IpRoute
+  '/tasks': typeof TasksRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ip': typeof IpRoute
+  '/tasks': typeof TasksRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/ip': typeof IpRoute
+  '/tasks': typeof TasksRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ip'
+  fullPaths: '/' | '/ip' | '/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ip'
-  id: '__root__' | '/' | '/ip'
+  to: '/' | '/ip' | '/tasks'
+  id: '__root__' | '/' | '/ip' | '/tasks'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IpRoute: typeof IpRoute
+  TasksRoute: typeof TasksRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IpRoute: IpRoute,
+  TasksRoute: TasksRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +115,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/ip"
+        "/ip",
+        "/tasks"
       ]
     },
     "/": {
@@ -105,6 +124,9 @@ export const routeTree = rootRoute
     },
     "/ip": {
       "filePath": "ip.tsx"
+    },
+    "/tasks": {
+      "filePath": "tasks.tsx"
     }
   }
 }
