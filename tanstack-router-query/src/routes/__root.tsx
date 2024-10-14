@@ -1,4 +1,5 @@
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
+import { QueryClient } from "@tanstack/react-query";
+import { createRootRouteWithContext, Link, Outlet } from "@tanstack/react-router";
 import React from "react";
 import { Suspense } from "react";
 
@@ -13,6 +14,14 @@ const RootComponent = () => {
     return <>
         <div>
             <h1>My app</h1>
+            <ul>
+                <li>
+                    <Link to="/ip">IP</Link>
+                </li>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+            </ul>
             <Outlet />
             <Suspense>
                 <TanStackRouterDevtools />
@@ -23,7 +32,7 @@ const RootComponent = () => {
 
 type RootContext = {
 
-
+    queryClient: QueryClient
 }
 
 export const Route = createRootRouteWithContext<RootContext>()({

@@ -1,11 +1,10 @@
-import { getRouteApi } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { ipQueryOptions } from "../queries/ipQuery";
 
-const ipRoute = getRouteApi('/ip');
 
 export const IP = () => {
 
-    const { ip } = ipRoute.useLoaderData();
-    const { allowed } = ipRoute.useRouteContext();
+    const { data } = useSuspenseQuery(ipQueryOptions);
 
-    return <h2>{ ip }- { allowed ? 'You have an acces' : 'forbidden'}</h2>
+    return <h2>{ data.ip }</h2>
 }
