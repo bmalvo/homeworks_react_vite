@@ -1,5 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { FormEvent, useState } from 'react'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { FormEvent, useEffect, useState } from 'react'
 import { useCreateTaskMutation } from '../mutations/useCreateTaskMutation';
 
 const New = () => {
@@ -7,7 +7,9 @@ const New = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const { mutate} = useCreateTaskMutation();
+  const navigate = useNavigate();
+
+  const { mutate, isSuccess} = useCreateTaskMutation();
 
   const handleSubmit = (e: FormEvent) => {
 
@@ -19,6 +21,13 @@ const New = () => {
       description
     })
   };
+
+  useEffect(() => {
+
+    if (!isSuccess) return;
+
+    navigate({to: '/'})
+  },[isSuccess])
 
   return <>
     <div>
