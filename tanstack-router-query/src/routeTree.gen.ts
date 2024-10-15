@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as TasksImport } from './routes/tasks'
 import { Route as IpImport } from './routes/ip'
+import { Route as IdImport } from './routes/$id'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -26,6 +27,11 @@ const IpRoute = IpImport.update({
   path: '/ip',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/ip.lazy').then((d) => d.Route))
+
+const IdRoute = IdImport.update({
+  path: '/$id',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -41,6 +47,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/$id': {
+      id: '/$id'
+      path: '/$id'
+      fullPath: '/$id'
+      preLoaderRoute: typeof IdImport
       parentRoute: typeof rootRoute
     }
     '/ip': {
@@ -64,12 +77,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
   '/ip': typeof IpRoute
   '/tasks': typeof TasksRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
   '/ip': typeof IpRoute
   '/tasks': typeof TasksRoute
 }
@@ -77,27 +92,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
   '/ip': typeof IpRoute
   '/tasks': typeof TasksRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ip' | '/tasks'
+  fullPaths: '/' | '/$id' | '/ip' | '/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ip' | '/tasks'
-  id: '__root__' | '/' | '/ip' | '/tasks'
+  to: '/' | '/$id' | '/ip' | '/tasks'
+  id: '__root__' | '/' | '/$id' | '/ip' | '/tasks'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IdRoute: typeof IdRoute
   IpRoute: typeof IpRoute
   TasksRoute: typeof TasksRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IdRoute: IdRoute,
   IpRoute: IpRoute,
   TasksRoute: TasksRoute,
 }
@@ -115,12 +133,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/$id",
         "/ip",
         "/tasks"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/$id": {
+      "filePath": "$id.tsx"
     },
     "/ip": {
       "filePath": "ip.tsx"

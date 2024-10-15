@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, Link } from "@tanstack/react-router"
 import { taskOptions } from "../queries/tasks";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
@@ -10,7 +10,10 @@ const Tasks = () => {
         <div>
             <h1>Tasks</h1>
             <ul>
-                {data.map(task => <li key={task.id}><h2>{task.title}</h2> <p>{ task.description}</p></li>)}
+                {data.map(task => <li key={task.id}>
+                    <h2>{task.title}</h2>
+                    <Link to='/$id' params={{ id: task.id}}>Details</Link>
+                </li>)}
             </ul>
         </div>
     )
