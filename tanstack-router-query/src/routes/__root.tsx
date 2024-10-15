@@ -24,6 +24,9 @@ const RootComponent = () => {
                 <li>
                     <Link to="/tasks">Tasks</Link>
                 </li>
+                <li>
+                    <Link to="/new">add task</Link>
+                </li>
             </ul>
             <Outlet />
             <Suspense>

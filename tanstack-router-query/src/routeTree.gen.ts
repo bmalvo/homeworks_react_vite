@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as TasksImport } from './routes/tasks'
+import { Route as NewImport } from './routes/new'
 import { Route as IpImport } from './routes/ip'
 import { Route as IdImport } from './routes/$id'
 import { Route as IndexImport } from './routes/index'
@@ -20,6 +21,11 @@ import { Route as IndexImport } from './routes/index'
 
 const TasksRoute = TasksImport.update({
   path: '/tasks',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NewRoute = NewImport.update({
+  path: '/new',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -63,6 +69,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IpImport
       parentRoute: typeof rootRoute
     }
+    '/new': {
+      id: '/new'
+      path: '/new'
+      fullPath: '/new'
+      preLoaderRoute: typeof NewImport
+      parentRoute: typeof rootRoute
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
@@ -79,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
   '/ip': typeof IpRoute
+  '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
 }
 
@@ -86,6 +100,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
   '/ip': typeof IpRoute
+  '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
 }
 
@@ -94,15 +109,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
   '/ip': typeof IpRoute
+  '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$id' | '/ip' | '/tasks'
+  fullPaths: '/' | '/$id' | '/ip' | '/new' | '/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$id' | '/ip' | '/tasks'
-  id: '__root__' | '/' | '/$id' | '/ip' | '/tasks'
+  to: '/' | '/$id' | '/ip' | '/new' | '/tasks'
+  id: '__root__' | '/' | '/$id' | '/ip' | '/new' | '/tasks'
   fileRoutesById: FileRoutesById
 }
 
@@ -110,6 +126,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRoute
   IpRoute: typeof IpRoute
+  NewRoute: typeof NewRoute
   TasksRoute: typeof TasksRoute
 }
 
@@ -117,6 +134,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRoute,
   IpRoute: IpRoute,
+  NewRoute: NewRoute,
   TasksRoute: TasksRoute,
 }
 
@@ -135,6 +153,7 @@ export const routeTree = rootRoute
         "/",
         "/$id",
         "/ip",
+        "/new",
         "/tasks"
       ]
     },
@@ -146,6 +165,9 @@ export const routeTree = rootRoute
     },
     "/ip": {
       "filePath": "ip.tsx"
+    },
+    "/new": {
+      "filePath": "new.tsx"
     },
     "/tasks": {
       "filePath": "tasks.tsx"

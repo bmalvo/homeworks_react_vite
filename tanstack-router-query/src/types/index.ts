@@ -4,3 +4,5 @@ export type Task = {
     title: string;
     description: string;
 }
+
+export type TaskDto = Omit<Task, 'id'>
