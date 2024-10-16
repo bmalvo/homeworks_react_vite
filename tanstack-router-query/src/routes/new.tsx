@@ -27,7 +27,7 @@ const New = () => {
     if (!isSuccess) return;
 
     navigate({to: '/'})
-  },[isSuccess])
+  },[isSuccess, navigate])
 
   return <>
     <div>
