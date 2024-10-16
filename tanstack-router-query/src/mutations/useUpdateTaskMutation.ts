@@ -2,16 +2,17 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { apiCall } from "../utils/apiCall"
 import { Task, TaskDto } from "../types"
 
-export const useCreateTaskMutation = () => {
+export const useUpdateTaskMutation = (id: string) => {
 
     const queryClient = useQueryClient();
 
+
     return useMutation({
 
-        mutationKey: ['new-task'],
-        mutationFn: async (body: TaskDto) => apiCall<Task, TaskDto>('tasks', {
+        mutationKey: ['update-task', id],
+        mutationFn: async (body: TaskDto) => apiCall<Task, TaskDto>(`tasks/${id}`, {
             
-            method: 'POST',
+            method: 'PUT',
             body
         }),
         onSuccess: () => {

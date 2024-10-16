@@ -8,5 +8,6 @@ export const taskOptions = queryOptions({
     queryFn: async () => {
 
         return apiCall<Task[]>('tasks')
-    }
+    },
+    staleTime: 60000
 })

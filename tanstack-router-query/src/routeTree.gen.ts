@@ -16,6 +16,7 @@ import { Route as NewImport } from './routes/new'
 import { Route as IpImport } from './routes/ip'
 import { Route as IdImport } from './routes/$id'
 import { Route as IndexImport } from './routes/index'
+import { Route as EditIdImport } from './routes/edit.$id'
 
 // Create/Update Routes
 
@@ -41,6 +42,11 @@ const IdRoute = IdImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EditIdRoute = EditIdImport.update({
+  path: '/edit/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -83,6 +89,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TasksImport
       parentRoute: typeof rootRoute
     }
+    '/edit/$id': {
+      id: '/edit/$id'
+      path: '/edit/$id'
+      fullPath: '/edit/$id'
+      preLoaderRoute: typeof EditIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -94,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/ip': typeof IpRoute
   '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
+  '/edit/$id': typeof EditIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -102,6 +116,7 @@ export interface FileRoutesByTo {
   '/ip': typeof IpRoute
   '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
+  '/edit/$id': typeof EditIdRoute
 }
 
 export interface FileRoutesById {
@@ -111,14 +126,15 @@ export interface FileRoutesById {
   '/ip': typeof IpRoute
   '/new': typeof NewRoute
   '/tasks': typeof TasksRoute
+  '/edit/$id': typeof EditIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$id' | '/ip' | '/new' | '/tasks'
+  fullPaths: '/' | '/$id' | '/ip' | '/new' | '/tasks' | '/edit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$id' | '/ip' | '/new' | '/tasks'
-  id: '__root__' | '/' | '/$id' | '/ip' | '/new' | '/tasks'
+  to: '/' | '/$id' | '/ip' | '/new' | '/tasks' | '/edit/$id'
+  id: '__root__' | '/' | '/$id' | '/ip' | '/new' | '/tasks' | '/edit/$id'
   fileRoutesById: FileRoutesById
 }
 
@@ -128,6 +144,7 @@ export interface RootRouteChildren {
   IpRoute: typeof IpRoute
   NewRoute: typeof NewRoute
   TasksRoute: typeof TasksRoute
+  EditIdRoute: typeof EditIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -136,6 +153,7 @@ const rootRouteChildren: RootRouteChildren = {
   IpRoute: IpRoute,
   NewRoute: NewRoute,
   TasksRoute: TasksRoute,
+  EditIdRoute: EditIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -154,7 +172,8 @@ export const routeTree = rootRoute
         "/$id",
         "/ip",
         "/new",
-        "/tasks"
+        "/tasks",
+        "/edit/$id"
       ]
     },
     "/": {
@@ -171,6 +190,9 @@ export const routeTree = rootRoute
     },
     "/tasks": {
       "filePath": "tasks.tsx"
+    },
+    "/edit/$id": {
+      "filePath": "edit.$id.tsx"
     }
   }
 }

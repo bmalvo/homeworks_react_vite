@@ -12,7 +12,8 @@ const Tasks = () => {
             <ul>
                 {data.map(task => <li key={task.id}>
                     <h2>{task.title}</h2>
-                    <Link to='/$id' params={{ id: task.id}}>Details</Link>
+                    <Link to='/$id' params={{ id: task.id }}>Details    </Link>
+                    <Link to='/edit/$id' params={{ id: task.id}}>Edit   </Link>
                 </li>)}
             </ul>
         </div>
