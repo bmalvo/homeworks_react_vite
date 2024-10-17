@@ -22,10 +22,10 @@ const RootComponent = () => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/tasks">Tasks</Link>
+                    <Link to="/tasks/tasks">Tasks</Link>
                 </li>
                 <li>
-                    <Link to="/new">add task</Link>
+                    <Link to="/tasks/new">add task</Link>
                 </li>
             </ul>
             <Outlet />
@@ -38,7 +38,9 @@ const RootComponent = () => {
 
 type RootContext = {
 
-    queryClient: QueryClient
+    queryClient: QueryClient,
+    isAuthorized: boolean,
+    unAuthRedirect: string
 }
 
 export const Route = createRootRouteWithContext<RootContext>()({
