@@ -1,4 +1,4 @@
-export type SingleUser = {
+export type SingelUser = {
 
     id: number;
     name: string;
