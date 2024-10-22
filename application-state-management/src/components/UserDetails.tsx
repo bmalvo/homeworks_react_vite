@@ -1,8 +1,8 @@
-import { SingelUser } from "../types";
+import { SingleUser } from "../types";
 
 export type UserDetailsProps = {
 
-    user: SingelUser;
+    user: SingleUser;
 }
 
 export const UserDetails = ({ user }: UserDetailsProps) => {

@@ -1,10 +1,10 @@
-import { SingelUser } from "../types"
+import { SingleUser } from "../types"
 import { UserFirstName } from "./UserFirstName"
 import { UserLastName } from "./UserLastName"
 
 export type UserMainDataProps = {
 
-    user: SingelUser;
+    user: SingleUser;
 }
 
 export const UserMainData = ({ user }: UserMainDataProps) => {

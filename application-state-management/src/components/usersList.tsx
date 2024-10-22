@@ -1,9 +1,9 @@
-import { SingelUser } from "../types"
+import { SingleUser } from "../types"
 import { User } from "./User";
 
 export type UserListProps = {
 
-    users: SingelUser[];
+    users: SingleUser[];
 }
 
 export const UserList = ({users}: UserListProps) => {
