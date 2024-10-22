@@ -1,9 +1,12 @@
-export type UserFirstNameProps = {
+import { useUserContext } from "../context/useUserContext";
 
-    name: string
-}
+export const UserFirstName = () => {
 
-export const UserFirstName = ({ name }: UserFirstNameProps) => {
+    const { user } = useUserContext();
+
+    if (!user) return null;
+
+    const { name } = user;
 
     return <p>
         <strong>First name: { name }</strong>

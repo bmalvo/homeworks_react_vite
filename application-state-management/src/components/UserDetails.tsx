@@ -1,12 +1,9 @@
-import { SingleUser } from "../types";
+import { useUserContext } from "../context/useUserContext";
 
-export type UserDetailsProps = {
+export const UserDetails = () => {
 
-    user: SingleUser;
-}
-
-export const UserDetails = ({ user }: UserDetailsProps) => {
-    
+    const { user } = useUserContext();
+    if (!user) return null;
     const { name, lastName, age} = user;
 
     return <p>

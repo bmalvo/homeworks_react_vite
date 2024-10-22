@@ -1,3 +1,4 @@
+import { UserContext } from "../context/UserContext";
 import { SingleUser } from "../types"
 import { User } from "./User";
 
@@ -10,7 +11,12 @@ export const UserList = ({users}: UserListProps) => {
 
     return <>
         <ul>
-            {users.map(user => <User user={user} key={user.id}/>)}
+            {users.map(user => (
+                <UserContext.Provider value={{user}} key={user.id}>
+                    <User/>
+                </UserContext.Provider>
+                ))}
+                
         </ul>
     </>
 }

@@ -1,11 +1,14 @@
-export type UserLastNameProps = {
+import { useUserContext } from "../context/useUserContext"
 
-    lastname: string;
-}
+export const UserLastName = () => {
 
-export const UserLastName = ({ lastname }: UserLastNameProps) => {
+    const { user } = useUserContext();
+
+    if (!user) return null; 
+
+    const { lastName } = user;
 
     return <p>
-        <strong>Last name: { lastname}</strong>
+        <strong>Last name: { lastName}</strong>
     </p>
 }

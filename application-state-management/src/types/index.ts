@@ -8,5 +8,5 @@ export type SingleUser = {
 
 export type UserContextType = {
 
-    user: SingleUser
+    user: SingleUser | null;
 }
