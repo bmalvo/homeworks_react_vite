@@ -1,0 +1,7 @@
+1 Stworzyć kontekst przechowujący statyczną konfigurację kolorystyczną 
+aplikacji - kolor główny oraz pomocniczy. Następnie przygotować komponent 
+Header oraz Footer, które subskrybują wartości z kontekstu do ustawienia 
+odpowiedniego wyglądu. 
+2 Wykorzystać kontekst w polączeniu z TanStack Query i 
+https://episodate.com/api/most-popular?page=1, aby przygotować aplikację 
+wyświetlającą listę seriali w taki sposób, aby uniknąć procesu drillingu.
