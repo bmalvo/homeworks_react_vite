@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../store"
+import { SingleProductElement } from "./SingleProductElement"
 
 export const Products = () => {
 
@@ -9,7 +10,7 @@ export const Products = () => {
         <div>
             <strong>Products amount: { count}</strong>    
         <ul>
-            {list.map((el, index) => <li key={index}>{el}</li>)}
+                {list.map((el, index) => <SingleProductElement key={index} name={ el} price={(index + 1) * 10}/>)}
         </ul>
         </div>
     </>

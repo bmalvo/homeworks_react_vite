@@ -6,6 +6,12 @@ export type ProductState = {
     price: number;
 }
 
+type SetProductActionPayload = {
+
+    name: string;
+    price: number;
+}
+
 const initialState: ProductState = {
 
     name: '',
@@ -25,9 +31,13 @@ export const productSlice = createSlice({
         setPrice: (state, action: PayloadAction<number>) => {
 
             state.price = action.payload;
+        },
+        setProduct: (_, action: PayloadAction<SetProductActionPayload>) => {
+
+            return action.payload;
         }
     }
 })
 
-export const { setName, setPrice } = productSlice.actions;
+export const { setName, setPrice, setProduct } = productSlice.actions;
 export const productReducer = productSlice.reducer;
