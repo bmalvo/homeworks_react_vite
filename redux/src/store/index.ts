@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productReducer } from "../slices/productSlice";
 import { productsReducers } from "../slices/productsSlice";
+import { ipReducer } from "../slices/ipSlice";
 
 export const store = configureStore({
 
@@ -8,11 +9,15 @@ export const store = configureStore({
     reducer: {
 
         product: productReducer,
-        products: productsReducers
+        products: productsReducers,
+        ip: ipReducer,
     }
 })
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+
 // {
 //     product: {
 //         price: number,
