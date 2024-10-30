@@ -4,6 +4,7 @@ import { productsReducers } from "../slices/productsSlice";
 
 export const store = configureStore({
 
+    devTools: import.meta.env.DEV,
     reducer: {
 
         product: productReducer,
