@@ -14,13 +14,28 @@ const initialState: IpState = {
     error: '',
 }
 
-export const fetchIpAddress = createAsyncThunk(
+export const fetchIpAddress = createAsyncThunk <
+    { ip: string },
+    void,
+    {rejectValue: string}
+    >(
 
     'ip/fetchIpAddress',
-    async () => {
+    async (_, {rejectWithValue}) => {
         
-        const response = await fetch('https://api.ipify.org?format=json');
-        return await response.json() as Promise<{ ip: string }>;
+        try {
+
+          const response = await fetch('https://api.ipify.org?fformat=json');
+          
+          if (response.status === 200) {
+
+            return rejectWithValue('specific error')
+          }
+
+            return await response.json();
+        } catch (e) {
+            return rejectWithValue('Error specificaly');
+        }
     }
 )
 
@@ -33,14 +48,18 @@ export const ipSlice = createSlice({
 
         builder.addCase(fetchIpAddress.pending, state => {
 
-            state.loading = true;
-            state.error = '';
-            state.value = '';
+          state.loading = true;
+          state.error = '';
+          state.value = '';
         })
-        builder.addCase(fetchIpAddress.rejected, state => {
+        builder.addCase(fetchIpAddress.rejected, (state, action) => {
             
             state.loading = false;
-            state.error = 'Error occure';
+          if (action.payload) {  
+            state.error = action.payload;
+          } else {
+            state.error = "error occur"
+          }
         })
         builder.addCase(fetchIpAddress.fulfilled, (state, action) => {
 
