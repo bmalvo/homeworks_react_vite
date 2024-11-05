@@ -33,8 +33,10 @@ export const fetchIpAddress = createAsyncThunk <
           }
 
             return await response.json();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
-            return rejectWithValue('Error specificaly');
+          
+            return rejectWithValue('Error specificaly:');
         }
     }
 )
