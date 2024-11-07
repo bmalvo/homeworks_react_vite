@@ -5,12 +5,15 @@ export const ipApiSlice = createApi({
 
   reducerPath: 'ipApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.ipify.org' }),
+  tagTypes: ['IP'],
   endpoints: (builder) => ({
 
     getIpAddress: builder.query<IpAddress, void>({
 
-      query: () => '?format=json'
-    })
+      query: () => '?format=json',
+      providesTags: ['IP']
+    }),
+     
   })
 })
 

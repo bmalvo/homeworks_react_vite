@@ -19,10 +19,16 @@ export const Actions = () => {
     }))
   }
 
+  const handleInvalidate = () => {
+
+    dispatch(ipApiSlice.util.invalidateTags(['IP']))
+  }
+
   return <>
     <div>
       <button onClick={handleFirstRefetch}>Refetch #1</button>
       <button onClick={handleSecondRefetch}>Refetch #2</button>
+      <button onClick={handleInvalidate}>Refetch #3</button>
     </div>
   </>
 }
