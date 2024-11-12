@@ -5,13 +5,27 @@ export const todosApiSlice = createApi({
 
     reducerPath: 'todosApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/todos/' }),
+    tagTypes: ['TODOS'],
     endpoints: (builder) => ({
 
         getAllTodos: builder.query<Todo[], void>({
 
             query: () => '',
+            providesTags: ['TODOS']
+        }),
+        addTodo: builder.mutation<Todo, string>({
+
+            query: (title: string) => ({
+
+                url: '',
+                method: 'POST',
+                body: {
+                    title
+                }
+            }),
+            invalidatesTags: ['TODOS']
         })
     })
 })
 
-export const { useGetAllTodosQuery} = todosApiSlice;
+export const { useGetAllTodosQuery, useAddTodoMutation} = todosApiSlice;
