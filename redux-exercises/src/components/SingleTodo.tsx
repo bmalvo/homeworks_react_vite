@@ -1,3 +1,4 @@
+import { useDeleteTodoMutation } from "../slices/todosApiSlice";
 import { Todo } from "../types"
 
 export type SingleTodoProps = {
@@ -7,9 +8,17 @@ export type SingleTodoProps = {
 
 export const SingleTodo = ({ todo }: SingleTodoProps) => {
 
+  const [deleteTodo] = useDeleteTodoMutation();
+
+  const handleDelete = () => {
+
+    deleteTodo(todo.id);
+  }
+
   return <>
     <li>
-      {todo.title}
+      <strong>{todo.title}</strong>
+      <button onClick={handleDelete}>delete</button>
     </li>
   </>
 }

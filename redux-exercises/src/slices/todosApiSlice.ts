@@ -24,8 +24,17 @@ export const todosApiSlice = createApi({
                 }
             }),
             invalidatesTags: ['TODOS']
+        }),
+        deleteTodo: builder.mutation<Todo, string>({
+
+            query: (id: string) => ({
+
+                url: id,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['TODOS']
         })
     })
 })
 
-export const { useGetAllTodosQuery, useAddTodoMutation} = todosApiSlice;
+export const { useGetAllTodosQuery, useAddTodoMutation, useDeleteTodoMutation} = todosApiSlice;
