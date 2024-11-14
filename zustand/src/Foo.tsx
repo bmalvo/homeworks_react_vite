@@ -1,9 +1,14 @@
+import { useShallow } from "zustand/shallow";
 import { useFooStore } from "./store/useFooStore"
+
 
 export const Foo = () => {
 
-    const value = useFooStore(state => state.value);
-    const setValue = useFooStore(state => state.setValue);
+    const { value, setValue } = useFooStore(useShallow(state => ({
+        
+        value: state.value,
+        setValue: state.setValue
+    })))
     
     const setRandomValue = () => {
 
