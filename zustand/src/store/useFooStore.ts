@@ -4,14 +4,17 @@ type FooStore = {
 
     value: number;
     otherValue: number;
+    result: number;
     setValue: (newValue: number) => void;
     increaseOtherValue: () => void;
+    calculateResult: (param: number) => void;
 }
 
-export const useFooStore = create<FooStore>(set => ({
+export const useFooStore = create<FooStore>((set, get) => ({
 
     value: 0,
     otherValue: 0,
+    result: 0,
     setValue: (newValue: number) => set(
         {
             value: newValue
@@ -20,6 +23,17 @@ export const useFooStore = create<FooStore>(set => ({
     increaseOtherValue: () => set(state => ({
 
         otherValue: state.otherValue + 1
-    }))
+    })),
+    calculateResult: (param: number) => {
+
+        const { value, otherValue } = get();
+
+        const result = Math.round(param > 50 ? (value * param * otherValue) / Math.sqrt(param) : (value / param) * 25);
+        
+        set({
+
+            result
+        })
+    }
     
 }))
