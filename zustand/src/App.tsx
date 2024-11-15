@@ -1,5 +1,6 @@
 import { Bar } from "./Bar"
 import { Foo } from "./Foo"
+import { MyIp } from "./MyIp"
 import { Result } from "./Result"
 
 export const App = () => {
@@ -8,5 +9,6 @@ export const App = () => {
     <Foo />
     <Bar />
     <Result />
+    <MyIp />
   </>
 }

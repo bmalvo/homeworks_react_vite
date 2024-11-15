@@ -5,9 +5,11 @@ type FooStore = {
     value: number;
     otherValue: number;
     result: number;
+    ip: string;
     setValue: (newValue: number) => void;
     increaseOtherValue: () => void;
     calculateResult: (param: number) => void;
+    fetchMyIp: () => Promise<void>;
 }
 
 export const useFooStore = create<FooStore>((set, get) => ({
@@ -15,6 +17,7 @@ export const useFooStore = create<FooStore>((set, get) => ({
     value: 0,
     otherValue: 0,
     result: 0,
+    ip: '',
     setValue: (newValue: number) => set(
         {
             value: newValue
@@ -33,6 +36,15 @@ export const useFooStore = create<FooStore>((set, get) => ({
         set({
 
             result
+        })
+    },
+    fetchMyIp: async () => {
+        
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data: { ip: string } = await response.json();
+        
+        set ({
+            ip: data.ip
         })
     }
     
