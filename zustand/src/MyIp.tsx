@@ -1,9 +1,9 @@
 import { useShallow } from "zustand/shallow"
-import { useFooStore } from "./store/useFooStore"
+import { useIPStore } from "./store/useIPStore"
 
 export const MyIp = () => {
 
-    const [ip, fetchMyIp] = useFooStore(useShallow(state => [state.ip, state.fetchMyIp]))
+    const [ip, fetchMyIp] = useIPStore(useShallow(state => [state.ip, state.fetchMyIp]))
 
     const handleIP = () => {
 
