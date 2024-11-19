@@ -10,7 +10,7 @@ type FooStore = {
     calculateResult: (param: number) => void;
 }
 
-export const useFooStore = create<FooStore>((set, get) => ({
+export const useFooStore = create<FooStore>()((set, get) => ({
 
     value: 0,
     otherValue: 0,
