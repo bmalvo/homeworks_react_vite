@@ -11,9 +11,37 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SummaryImport } from './routes/summary'
+import { Route as SuccessImport } from './routes/success'
+import { Route as ShippingImport } from './routes/shipping'
+import { Route as OrderImport } from './routes/order'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const SummaryRoute = SummaryImport.update({
+  id: '/summary',
+  path: '/summary',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SuccessRoute = SuccessImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ShippingRoute = ShippingImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const OrderRoute = OrderImport.update({
+  id: '/order',
+  path: '/order',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,6 +60,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderImport
+      parentRoute: typeof rootRoute
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingImport
+      parentRoute: typeof rootRoute
+    }
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessImport
+      parentRoute: typeof rootRoute
+    }
+    '/summary': {
+      id: '/summary'
+      path: '/summary'
+      fullPath: '/summary'
+      preLoaderRoute: typeof SummaryImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +95,52 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/order' | '/shipping' | '/success' | '/summary'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/order' | '/shipping' | '/success' | '/summary'
+  id: '__root__' | '/' | '/order' | '/shipping' | '/success' | '/summary'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OrderRoute: typeof OrderRoute
+  ShippingRoute: typeof ShippingRoute
+  SuccessRoute: typeof SuccessRoute
+  SummaryRoute: typeof SummaryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OrderRoute: OrderRoute,
+  ShippingRoute: ShippingRoute,
+  SuccessRoute: SuccessRoute,
+  SummaryRoute: SummaryRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +153,27 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/order",
+        "/shipping",
+        "/success",
+        "/summary"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/order": {
+      "filePath": "order.tsx"
+    },
+    "/shipping": {
+      "filePath": "shipping.tsx"
+    },
+    "/success": {
+      "filePath": "success.tsx"
+    },
+    "/summary": {
+      "filePath": "summary.tsx"
     }
   }
 }
