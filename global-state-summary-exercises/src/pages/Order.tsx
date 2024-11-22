@@ -1,17 +1,27 @@
 import { FormEvent } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
+import { useOrderStore } from "../store/useOrderStore";
+import { useShallow } from "zustand/shallow";
 
 export const Order = () => {
 
-    const titleInput = useInput('');
-    const descriptionInput = useInput('');
+    const { order, setOrderData } = useOrderStore(useShallow(state => ({
+        
+        order: state.order, setOrderData: state.setOrderData
+    })));
+    const titleInput = useInput(order.title);
+    const descriptionInput = useInput(order.configuration);
 
     const handleSubmit = (e: FormEvent) => {
 
         e.preventDefault();
 
-        
+        setOrderData({
+
+            title: titleInput.value,
+            configuration: descriptionInput.value
+        })
     }
 
     return <>
