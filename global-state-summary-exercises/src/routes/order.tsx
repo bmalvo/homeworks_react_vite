@@ -1,10 +1,6 @@
-import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { Order } from '../pages/order'
 
 export const Route = createFileRoute('/order')({
-  component: RouteComponent,
+  component: Order,
 })
-
-function RouteComponent() {
-  return 'Hello /order!'
-}
