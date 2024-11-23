@@ -3,6 +3,7 @@ import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
 import { useShallow } from "zustand/shallow";
+import { useNavigate } from "@tanstack/react-router";
 
 export const Order = () => {
 
@@ -10,8 +11,11 @@ export const Order = () => {
         
         order: state.order, setOrderData: state.setOrderData
     })));
+    const navigate = useNavigate();
+
     const titleInput = useInput(order.title);
     const descriptionInput = useInput(order.configuration);
+
 
     const handleSubmit = (e: FormEvent) => {
 
@@ -21,7 +25,9 @@ export const Order = () => {
 
             title: titleInput.value,
             configuration: descriptionInput.value
-        })
+        });
+
+        navigate({to: '/shipping'})
     }
 
     return <>

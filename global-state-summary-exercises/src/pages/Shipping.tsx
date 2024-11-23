@@ -3,6 +3,7 @@ import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
 import { useShallow } from "zustand/shallow";
+import { useNavigate } from "@tanstack/react-router";
 
 export const Shipping = () => {
 
@@ -10,6 +11,8 @@ export const Shipping = () => {
         
         shipping: state.shipping, setShippingData: state.setShippingData
     })));
+    const navigate = useNavigate();
+
     const cityInput = useInput(shipping.city);
     const streetInput = useInput(shipping.street);
     const postCodeInput = useInput(shipping.postCode);
@@ -24,6 +27,7 @@ export const Shipping = () => {
             street: streetInput.value,
             postCode: postCodeInput.value
         })
+        navigate({to: '/summary'})
     }
 
     return <>
