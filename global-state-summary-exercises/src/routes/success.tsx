@@ -1,10 +1,8 @@
-import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { Success } from '../pages/Success'
 
 export const Route = createFileRoute('/success')({
-  component: RouteComponent,
+  component: Success,
 })
 
-function RouteComponent() {
-  return 'Hello /success!'
-}
+
