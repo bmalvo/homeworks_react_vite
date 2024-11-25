@@ -4,8 +4,11 @@ import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
 import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
+import { useOrderAccess } from "../hooks/useOrderAccess";
 
 export const Summary = () => {
+
+    useOrderAccess('summary');
 
     const { summary, order, shipping, setSummaryData } = useOrderStore(useShallow(state => ({
         
