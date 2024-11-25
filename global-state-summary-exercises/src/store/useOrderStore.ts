@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type OrderStore = {
+type OrderState = {
     
     order: {
         
@@ -18,11 +18,15 @@ type OrderStore = {
 
         comment: string;
     },
+}
+
+type OrderActions = {
     setOrderData: (payload: SetOrderDataAction) => void,
     setShippingData: (payload: SetShippingDataAction) => void,
-    setSummaryData: (payload: SetSummaryDataAction) => void
-    
+    setSummaryData: (payload: SetSummaryDataAction) => void,
+    placeOrder: () => void
 }
+    
 
 type SetOrderDataAction = {
 
@@ -42,13 +46,9 @@ type SetSummaryDataAction = {
     comment: string;
 }
 
-export const useOrderStore = create<OrderStore>()(
-    
-    persist(
+const initialState: OrderState = {
 
-        set => ({
-            
-            order: {
+    order: {
                 title: '',
                 configuration: ''
             },
@@ -60,6 +60,14 @@ export const useOrderStore = create<OrderStore>()(
             summary: {
                 comment: ''
             },
+}
+
+export const useOrderStore = create<OrderState & OrderActions>()(
+    
+    persist(
+        set => ({
+    
+            ...initialState,
             setOrderData: (payload: SetOrderDataAction) => set({
                 
                 order: payload
@@ -70,7 +78,8 @@ export const useOrderStore = create<OrderStore>()(
             }),
             setSummaryData: (payload: SetSummaryDataAction) => set({
                 summary: payload
-            })
+            }),
+            placeOrder: () => set(initialState)
         }), {
             name: 'order',
             version: 1
