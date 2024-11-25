@@ -15,7 +15,7 @@ export const useOrderAccess = (step: 'order' | 'shipping' | 'summary' | 'success
     }
 
     const isOrderShippingFilled = () => {
-        console.log(!!shipping.city)
+
         return !!shipping.city && !!shipping.postCode && !!shipping.street
     }
 

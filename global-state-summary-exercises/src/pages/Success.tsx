@@ -13,7 +13,7 @@ export const Success = () => {
     useEffect(() => {
 
         placeOrder();
-    }, []);
+    });
 
     return <>
         <PageHeader>Transaction succesfull!</PageHeader>
