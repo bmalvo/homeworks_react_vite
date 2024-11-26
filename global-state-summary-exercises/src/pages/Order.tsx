@@ -4,6 +4,7 @@ import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
 import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
+import { Stepper } from "../components/Stepper";
 
 export const Order = () => {
 
@@ -40,6 +41,7 @@ export const Order = () => {
     },[titleInput.value, descriptionInput.value, setOrderData])
 
     return <>
+        <Stepper step="order" />
         <PageHeader>Order</PageHeader>
         <p>Please fill out Your order configuration.</p>
         <form onSubmit={handleSubmit}>

@@ -5,6 +5,7 @@ import { useOrderStore } from "../store/useOrderStore";
 import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
 import { useOrderAccess } from "../hooks/useOrderAccess";
+import { Stepper } from "../components/Stepper";
 
 export const Shipping = () => {
 
@@ -44,6 +45,7 @@ export const Shipping = () => {
     },[cityInput.value, streetInput.value, postCodeInput.value])
 
     return <>
+        <Stepper step='shipping' />
         <PageHeader>Shipping</PageHeader>
         <p>Please fill out Your delivery adress.</p>
         <form onSubmit={handleSubmit}>
