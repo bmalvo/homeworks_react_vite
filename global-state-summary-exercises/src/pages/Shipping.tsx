@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
@@ -32,6 +32,16 @@ export const Shipping = () => {
         })
         navigate({to: '/summary'})
     }
+
+    useEffect(() => {
+
+        setShippingData({
+
+            city: cityInput.value,
+            street: streetInput.value,
+            postCode: postCodeInput.value
+        })
+    },[cityInput.value, streetInput.value, postCodeInput.value])
 
     return <>
         <PageHeader>Shipping</PageHeader>

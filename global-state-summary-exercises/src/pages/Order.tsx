@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
 import { useOrderStore } from "../store/useOrderStore";
@@ -29,6 +29,15 @@ export const Order = () => {
 
         navigate({to: '/shipping'})
     }
+
+    useEffect(() => {
+
+        setOrderData({
+
+            title: titleInput.value,
+            configuration: descriptionInput.value
+        });
+    },[titleInput.value, descriptionInput.value, setOrderData])
 
     return <>
         <PageHeader>Order</PageHeader>
