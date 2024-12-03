@@ -17,7 +17,7 @@ export const App = () => {
 
   return <>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('login')} />
+      <input {...register('login', {required: true, minLength: 3, })} />
       <input type="password" {...register('password')} />
       <button type="submit">Log in</button>
     </form>
