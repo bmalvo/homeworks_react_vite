@@ -8,16 +8,19 @@ type FormData = {
 
 export const App = () => {
 
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState: {isValid, errors} } = useForm<FormData>();
   
   const onSubmit = (data: FormData) => {
 
     console.log(data)
   }
 
+
   return <>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('login', {required: true, minLength: 3, })} />
+      <input {...register('login', { required: true, minLength: 3, })} />
+      {errors.login && errors.login.type === 'required' ? <p>Login is required!</p> : null}
+      {errors.login && errors.login.type === 'minLength' ? <p>Min 3 characters in login</p> : null}
       <input type="password" {...register('password')} />
       <button type="submit">Log in</button>
     </form>
