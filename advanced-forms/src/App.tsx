@@ -8,13 +8,20 @@ type FormData = {
 
 export const App = () => {
 
-  const { register, handleSubmit, formState: {isValid, errors} } = useForm<FormData>();
+  const { register, handleSubmit, reset,  formState: {isValid, errors} } = useForm<FormData>();
   
   const onSubmit = (data: FormData) => {
 
     console.log(data)
   }
 
+  const resetForm = () => {
+
+    reset({
+      login: 'Pan Kracy',
+      password: '*********'
+    });
+  }
 
   return <>
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -22,6 +29,7 @@ export const App = () => {
       {errors.login && errors.login.type === 'required' ? <p>Login is required!</p> : null}
       {errors.login && errors.login.type === 'minLength' ? <p>Min 3 characters in login</p> : null}
       <input type="password" {...register('password')} />
+      <button type="button" onClick={resetForm}>Reset</button>
       <button type="submit">Log in</button>
     </form>
   </>
