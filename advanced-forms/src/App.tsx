@@ -36,8 +36,8 @@ export const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
-  const watching = watch(['login', 'password'])
-  console.log(watching);
+  const agreementValue = watch('agreement')
+  console.log(agreementValue);
 
   return <>
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,6 +49,7 @@ export const App = () => {
       <button type="button" onClick={resetForm}>Reset</button>
       <button type="button" onClick={readValues}>Get Values</button>
       <button type="submit">Log in</button>
+      { !agreementValue ? <p>You need first read this: www.example.com/terms</p> : null}
     </form>
   </>
 }
