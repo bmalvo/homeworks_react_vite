@@ -14,7 +14,15 @@ type FormData = {
 
 export const App = () => {
 
-  const { register, handleSubmit, reset, getValues, setValue, watch,  formState: { errors} } = useForm<FormData>();
+  const { register, handleSubmit, reset, getValues, setValue, watch, formState: { errors } } = useForm<FormData>({
+    defaultValues: {
+
+      age: 18,
+      marketing: 'email',
+      intrested: 'no',
+      agreement: true
+    }
+  });
   
   const onSubmit = (data: FormData) => {
 
