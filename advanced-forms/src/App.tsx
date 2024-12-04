@@ -7,6 +7,7 @@ type FormData = {
   password: string;
   agreement: boolean;
   intrested: 'yes' | 'no';
+  marketing: 'no' | 'email' | 'phone';
   age: number;
   bio: string;
 }
@@ -55,6 +56,17 @@ export const App = () => {
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
+      <div>
+        <label htmlFor="">
+          <input type="radio" value='no' {...register('marketing')} />No
+        </label>
+        <label>
+          <input type="radio" value='email' {...register('marketing')} />E-mail
+        </label>
+        <label>
+          <input type="radio" value='phone' {...register('marketing')} />Phone
+        </label>
+      </div>
       <button type="button" onClick={resetForm}>Reset</button>
       <button type="button" onClick={readValues}>Get Values</button>
       <button type="submit">Log in</button>
