@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form"
 
 type FormData = {
@@ -8,7 +9,7 @@ type FormData = {
 
 export const App = () => {
 
-  const { register, handleSubmit, reset, getValues,  formState: {isValid, errors} } = useForm<FormData>();
+  const { register, handleSubmit, reset, getValues, setValue,  formState: {isValid, errors} } = useForm<FormData>();
   
   const onSubmit = (data: FormData) => {
 
@@ -27,6 +28,11 @@ export const App = () => {
 
     console.log(getValues());
   }
+
+  useEffect(() => {
+
+    setValue('login', 'Brygida')
+  },[]);
 
   return <>
     <form onSubmit={handleSubmit(onSubmit)}>
