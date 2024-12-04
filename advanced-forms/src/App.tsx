@@ -6,6 +6,7 @@ type FormData = {
   login: string;
   password: string;
   agreement: boolean;
+  intrested: 'yes' | 'no';
   age: number;
   bio: string;
 }
@@ -50,6 +51,10 @@ export const App = () => {
       <input type="number" {...register('age', {valueAsNumber: true})} />
       <textarea {...register('bio')} />
       <input type="checkbox" {...register('agreement')} />
+      <select {...register('intrested')}>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
       <button type="button" onClick={resetForm}>Reset</button>
       <button type="button" onClick={readValues}>Get Values</button>
       <button type="submit">Log in</button>
