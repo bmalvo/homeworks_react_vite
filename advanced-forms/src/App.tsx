@@ -6,11 +6,13 @@ type FormData = {
   login: string;
   password: string;
   agreement: boolean;
+  age: number;
+  bio: string;
 }
 
 export const App = () => {
 
-  const { register, handleSubmit, reset, getValues, setValue, watch,  formState: {isValid, errors} } = useForm<FormData>();
+  const { register, handleSubmit, reset, getValues, setValue, watch,  formState: { errors} } = useForm<FormData>();
   
   const onSubmit = (data: FormData) => {
 
@@ -45,6 +47,8 @@ export const App = () => {
       {errors.login && errors.login.type === 'required' ? <p>Login is required!</p> : null}
       {errors.login && errors.login.type === 'minLength' ? <p>Min 3 characters in login</p> : null}
       <input type="password" {...register('password')} />
+      <input type="number" {...register('age', {valueAsNumber: true})} />
+      <textarea {...register('bio')} />
       <input type="checkbox" {...register('agreement')} />
       <button type="button" onClick={resetForm}>Reset</button>
       <button type="button" onClick={readValues}>Get Values</button>
