@@ -1,0 +1,7 @@
+1. Stworzyć formularz pozwalający podać:
+  a. imie i nazwisko- pola wymagane
+  b. polecheckbox do określenia czy użytkowniik potrzebuje faktury
+  c. pole NIP- jeżeli jest zaznaczony - dla uproszczenia zakładamy, że NIP nie 
+     jest wymagany. Dodać walidację dla NIP - min 10 znaków
+
+Po wysłaniu formularza należy dane wyświetlić w paragrafie pod formularzem.
