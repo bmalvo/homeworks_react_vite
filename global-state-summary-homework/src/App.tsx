@@ -1,5 +1,7 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen'
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 
 const router = createRouter({routeTree});
@@ -14,5 +16,9 @@ declare module '@tanstack/react-router' {
 
 export const App = () => {
 
-  return <RouterProvider router={router} />
+  return <>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </>
 }

@@ -1,18 +1,19 @@
 import { Link } from "@tanstack/react-router"
 import { PageHeader } from "../components/PageHeader"
-import { useOrderStore } from "../store/useOrderStore";
 import { useEffect } from "react";
 import { useOrderAccess } from "../hooks/useOrderAccess";
+import { useDispatch } from "react-redux";
+import { placeOrder } from "../slices/order.slice";
 
 export const Success = () => {
 
     useOrderAccess('success');
 
-    const placeOrder = useOrderStore(state => state.placeOrder);
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
-        placeOrder();
+        dispatch(placeOrder());
     });
 
     return <>

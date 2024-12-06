@@ -1,20 +1,20 @@
 import { FormEvent, useEffect } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
-import { useOrderStore } from "../store/useOrderStore";
-import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
 import { useOrderAccess } from "../hooks/useOrderAccess";
 import { Stepper } from "../components/Stepper";
+import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { setShippingData } from "../slices/order.slice";
 
 export const Shipping = () => {
 
     useOrderAccess('shipping');
 
-    const { shipping, setShippingData } = useOrderStore(useShallow(state => ({
-        
-        shipping: state.shipping, setShippingData: state.setShippingData
-    })));
+    const dispatch = useDispatch();
+
+    const { shipping } = useSelector((state: RootState) => state.order);
     const navigate = useNavigate();
 
     const cityInput = useInput(shipping.city);
@@ -25,12 +25,13 @@ export const Shipping = () => {
 
         e.preventDefault();
 
-        setShippingData({
+        dispatch(setShippingData({
 
             city: cityInput.value,
             street: streetInput.value,
             postCode: postCodeInput.value
-        })
+        }))
+
         navigate({to: '/summary'})
     }
 

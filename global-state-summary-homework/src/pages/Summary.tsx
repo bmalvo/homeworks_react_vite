@@ -1,23 +1,20 @@
 import { FormEvent } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
-import { useOrderStore } from "../store/useOrderStore";
-import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
 import { useOrderAccess } from "../hooks/useOrderAccess";
 import { Stepper } from "../components/Stepper";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { setSummaryData } from "../slices/order.slice";
 
 export const Summary = () => {
 
     useOrderAccess('summary');
 
-    const { summary, order, shipping, setSummaryData } = useOrderStore(useShallow(state => ({
-        
-        order: state.order,
-        shipping: state.shipping,
-        summary: state.summary,
-        setSummaryData: state.setSummaryData
-    })));
+    const dispatch = useDispatch();
+
+    const { summary, order, shipping } = useSelector((state: RootState) => state.order);
     const navigate = useNavigate();
 
     const commentInput = useInput(summary.comment);
@@ -27,10 +24,10 @@ export const Summary = () => {
 
         e.preventDefault();
 
-        setSummaryData({
+        dispatch(setSummaryData({
 
             comment: commentInput.value
-        });
+        }));
 
         navigate({to: '/success'})
     }

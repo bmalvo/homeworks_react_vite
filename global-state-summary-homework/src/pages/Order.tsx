@@ -1,17 +1,16 @@
 import { FormEvent, useEffect } from "react";
 import { PageHeader } from "../components/PageHeader"
 import { useInput } from "../hooks/useInput"
-import { useOrderStore } from "../store/useOrderStore";
-import { useShallow } from "zustand/shallow";
 import { useNavigate } from "@tanstack/react-router";
 import { Stepper } from "../components/Stepper";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { setOrderData } from "../slices/order.slice";
 
 export const Order = () => {
 
-    const { order, setOrderData } = useOrderStore(useShallow(state => ({
-        
-        order: state.order, setOrderData: state.setOrderData
-    })));
+    const dispatch = useDispatch();
+    const { order } = useSelector((state: RootState) => state.order);
     const navigate = useNavigate();
 
     const titleInput = useInput(order.title);
@@ -22,11 +21,11 @@ export const Order = () => {
 
         e.preventDefault();
 
-        setOrderData({
+        dispatch(setOrderData({
 
             title: titleInput.value,
             configuration: descriptionInput.value
-        });
+        }));
 
         navigate({to: '/shipping'})
     }

@@ -1,11 +1,11 @@
-import { useShallow } from "zustand/shallow"
-import { useOrderStore } from "../store/useOrderStore"
 import { useEffect } from "react"
 import { useNavigate } from "@tanstack/react-router"
+import { useSelector } from "react-redux"
+import { RootState } from "../store"
 
 export const useOrderRedirect = () => {
 
-    const { order, shipping } = useOrderStore(useShallow(state => ({ order: state.order, shipping: state.shipping })))
+    const { order, shipping } = useSelector((state: RootState) => state.order);
     
     const navigate = useNavigate();
 
