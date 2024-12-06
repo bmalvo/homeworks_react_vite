@@ -37,6 +37,7 @@ export const Order = () => {
             title: titleInput.value,
             configuration: descriptionInput.value
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[titleInput.value, descriptionInput.value, setOrderData])
 
     return <>
