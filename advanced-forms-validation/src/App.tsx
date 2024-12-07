@@ -1,30 +1,35 @@
-import { InferType, object, ObjectSchema, string, ValidationError } from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { InferType, object, string } from "yup";
 
-type loginDto = {
-
-  login: string;
-  password: string;
-}
-
-const loginSchema: ObjectSchema<loginDto> = object({
+const loginSchema = object({
 
   login: string().required().min(5),
   password: string().required().min(5)
 })
- 
-// type LoginData = InferType<typeof loginSchema>;
 
-// try {
-//   await loginSchema.validate({
-//     login: '',
-//     password: '12345'
-//   })
-// } catch (e) {
-//   const error_message = e instanceof ValidationError ? console.log(e.message) : '';
-//   console.log(error_message)
-// }
+type loginData = InferType<typeof loginSchema>;
 
 export const App = () => {
 
-  return null;
+  const { register, handleSubmit, formState: {errors} } = useForm<loginData>({
+
+    resolver: yupResolver(loginSchema)
+  });
+
+
+  const onsubmit = (data: loginData) => {
+
+    console.log(data)
+  }
+
+  console.log(errors)
+
+  return <>
+    <form onSubmit={handleSubmit(onsubmit)}>
+      <input type="text" {...register('login')} />
+      <input type="password" {...register('password')} />
+      <button type="submit">log in</button>
+  </form>
+  </>;
 }
