@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { orderData, orderSchema } from "./schemas/order";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Input } from "./components/input";
+import { Input } from "./components/Input";
+import { RadioButton } from "./components/RadioButton";
 
 export const App = () => {
 
@@ -30,19 +31,11 @@ export const App = () => {
           <Input type="number" label="Age" {...register('basic.age')}/>
         </div>
         <h2>Payment data</h2>
-        <label>Card
-        <input type="radio" {...register('payment.type')} value='card'/>
-        </label>
-        <label>Transfer
-        <input type="radio" {...register('payment.type')} value='transfer'/>
-        </label>
+        <RadioButton value="card" label="Card" {...register('payment.type')} />
+        <RadioButton value="transfer" label="Transfer" {...register('payment.type')} />
         {type === 'card' ? <div>
-          <label>VISA
-            <input type="radio" {...register('payment.details.card')} value='visa' />
-          </label>
-          <label>AMEX
-            <input type="radio" {...register('payment.details.card')} value='amex' />
-          </label>
+          <RadioButton value="visa" label="VISA" {...register('payment.details.card')} />
+          <RadioButton value="amex" label="AMEX" {...register('payment.details.card')} />
           <Input type="text" label="Card number" {...register('payment.details.cardNumber')} />
         </div> : null}
         {type === 'transfer' ? <label>IBAN<Input type="text" label="IBAN" {...register('payment.details.iban')} /></label> : null}
