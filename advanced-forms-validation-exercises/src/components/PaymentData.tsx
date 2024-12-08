@@ -5,7 +5,7 @@ import { orderData } from "../schemas/order";
 
 export const PaymentData = () => {
 
-    const { register, watch} = useFormContext<orderData>();
+    const { register, watch, formState: {errors}} = useFormContext<orderData>();
 
   const type = watch('payment.type');
 
@@ -17,9 +17,9 @@ export const PaymentData = () => {
         {type === 'card' ? <div>
           <RadioButton value="visa" label="VISA" {...register('payment.details.card')} />
           <RadioButton value="amex" label="AMEX" {...register('payment.details.card')} />
-          <Input type="text" label="Card number" {...register('payment.details.cardNumber')} />
+                <Input type="text" label="Card number" {...register('payment.details.cardNumber')} error={ errors.payment?.details?.cardNumber} />
         </div> : null}
-        {type === 'transfer' ? <label>IBAN<Input type="text" label="IBAN" {...register('payment.details.iban')} /></label> : null}
+            {type === 'transfer' ? <label>IBAN<Input type="text" label="IBAN" {...register('payment.details.iban')} error={ errors.payment?.details?.iban} /></label> : null}
       </div> 
     </>
 }

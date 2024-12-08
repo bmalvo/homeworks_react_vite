@@ -1,16 +1,31 @@
-import { InferType, number, object, string } from 'yup';
+import { InferType, number, object, string, setLocale } from 'yup';
+
+setLocale({
+
+    mixed: {
+        required: 'This field is required'
+    },
+    number: {
+        min: ({min}) => `This value must be min. ${min}`
+    },
+    string: {
+        min: ({min}) => `Minimum length is ${min} characters.`
+    }
+})
+
+const requiredString = (customMessage? : string) => string().required(customMessage);
 
 export const orderSchema = object({
 
     basic: object({
 
-        name: string().required().min(3),
-        lastname: string().required().min(3),
+        name: requiredString('Name is required!').min(3),
+        lastname: requiredString().min(3),
         age: number().required().transform(val => val || 0).min(18)
     }),
     payment: object({
 
-        type: string().oneOf(['card', 'transfer']).required(),
+        type: requiredString().oneOf(['card', 'transfer']),
         details: object({
 
             card: string(),
@@ -21,8 +36,8 @@ export const orderSchema = object({
             is: 'card',
             then: schema => schema.shape({
 
-                card: string().oneOf(['visa', 'amex']).required(),
-                cardNumber: string().required().when('card', {
+                card: requiredString().oneOf(['visa', 'amex']),
+                cardNumber: requiredString().when('card', {
 
                     is: 'visa',
                     then: schema => schema.matches(/^4/).length(16),
@@ -32,7 +47,7 @@ export const orderSchema = object({
             }),
             otherwise: schema => schema.shape({
 
-                iban: string().required().matches(/^PL/).length(34)
+                iban: requiredString().matches(/^PL/).length(34)
             })
         })
     })
