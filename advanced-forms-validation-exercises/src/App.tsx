@@ -1,15 +1,18 @@
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { orderData, orderSchema } from "./schemas/order";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "./components/Input";
 import { RadioButton } from "./components/RadioButton";
+import { BasicData } from "./components/BasicData";
 
 export const App = () => {
 
-  const { register, handleSubmit, watch,  formState: {errors} } = useForm<orderData>({
+  const methods = useForm<orderData>({
     
     resolver: yupResolver(orderSchema)
   });
+
+  const { register, handleSubmit, watch, formState: { errors } } = methods;
 
   console.log(errors);
 
@@ -22,14 +25,10 @@ export const App = () => {
 
   return <>
     <h1>Place your order</h1>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <BasicData />
       <div>
-        <h2>Basic data</h2>
-        <div>
-          <Input type="text" label="Name" {...register('basic.name')}/>
-          <Input type="text" label="Lastname" {...register('basic.lastname')}/>
-          <Input type="number" label="Age" {...register('basic.age')}/>
-        </div>
         <h2>Payment data</h2>
         <RadioButton value="card" label="Card" {...register('payment.type')} />
         <RadioButton value="transfer" label="Transfer" {...register('payment.type')} />
@@ -42,5 +41,6 @@ export const App = () => {
       </div> 
       <button type="submit">Place Your order</button>
     </form>
+    </FormProvider>
   </>;
 }
