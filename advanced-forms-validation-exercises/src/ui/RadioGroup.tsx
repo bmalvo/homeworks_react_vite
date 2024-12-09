@@ -1,5 +1,5 @@
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { RadioButton } from "./RadioButton";
+import {FormControlLabel, RadioGroup as MUIRadioGroup, Radio} from "@mui/material";
 
 export type RadioGroupProps<T extends FieldValues> = {
 
@@ -19,19 +19,18 @@ export const RadioGroup = <T extends FieldValues>({options, name, control}: Radi
         <Controller
             name={name}
             control={control}
-            render={({ field: {onChange} }) => (
+            render={({ field: { onChange } }) => (
                 
-                <div>
+                <MUIRadioGroup onChange={onChange}>
                     {options.map(option => (
-                        <RadioButton
-                        key={option.value}
-                        label={option.label}
-                        value={option.value}
-                        name={name}
-                        onChange={onChange}
-                    />
+
+                        <FormControlLabel
+                            key={option.value}
+                            value={option.value}
+                            label={option.label}
+                            control={<Radio />} />
                     ))}
-                </div>
+                </MUIRadioGroup>
             )} />
     </>
 }

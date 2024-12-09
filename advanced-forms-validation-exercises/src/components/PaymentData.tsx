@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { Input } from "./Input"
 import { orderData } from "../schemas/order";
-import { RadioGroup } from "./RadioGroup";
+import { RadioGroup } from "../ui/RadioGroup";
 
 export const PaymentData = () => {
 
