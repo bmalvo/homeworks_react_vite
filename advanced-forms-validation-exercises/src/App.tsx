@@ -6,6 +6,8 @@ import { PaymentData } from "./components/PaymentData";
 import { Button } from "./ui/Button";
 import { PageHeader } from "./ui/PageHeader";
 import { Container } from "./ui/Container";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme";
 
 
 export const App = () => {
@@ -24,7 +26,8 @@ export const App = () => {
     console.log(data)
   }
 
-  return <Container>
+  return <ThemeProvider theme={theme}>
+    <Container>
     <PageHeader>Place your order</PageHeader>
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -35,4 +38,5 @@ export const App = () => {
     </form>
     </FormProvider>
   </Container>;
+    </ThemeProvider>
 }

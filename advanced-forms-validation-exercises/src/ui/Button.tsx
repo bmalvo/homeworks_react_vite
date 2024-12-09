@@ -9,5 +9,5 @@ export type ButtonProps = {
 
 export const Button = ({children, type = 'button'}: ButtonProps) => {
 
-    return <MUIButton type={type}>{ children}</MUIButton>
+    return <MUIButton variant="contained" type={type}>{ children}</MUIButton>
 }
