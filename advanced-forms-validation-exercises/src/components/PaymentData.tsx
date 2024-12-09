@@ -2,6 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { Input } from "./Input"
 import { orderData } from "../schemas/order";
 import { RadioGroup } from "../ui/RadioGroup";
+import { SectionHeader } from "../ui/SectionHeader";
 
 export const PaymentData = () => {
 
@@ -11,7 +12,7 @@ export const PaymentData = () => {
 
     return <>
         <div>
-        <h2>Payment data</h2>
+        <SectionHeader>Payment data</SectionHeader>
         <RadioGroup
           name='payment.type'
           control={control}

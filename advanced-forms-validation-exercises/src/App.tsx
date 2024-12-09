@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BasicData } from "./components/BasicData";
 import { PaymentData } from "./components/PaymentData";
 import { Button } from "./ui/Button";
+import { PageHeader } from "./ui/PageHeader";
 
 
 export const App = () => {
@@ -23,7 +24,7 @@ export const App = () => {
   }
 
   return <>
-    <h1>Place your order</h1>
+    <PageHeader>Place your order</PageHeader>
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <BasicData />
