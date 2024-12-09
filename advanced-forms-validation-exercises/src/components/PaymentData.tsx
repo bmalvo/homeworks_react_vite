@@ -4,6 +4,7 @@ import { orderData } from "../schemas/order";
 import { RadioGroup } from "../ui/RadioGroup";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Section } from "../ui/Section";
+import { FormElements } from "../ui/FormElements";
 
 export const PaymentData = () => {
 
@@ -14,16 +15,17 @@ export const PaymentData = () => {
     return <>
         <Section>
         <SectionHeader>Payment data</SectionHeader>
+        <FormElements>
         <RadioGroup
           name='payment.type'
           control={control}
           options={[
-          { value: 'card', label: 'Card' },
-          {value: 'transfer', label: 'Transfer'}
+            { value: 'card', label: 'Card' },
+            {value: 'transfer', label: 'Transfer'}
         ]}/>
         {/* <RadioButton value="card" label="Card" {...register('payment.type')} />
         <RadioButton value="transfer" label="Transfer" {...register('payment.type')} /> */}
-        {type === 'card' ? <div>
+        {type === 'card' ? <>
           <RadioGroup
             name='payment.details.card'
             control={control}
@@ -34,8 +36,9 @@ export const PaymentData = () => {
           {/* <RadioButton value="visa" label="VISA" {...register('payment.details.card')} />
           <RadioButton value="amex" label="AMEX" {...register('payment.details.card')} /> */}
                 <Input type="text" label="Card number" {...register('payment.details.cardNumber')} error={ errors.payment?.details?.cardNumber} />
-        </div> : null}
+        </> : null}
             {type === 'transfer' ? <label>IBAN<Input type="text" label="IBAN" {...register('payment.details.iban')} error={ errors.payment?.details?.iban} /></label> : null}
+        </FormElements>
       </Section> 
     </>
 }

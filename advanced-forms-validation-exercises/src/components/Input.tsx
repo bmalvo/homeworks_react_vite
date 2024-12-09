@@ -14,6 +14,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps & UseFormRegisterRe
     return <>
         <div>
             <TextField
+                fullWidth
                 label={label}
                 variant='outlined'
                 error={!!error}
