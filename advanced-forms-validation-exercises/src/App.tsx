@@ -6,7 +6,7 @@ import { PaymentData } from "./components/PaymentData";
 import { Button } from "./ui/Button";
 import { PageHeader } from "./ui/PageHeader";
 import { Container } from "./ui/Container";
-import { ThemeProvider } from "@mui/material";
+import { GlobalStyles, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 
 
@@ -27,6 +27,13 @@ export const App = () => {
   }
 
   return <ThemeProvider theme={theme}>
+    <GlobalStyles styles={{
+      '*': {
+        margin: 0,
+        padding: 0,
+        boxSizing: 'border-box'
+      }
+    }} />
     <Container>
     <PageHeader>Place your order</PageHeader>
     <FormProvider {...methods}>
