@@ -3,6 +3,8 @@ import { orderData, orderSchema } from "./schemas/order";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BasicData } from "./components/BasicData";
 import { PaymentData } from "./components/PaymentData";
+import { Button } from "./ui/Button";
+
 
 export const App = () => {
 
@@ -26,7 +28,8 @@ export const App = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <BasicData />
         <PaymentData />
-      <button type="submit">Place Your order</button>
+      <Button type="submit">Place Your order</Button>
+      {/* <button type="submit">Place Your order</button> */}
     </form>
     </FormProvider>
   </>;

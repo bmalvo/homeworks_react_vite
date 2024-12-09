@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import { forwardRef } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
@@ -12,11 +13,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps & UseFormRegisterRe
 
     return <>
         <div>
-            <label>{label}</label>
-            <input type={type} ref={ref} {...register} />
-            {error ? <p>
-                { error.message}
-            </p> : null}
+            <TextField
+                label={label}
+                variant='outlined'
+                error={!!error}
+                helperText={error?.message}
+                type={type}
+                ref={ref}
+                {...register} />
         </div>
     </>
 });
