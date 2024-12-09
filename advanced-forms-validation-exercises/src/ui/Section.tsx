@@ -1,4 +1,4 @@
-import { Card, CardContent, Paper } from "@mui/material"
+import { Card, CardContent} from "@mui/material"
 import { ReactNode } from "react"
 
 export type SectionProps = {
