@@ -5,6 +5,7 @@ import { BasicData } from "./components/BasicData";
 import { PaymentData } from "./components/PaymentData";
 import { Button } from "./ui/Button";
 import { PageHeader } from "./ui/PageHeader";
+import { Container } from "./ui/Container";
 
 
 export const App = () => {
@@ -23,7 +24,7 @@ export const App = () => {
     console.log(data)
   }
 
-  return <>
+  return <Container>
     <PageHeader>Place your order</PageHeader>
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -33,5 +34,5 @@ export const App = () => {
       {/* <button type="submit">Place Your order</button> */}
     </form>
     </FormProvider>
-  </>;
+  </Container>;
 }
