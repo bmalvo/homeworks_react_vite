@@ -3,6 +3,7 @@ import { Input } from "./Input"
 import { orderData } from "../schemas/order";
 import { RadioGroup } from "../ui/RadioGroup";
 import { SectionHeader } from "../ui/SectionHeader";
+import { Section } from "../ui/Section";
 
 export const PaymentData = () => {
 
@@ -11,7 +12,7 @@ export const PaymentData = () => {
     const type = watch('payment.type');
 
     return <>
-        <div>
+        <Section>
         <SectionHeader>Payment data</SectionHeader>
         <RadioGroup
           name='payment.type'
@@ -35,6 +36,6 @@ export const PaymentData = () => {
                 <Input type="text" label="Card number" {...register('payment.details.cardNumber')} error={ errors.payment?.details?.cardNumber} />
         </div> : null}
             {type === 'transfer' ? <label>IBAN<Input type="text" label="IBAN" {...register('payment.details.iban')} error={ errors.payment?.details?.iban} /></label> : null}
-      </div> 
+      </Section> 
     </>
 }
