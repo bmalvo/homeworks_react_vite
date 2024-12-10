@@ -1,5 +1,5 @@
-import { Foo } from "./Foo"
-import { FooPortal } from "./FooPortal"
+// import { Foo } from "./Foo"
+// import { FooPortal } from "./FooPortal"
 import { LabelWithTiiltip } from "./LabelWithTooltip"
 import { Section } from "./Section"
 
