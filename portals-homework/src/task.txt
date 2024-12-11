@@ -1,0 +1,9 @@
+1. Przygotować aplikację pozwalającą renderować okienko modalne po naciśnięciu 
+przycisku. Okienko modalne ma zawierać tytuł oraz treśc przekazaną przez propsy. 
+Okienko ma być ostylowane w taki sposób, aby cała reszta aplikacji była ukryta
+za nim za dodatkową półprzezroczystą warstwą.
+
+Ważne- modal ma zostać wyrenderowany 100px od górnej krawędzi strony i 
+wyśrodkowany w poziomie natomiast półprzezroczysta warstwa za nim ma przykrywać
+całą wysokośc strony i na samym dole tej warstwy ma znaleźć się informacja
+'Look up'. Przetestować dla aplikacji o wysokości 300vh.
