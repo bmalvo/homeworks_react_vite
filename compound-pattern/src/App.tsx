@@ -1,6 +1,5 @@
 import { InfoCard } from "./components/InfoCard/InfoCard"
 import { Tabs } from "./components/InfoCard/Tabs"
-import { Tab } from "./components/InfoCard/Tabs/components/Tab"
 import { InfoData } from "./types"
 
 const data: InfoData = {
@@ -13,8 +12,13 @@ export const App = () => {
 
   return <>
     
-    <Tabs>
-      <Tab label="first">
+    <Tabs tabs={[
+
+      {label: 'first', content: <p>one</p>},
+      {label: 'second', content: <p>two</p>},
+      {label: 'third', content: <p>three</p>}
+    ]} />
+      {/* <Tab label="first">
         <p>1</p>
       </Tab>
       <Tab label="Second">
@@ -23,7 +27,7 @@ export const App = () => {
       <Tab label="Second">
         <p>3</p>
       </Tab>
-    </Tabs>
+    </Tabs> */}
 
     <InfoCard item={data}>
       <InfoCard.Title/>

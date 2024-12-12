@@ -1,33 +1,36 @@
-import React, { ReactElement, useState } from "react";
+import {useState} from "react";
 import { ReactNode } from "react"
-import { TabProps } from "./components/Tab";
+import { Tab} from "./components/Tab";
 
 export type TabsProps = {
 
-    children: ReactNode;
+    tabs: {
+
+        label: string;
+        content: ReactNode;
+    }[]
 }
 
-export const Tabs = ({ children }: TabsProps) => {
+export const Tabs = ({ tabs }: TabsProps) => {
     
-    const [activeIndex, setActiveindex] = useState<number>(0);
+    const [activeIndex, setActiveIndex] = useState<number>(0);
 
     const handleClick = (index: number) => {
 
-        setActiveindex(index);
+        setActiveIndex(index);
     }
 
     return <>
         <div>
             <ul>
-                {React.Children.map(children, (tab, index) => 
-                    <li onClick={() => handleClick(index)}>{ (tab as ReactElement<TabProps>).props.label }</li>
+                {tabs.map((tab, index) => 
+                    <li key={index} onClick={() => handleClick(index)}>{ tab.label }</li>
                 )}
             </ul>
             {
-                React.Children.map(children, (tab, index) => React.cloneElement(tab as ReactElement, {
-
-                active: activeIndex === index
-                }))
+                tabs.map((tab, index) => <Tab key={ index} active={activeIndex === index} label={tab.label} >
+                    {tab.content}
+                </Tab>)
             }
         </div>
     </>
