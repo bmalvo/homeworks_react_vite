@@ -3,6 +3,9 @@ import { ReactNode } from 'react';
 import styles from './styles.module.scss'
 import { InfoCardContext } from './context/InfoCardContext';
 import { InfoData } from '../../types';
+import { Actions } from './components/Actions';
+import { Description } from './components/Description';
+import { Title } from './components/Title';
 
 export type InfoCardProps = {
 
@@ -21,3 +24,7 @@ export const InfoCard = ({children, item }: InfoCardProps) => {
         </div>
     </>
 }
+
+InfoCard.Actions = Actions;
+InfoCard.Description = Description;
+InfoCard.Title = Title;
