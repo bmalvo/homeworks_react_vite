@@ -1,0 +1,5 @@
+Przygotować komponent LightBulb, który wyświetla element wyglądem 
+przypominający żarówkę (w uproszczeniu). Ten komponent ma przechowywać swój 
+stan - światło zapalone/ światło wyłączone. Należy dać programiście możliwość
+wyłączenia światła poprzez przycisk Switch oraz wyświetlenia osobnej treści
+w sytuacji kiedy światło jest zapalone- ContentOn oraz zgaszone ContentOff.
