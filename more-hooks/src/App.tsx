@@ -1,6 +1,8 @@
 import { useDeferredValue, useState } from "react";
 import { Foo } from "./Foo"
 import { Bar } from "./Bar";
+import { Slow } from "./Slow";
+
 
 export const App = () => {
 
@@ -18,13 +20,16 @@ export const App = () => {
   //   </div>
   // </>
 
-  const [value, setValue] = useState('');
-  const deferredValue = useDeferredValue(value);
+  // const [value, setValue] = useState('');
+  // const deferredValue = useDeferredValue(value);
 
+  // return <>
+  //   <div>
+  //     <input type="text" value={value} onChange={e => setValue(e.target.value)} />
+  //     <Bar value={ deferredValue} />
+  //   </div>
+  // </>
   return <>
-    <div>
-      <input type="text" value={value} onChange={e => setValue(e.target.value)} />
-      <Bar value={ deferredValue} />
-    </div>
+  <Slow />
   </>
 }
