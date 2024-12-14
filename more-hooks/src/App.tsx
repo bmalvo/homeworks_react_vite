@@ -3,6 +3,7 @@ import { Foo } from "./Foo"
 import { Bar } from "./Bar";
 import { Slow } from "./Slow";
 import { useActive } from "./hooks/useActive";
+import { Baz } from "./Baz";
 
 
 export const App = () => {
@@ -34,9 +35,13 @@ export const App = () => {
 // <Slow />
   // </>
 
-  const value = useActive();
+  // const value = useActive();
+
+  // return <>
+  //   <h1>{ value ? 'Yes' : 'No'}</h1>
+  // </>
 
   return <>
-    <h1>{ value ? 'Yes' : 'No'}</h1>
+    <Baz />
   </>
 }
