@@ -2,6 +2,7 @@ import { useDeferredValue, useState } from "react";
 import { Foo } from "./Foo"
 import { Bar } from "./Bar";
 import { Slow } from "./Slow";
+import { useActive } from "./hooks/useActive";
 
 
 export const App = () => {
@@ -29,7 +30,13 @@ export const App = () => {
   //     <Bar value={ deferredValue} />
   //   </div>
   // </>
+  // return <>
+// <Slow />
+  // </>
+
+  const value = useActive();
+
   return <>
-  <Slow />
+    <h1>{ value ? 'Yes' : 'No'}</h1>
   </>
 }
