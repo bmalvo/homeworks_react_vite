@@ -13,7 +13,7 @@ const heavyCalculations = (flag: boolean) => {
 }
 
 export const Foo = ({ value, toggle }: FooProps) => {
-    'use no memo'
+    'use memo'
     
     const random =  heavyCalculations(toggle);
 

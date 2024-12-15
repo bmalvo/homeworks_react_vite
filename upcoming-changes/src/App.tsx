@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Foo } from "./Foo";
 
 export const App = () => {
+  'use memo'
 
   const [counter, setCounter] = useState(0);
   const [toggle, setToggle] = useState(false);
