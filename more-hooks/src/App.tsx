@@ -5,6 +5,8 @@ import { Slow } from "./Slow";
 import { useActive } from "./hooks/useActive";
 import { Baz } from "./Baz";
 import { Counter } from "./Counter";
+import { Store } from "./Store";
+import { SecondStore } from "./SecondStore";
 
 
 export const App = () => {
@@ -44,7 +46,13 @@ export const App = () => {
 
   // return <>
 
+  // return <>
+  //   <Counter />
+  // </>
+
   return <>
-    <Counter />
+    <Store />
+    <SecondStore />
   </>
+
 }
