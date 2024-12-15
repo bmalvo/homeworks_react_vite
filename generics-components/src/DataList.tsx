@@ -1,10 +1,12 @@
-export type DataListProps = {
+import { ReactNode } from "react";
 
-    items: string[];
-    callback: (item: string) => void;
+export type DataListProps<T>     = {
+
+    items: T[];
+    callback: (item: T) => void;
 }
 
-export const DataList = ({items, callback}: DataListProps) => {
+export const DataList = <T extends ReactNode>({items, callback}: DataListProps<T>) => {
 
     return <>
         <ul>
