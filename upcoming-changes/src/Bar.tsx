@@ -1,4 +1,5 @@
 export const Bar = () => {
+    "use no memo";
 
     const date = new Date();
 
