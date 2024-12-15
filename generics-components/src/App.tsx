@@ -1,25 +1,30 @@
 import { DataList } from "./DataList"
 
-const getRandomArray = (): number[] => {
+type SingleElement = {
 
-  const result = [];
-  for (let i = 0; i < 10; i++) {
-    
-    result.push(Math.round(Math.random() * 100))
-  }
-
-  return result
+  id: number;
+  a: number;
+  b: number;
+  c: number;
+  value: string;
+  label?: string;
 }
 
 export const App = () => {
   
-  const handleElementClick = (element: number) => {
+  const handleElementClick = (element: SingleElement) => {
 
     console.log(element);
   }
 
   return <>
-    <DataList<number> items={getRandomArray()}
+    <DataList items={[
+
+      { id: 1, value: 'stefka', a:1, b: 2, c: 3 },
+      { id: 2, value: 'brydzia', label: 'british', a:3, b:2, c:1},
+      {id: 3, value: 'ninja', a:0, b:33, c:12}
+    ]}
+      visibleKeys={['value']}
       callback={handleElementClick}
     />
   </>
