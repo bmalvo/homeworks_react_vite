@@ -16,6 +16,8 @@ export const App = () => {
     setToggle(prev => !prev);
   }
 
+  // setCounter(prev => prev + 10)
+
   return <>
     <div>
       <Foo value={counter} toggle={ toggle} />
