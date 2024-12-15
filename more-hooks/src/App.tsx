@@ -7,6 +7,7 @@ import { Baz } from "./Baz";
 import { Counter } from "./Counter";
 import { Store } from "./Store";
 import { SecondStore } from "./SecondStore";
+import { Effects } from "./effects";
 
 
 export const App = () => {
@@ -50,9 +51,10 @@ export const App = () => {
   //   <Counter />
   // </>
 
-  return <>
-    <Store />
-    <SecondStore />
-  </>
+  // return <>
+  //   <Store />
+  //   <SecondStore />
+  // </>
 
+  return <Effects />
 }
