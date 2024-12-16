@@ -1,4 +1,5 @@
 import { useActionState } from "react";
+import { FormStatus } from "./FormStatus";
 
 const CORRECT_PASSWORD = 'loremipsum';
 
@@ -49,8 +50,9 @@ export const Form = () => {
         <div>
             {/* <h1>{isPending ? <p>loading...</p> :state }</h1> */}
             <form>
-            <input type="password" name="password"/>
-            <button formAction={submitAction} type="submit">submit</button>
+                <input type="password" name="password"/>
+                <button formAction={submitAction} type="submit">submit</button>
+                <FormStatus />
             </form>
             {isPending ? <p>[INFO] Loading...</p> : null}
             {state.message ? <p>[SUCCESS] { state.message}</p> : null}
