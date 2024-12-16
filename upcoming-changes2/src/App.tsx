@@ -1,6 +1,6 @@
 import { useState, useTransition } from "react"
 
-const getValues = () => {
+const getValues = (): Promise<number[]> => {
 
   const elements: number[] = []; 
 
@@ -9,7 +9,7 @@ const getValues = () => {
     elements.push(Math.round(Math.random() * 10000))
   }
 
-  return elements;
+  return new Promise<number[]>(resolve => resolve(elements));
 }
 
 export const App = () => {
@@ -21,8 +21,13 @@ export const App = () => {
   const generate = () => {
 
     setCounter(prev => prev + 1);
-    startTransition(() => {
-      setElements(getValues());
+    startTransition(async() => {
+      const response = await getValues();
+
+      startTransition(() => {
+
+        setElements(response);
+      })
     })
   }
 
@@ -31,7 +36,7 @@ export const App = () => {
       <button onClick={generate}>set elements</button>
       <h2>Clicks: { counter}</h2>
       <ul>
-        {elements.map((el, index) => <li key={index}>
+        {pending ? <p>Loading... Please wait...</p> : elements.map((el, index) => <li key={index}>
           <div>
             <h2>{el}</h2>
             <p>this is {index + 1} value: { el}</p>
