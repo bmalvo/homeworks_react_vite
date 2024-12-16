@@ -6,6 +6,8 @@ export const FormStatus = () => {
     
     const password: string = data?.get('password') as string;
 
+    console.log(action, method); 
+
     return <>
         <div>
             {pending ? <p>Form is proccesing Your request with data - { password}</p> : null}
