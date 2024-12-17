@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useState } from "react"
 import { Use } from "./Use"
 import { ErrorBoundary } from "react-error-boundary";
+import { ThemeContext } from "./context/ThemeContext";
 
 // import { useState } from "react";
 // import { EmailForm } from "./EmailForm"
@@ -34,11 +35,16 @@ export const App = () => {
     {/* <Form />
     <EmailForm currentEmail={ userEmail} onEmailUpdate={setUserEmail} /> */}
 
+    
+    <ThemeContext value={{
+      mode: 'dark'
+    }}>
     <button onClick={() => setVisible(prev => !prev)}>Click</button>
     <ErrorBoundary fallback={<p>something went wrong...</p>}>
     <Suspense fallback={<p>loading...</p>}>
         <Use dataPromise={promise()} visible={ visible} />
     </Suspense>
     </ErrorBoundary>
+    </ThemeContext>
   </>
 }
