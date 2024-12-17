@@ -1,9 +1,10 @@
 // import { Form } from "./Form"
 
-import { Suspense, useCallback, useState } from "react"
+import { Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { Use } from "./Use"
 import { ErrorBoundary } from "react-error-boundary";
 import { ThemeContext } from "./context/ThemeContext";
+import { Input } from "./Input";
 
 // import { useState } from "react";
 // import { EmailForm } from "./EmailForm"
@@ -31,6 +32,13 @@ export const App = () => {
 
   // const [userEmail, setUserEmail] = useState('email@email.com');
 
+  const inputRef = useRef<HTMLInputElement>(null); 
+
+  useEffect(() => {
+
+    inputRef.current?.focus();
+  },[])
+
   return <>
     {/* <Form />
     <EmailForm currentEmail={ userEmail} onEmailUpdate={setUserEmail} /> */}
@@ -39,7 +47,8 @@ export const App = () => {
     <ThemeContext value={{
       mode: 'dark'
     }}>
-    <button onClick={() => setVisible(prev => !prev)}>Click</button>
+      <button onClick={() => setVisible(prev => !prev)}>Click</button>
+      <Input name="name" ref={inputRef } />
     <ErrorBoundary fallback={<p>something went wrong...</p>}>
     <Suspense fallback={<p>loading...</p>}>
         <Use dataPromise={promise()} visible={ visible} />
