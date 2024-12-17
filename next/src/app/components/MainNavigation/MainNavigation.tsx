@@ -19,6 +19,9 @@ export const MainNavigation = () => {
                 <li>
                     <Link className={pathname.startsWith('/about') ? styles.active : ''}  href='/about'>About</Link>
                 </li>
+                <li>
+                    <Link className={pathname.startsWith('/users') ? styles.active : ''}  href='/users'>Users</Link>
+                </li>
             </ul>
         </nav>
     </>
