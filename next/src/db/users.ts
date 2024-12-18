@@ -36,3 +36,22 @@ export const getSingleUserById = (id: number): Promise<User | null> => {
         }, 1000);
     })
 }
+
+export const addNewUser = (name: string): Promise<User> => {
+    
+    const newUser: User = {
+
+        id: users.length + 1,
+        name
+    }
+
+    users.push(newUser);
+
+    return new Promise(resolve => {
+
+        setTimeout(() => {
+
+            resolve(newUser)
+        },1000)
+    })
+}

@@ -1,4 +1,4 @@
-import { getSingleUserById } from "@/db/users";
+import { addNewUser, getSingleUserById } from "@/db/users";
 
 export type RouteParams = {
 
@@ -21,4 +21,13 @@ export const GET = async (request: Request, { params }: RouteParams) => {
     }
 
     return Response.json({user})
+}
+
+export const POST = async (request: Request) => {
+
+    const { name}: {name:string} = await request.json();
+
+    const newUser = await addNewUser(name);
+
+    return Response.json(newUser);
 }
