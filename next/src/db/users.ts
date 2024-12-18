@@ -24,3 +24,15 @@ export const getAllUsers = (): Promise<User[]> => {
         },1000)
     })
 }
+
+export const getSingleUserById = (id: number): Promise<User | null> => {
+
+    return new Promise(resolve => {
+
+        setTimeout(() => {
+            
+            const user = users.find(user => user.id === id)
+            resolve(user || null);
+        }, 1000);
+    })
+}
