@@ -1,7 +1,9 @@
+import { UsersList } from "../components/UsersList"
+
 const Users = () => {
 
     return <>
-        <p>No users so far</p>
+        <UsersList />
     </>
 }
 

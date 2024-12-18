@@ -1,3 +1,5 @@
+import { SingleUser } from "@/app/components/SingleUser";
+
 type RouteProps = {
 
     params: Promise<{id: string}>
@@ -7,7 +9,9 @@ const User = async ({ params }: RouteProps) => {
     
     const { id } = await params;
 
-    return <p>No User {id} info available</p>
+    return (
+        <SingleUser id={ Number(id)} />
+    )
 }
 
 export default User;

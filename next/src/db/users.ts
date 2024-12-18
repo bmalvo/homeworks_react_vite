@@ -1,10 +1,10 @@
-type User = {
+export type User = {
 
     id: number;
     name: string;
 }
 
-const users: User[] = [
+export const users: User[] = [
 
     { id: 1, name: 'stefka' },
     { id: 2, name: 'brydzia' }, 
@@ -31,7 +31,7 @@ export const getSingleUserById = (id: number): Promise<User | null> => {
 
         setTimeout(() => {
             
-            const user = users.find(user => user.id === id)
+            const user = users.find(user => (user.id === id))
             resolve(user || null);
         }, 1000);
     })
