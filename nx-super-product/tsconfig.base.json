@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-super-product/auth": ["libs/auth/src/index.ts"]
+      "@nx-super-product/auth": ["libs/auth/src/index.ts"],
+      "@nx-super-product/user": ["libs/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

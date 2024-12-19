@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "postal": "^2.0.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-is": "18.3.1",
@@ -30,6 +31,7 @@
     "@testing-library/react": "15.0.6",
     "@types/jest": "^29.5.12",
     "@types/node": "18.16.9",
+    "@types/postal": "^1.0.35",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
     "@types/react-is": "18.3.0",
