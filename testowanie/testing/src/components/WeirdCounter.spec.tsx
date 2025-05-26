@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { WeirdCounter } from "./WeirdCounter";
 import userEvent from "@testing-library/user-event";
-// import { useRandomValue } from "./hooks/useRandomValue";
 import * as randomHook from './hooks/useRandomValue';
 
 describe('WeirdCounter', () => {
@@ -20,15 +19,15 @@ describe('WeirdCounter', () => {
 
     it('initial value should be rendered', () => {
     
-            vi.spyOn(randomHook, 'useRandomValue').mockRejectedValueOnce(() => 999)
-            render(<WeirdCounter />);
-            const counterElement = screen.getByTestId('counter-value');
-    
-            expect(counterElement).toHaveTextContent(/^0$/);
+        render(<WeirdCounter />);
+        const counterElement = screen.getByTestId('counter-value');
+        
+        expect(counterElement).toHaveTextContent(/^0$/);
     })
     
     it('should set random counter value after click the button', async () => {
-    
+        
+            vi.spyOn(randomHook, 'useRandomValue').mockReturnValueOnce(() => 999)
             render(<WeirdCounter />);
             const counterElement = screen.getByTestId('counter-value');
             const incrementElement = screen.getByTestId('counter-increment');

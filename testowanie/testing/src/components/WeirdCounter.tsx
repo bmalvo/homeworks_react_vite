@@ -13,7 +13,7 @@ export const WeirdCounter = ({initialValue}: WeirdCounterProps) => {
 
     const handleClick = () => {
 
-        setCounter(randomize())
+        setCounter(randomize());
     };
 
     return <>
