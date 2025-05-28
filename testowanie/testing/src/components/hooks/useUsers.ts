@@ -1,12 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useApi } from "./useApi";
+import { SingleUser } from "../types";
 
-type SingleUser = {
 
-    id: string;
-    name: string;
-    age: number;
-}
 
 export const useUsers = () => {
 
@@ -23,15 +19,10 @@ export const useUsers = () => {
         const newUsers = await get<SingleUser[]>('users');
         setUsers(newUsers);
     }
-
-    useEffect(() => {
-
-        getUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
     
     return {
         users,
-        adults
+        adults,
+        getUsers
     }
 };
